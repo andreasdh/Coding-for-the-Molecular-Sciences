@@ -1,0 +1,47 @@
+#######################################################################################
+# Book settings
+title: Coding for the Molecular Sciences
+author: Andreas Haraldsrud
+description: >-
+  Python programming, data handling, visualisation, and statistics for chemistry and the molecular sciences.
+
+#######################################################################################
+# Execution settings
+execute:
+  execute_notebooks: false
+
+#######################################################################################
+# HTML-specific settings
+html:
+  home_page_in_navbar: false
+  comments:
+    hypothesis: true
+
+#######################################################################################
+# Notebook interface
+notebook_interface: "notebook"
+
+#######################################################################################
+# Repository links
+repository:
+  url: https://github.com/andreasdh/Coding-for-the-Molecular-Sciences
+  path_to_book: ""
+
+binder:
+  binderhub_url: "https://mybinder.org"
+  text: "Launch Binder"
+
+latex:
+  latex_engine: "xelatex"
+  latex_documents:
+    targetname: book.tex
+
+#######################################################################################
+# Quiz engine and browser integrations
+sphinx:
+  config:
+    html_css_files:
+      - chemistryquiz.css
+    html_js_files:
+      - chemistryquiz.js
+      - turtle_basthon.js

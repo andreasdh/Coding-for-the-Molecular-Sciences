@@ -6,6 +6,12 @@ root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
+# Known-good Basthon package used by the Norwegian site. This is only a
+# bootstrap fallback: once this repository has a gh-pages branch, subsequent
+# builds reuse their own previously deployed Basthon files.
+reference_url="https://raw.githubusercontent.com/andreasdh/programmering-i-kjemi/master/vendor/basthon/basthon-console-custom.tgz"
+reference_sha256="b257e4b5fab334eaa38df8cb4abe0542cc64003d575f65ce184a27d98fd27eda"
+
 valid() {
   [[ -f "$1/index.html" ]] && [[ -d "$1/assets" ]] &&
     find "$1/assets" -maxdepth 1 -type f -name 'main.*.js' ! -name '*.map' -print -quit | grep -q .
@@ -18,13 +24,29 @@ install_dir() {
 }
 
 from_pages() {
-  echo "Trying Basthon from the previous GitHub Pages deployment"
+  echo "Trying Basthon from this repository's previous GitHub Pages deployment"
   mkdir -p "$tmp/pages"
   git fetch origin gh-pages --depth=1 || return 1
   git archive --format=tar origin/gh-pages basthon 2>/dev/null |
     tar -xf - -C "$tmp/pages" 2>/dev/null || return 1
   valid "$tmp/pages/basthon" || return 1
   install_dir "$tmp/pages/basthon"
+}
+
+from_reference_backup() {
+  echo "Trying known-good Basthon bootstrap package"
+  archive="$tmp/basthon-reference.tgz"
+  curl --fail --location --silent --show-error \
+    --retry 5 --retry-all-errors --retry-delay 5 \
+    --connect-timeout 20 --max-time 240 \
+    -o "$archive" "$reference_url" || return 1
+
+  printf '%s  %s\n' "$reference_sha256" "$archive" | sha256sum -c - >/dev/null || return 1
+  tar -tzf "$archive" >/dev/null || return 1
+  mkdir -p "$tmp/reference"
+  tar -xzf "$archive" -C "$tmp/reference"
+  valid "$tmp/reference" || return 1
+  install_dir "$tmp/reference"
 }
 
 from_download() {
@@ -43,11 +65,13 @@ from_download() {
 
 mkdir -p "$out"
 if from_pages; then
-  source_name="previous GitHub Pages deployment"
+  source_name="this repository's gh-pages branch"
+elif from_reference_backup; then
+  source_name="known-good bootstrap package"
 elif from_download; then
-  source_name="official download"
+  source_name="official Basthon download"
 else
-  echo "Could not prepare Basthon" >&2
+  echo "Could not prepare Basthon from any source" >&2
   exit 1
 fi
 

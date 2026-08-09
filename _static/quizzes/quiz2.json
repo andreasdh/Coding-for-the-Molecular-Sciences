@@ -1,0 +1,159 @@
+[
+  {
+    "question": "Given the list `a = [1, 2, 4, 9, 16, 25]`, which expression gives the output `[4, 9]`?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "a[3:4]", "correct": false, "feedback": "Incorrect. Remember that indexing starts at 0."},
+      {"answer": "a[2:3]", "correct": false, "feedback": "Incorrect. A slice includes the start index but excludes the stop index."},
+      {"answer": "a[2:4]", "correct": true, "feedback": "Correct. Indexing starts at 0, and the stop index is excluded."},
+      {"answer": "a[3:5]", "correct": false, "feedback": "Incorrect. Remember that indexing starts at 0."}
+    ]
+  },
+  {
+    "question": "What is the output from the following code?",
+    "code": "list_a = [0, 1, 2, 3, 4, 5, 6, 7]\nlist_b = list_a[1:-1]\nlist_c = list_b[3:5]\nprint(list_c)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[3, 4, 5]", "correct": false, "feedback": "Incorrect. `[3:5]` returns two elements, not three."},
+      {"answer": "[3, 4]", "correct": false, "feedback": "Incorrect. `list_b` begins with 1, so index 3 in `list_b` contains 4."},
+      {"answer": "[4, 5]", "correct": true, "feedback": "Correct. `list_b` is [1, 2, 3, 4, 5, 6], so indices 3 and 4 contain 4 and 5."},
+      {"answer": "[4]", "correct": false, "feedback": "Incorrect. `[3:5]` returns two elements."}
+    ]
+  },
+  {
+    "question": "Which expression returns the list `[2, 4, 6]`?",
+    "code": "values = [0, 2, 4, 6, 8, 10]",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "values[1:3]", "correct": false, "feedback": "Incorrect. The stop index is excluded, so this returns only two elements."},
+      {"answer": "values[1:4]", "correct": true, "feedback": "Correct. The slice includes index 1 and stops before index 4."},
+      {"answer": "values[2, 4, 6]", "correct": false, "feedback": "Incorrect. This is not valid indexing for a Python list."},
+      {"answer": "values[0:3]", "correct": false, "feedback": "Incorrect. Index 0 contains the first value, 0."}
+    ]
+  },
+  {
+    "question": "What is the output from the following program?",
+    "code": "numbers = [1, 1, 13, 5, 55, 3, 4, 12, 10, 4]\nprint(numbers[4])\nnumbers.remove(4)\nprint(numbers[-2])\nnumbers.append(3)\nprint(numbers[:3])",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "55, 10, [1, 1, 13]", "correct": true, "feedback": "Correct. `remove(4)` removes the first 4, and `[:3]` returns the first three elements."},
+      {"answer": "55, 4, [1, 1, 13]", "correct": false, "feedback": "Incorrect. After `remove` and before `append`, the second-to-last element is 10."},
+      {"answer": "55, 10, 5", "correct": false, "feedback": "Incorrect. `numbers[:3]` returns a list, not a single number."},
+      {"answer": "55, 10, [1, 1, 13, 5]", "correct": false, "feedback": "Incorrect. `[:3]` stops before index 3."}
+    ]
+  },
+  {
+    "question": "How can we remove the number 7 from the following list?",
+    "code": "values = [1, 3, 5, 7]",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "values.pop(7)", "correct": false, "feedback": "Incorrect. `pop` takes an index, not the value itself. `pop(3)` would work."},
+      {"answer": "del values[3]", "correct": true, "feedback": "Correct. 7 is stored at index 3."},
+      {"answer": "values.delete(7)", "correct": false, "feedback": "Incorrect. Python lists do not have a `delete` method."},
+      {"answer": "values.remove(7)", "correct": true, "feedback": "Correct. `remove` takes the value itself."},
+      {"answer": "values.remove(3)", "correct": false, "feedback": "Incorrect. `remove` takes a value, not an index, so this removes the number 3."}
+    ]
+  },
+  {
+    "question": "What is the output from the following program?",
+    "code": "values = [1, 2, 3]\nprint(2*(values[0] + values[1]*2) + 2*(values[0] + values[-1]*2))",
+    "type": "numeric",
+    "precision": 2,
+    "answers": [
+      {"type": "value", "value": 24, "correct": true, "feedback": "Correct. `2*(1 + 4) + 2*(1 + 6) = 10 + 14`."},
+      {"type": "range", "range": [-1000, 23.99], "correct": false, "feedback": "Incorrect. The result should be larger."},
+      {"type": "range", "range": [24.01, 1000], "correct": false, "feedback": "Incorrect. The result should be smaller."},
+      {"type": "default", "feedback": "Incorrect."}
+    ]
+  },
+  {
+    "question": "What output does the following program produce?",
+    "code": "values = ['a', 'b', 'a']\nprint(2*(values[0] + values[1]*2) + values[0] + values[-1]*2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "ababaa", "correct": false, "feedback": "Incorrect. Evaluate the expression inside the parentheses first: `'a' + 'bb'` becomes `'abb'`."},
+      {"answer": "abba", "correct": false, "feedback": "Incorrect. The answer follows from string operations, not musical history."},
+      {"answer": "abbabbaaa", "correct": true, "feedback": "Correct. `2*'abb'` gives `'abbabb'`, followed by `+ 'a' + 'aa'`."},
+      {"answer": "abaabaaba", "correct": false, "feedback": "Incorrect. Multiplication inside the parentheses is performed before concatenation."},
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. A string can be multiplied by an integer; the string is then repeated."}
+    ]
+  },
+  {
+    "question": "Which statement about the following program is correct?",
+    "code": "numbers = [1, 2, 3, 4, 5]\n# a)\nprint(numbers)\n# b)\nprint(numbers[0:5])\n# c)\nprint(numbers[:])",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "The output in b) differs from a) and c).", "correct": false, "feedback": "Incorrect. `[0:5]` covers the whole list."},
+      {"answer": "The output in a) differs from b) and c).", "correct": false, "feedback": "Incorrect. All three print the entire list."},
+      {"answer": "The output in c) differs from a) and b).", "correct": false, "feedback": "Incorrect. `[:]` returns the entire list."},
+      {"answer": "None of the outputs are the same.", "correct": false, "feedback": "Incorrect. All three outputs are identical."},
+      {"answer": "All three outputs are the same.", "correct": true, "feedback": "Correct. All three print the entire list."}
+    ]
+  },
+  {
+    "question": "We have a list `N = [1, 2, 3, 4, 5]`. What is printed after the following code runs?",
+    "code": "N[3] = 0\nprint(N)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[1, 2, 3, 0, 5]", "correct": true, "feedback": "Correct. Index 3 is the fourth element."},
+      {"answer": "[1, 2, 0, 4, 5]", "correct": false, "feedback": "Incorrect. Remember that indexing starts at 0."},
+      {"answer": "[1, 2, 3, 0, 0]", "correct": false, "feedback": "Incorrect. Only one element is changed."},
+      {"answer": "[0, 0, 0, 4, 5]", "correct": false, "feedback": "Incorrect. Only one element is changed."},
+      {"answer": "The list is not changed.", "correct": false, "feedback": "Incorrect. Lists are mutable."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "a = [1, 2, 3]\nb = a\nb[0] = 9\nprint(a)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[9, 2, 3]", "correct": true, "feedback": "Correct. `b = a` does not create a copy; both names refer to the same list. Use `b = a.copy()` for an independent copy."},
+      {"answer": "[1, 2, 3]", "correct": false, "feedback": "Incorrect. `b = a` gives the same list another name. A modification through `b` is also visible through `a`."},
+      {"answer": "[9, 2, 3, 1, 2, 3]", "correct": false, "feedback": "Incorrect. Nothing is appended to the list."},
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. This is valid Python."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "a = [3, 1, 2]\nb = a.sort()\nprint(b)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "None", "correct": true, "feedback": "Correct. `sort()` sorts the list in place and returns `None`. Use `b = sorted(a)` if you want a sorted copy."},
+      {"answer": "[1, 2, 3]", "correct": false, "feedback": "Incorrect. `a` is sorted, but `sort()` does not return the list."},
+      {"answer": "[3, 1, 2]", "correct": false, "feedback": "Incorrect. `b` receives the value returned by `sort()`, not the original list."},
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. This is valid Python."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "numbers = [0, 1, 2, 3, 4, 5, 6]\nprint(numbers[::2])",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[0, 2, 4, 6]", "correct": true, "feedback": "Correct. The third value in a slice is the step, so every second element is selected from the beginning."},
+      {"answer": "[0, 1]", "correct": false, "feedback": "Incorrect. With two colons, the last value is the step, not the stop index."},
+      {"answer": "[2, 3, 4, 5, 6]", "correct": false, "feedback": "Incorrect. The slice starts at the beginning; 2 is the step."},
+      {"answer": "[1, 3, 5]", "correct": false, "feedback": "Incorrect. With no start index, the slice begins at index 0."}
+    ]
+  },
+  {
+    "question": "Which expressions return the final element of `masses = [1.008, 12.011, 15.999, 32.06]`?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "masses[-1]", "correct": true, "feedback": "Correct. Negative indices count from the end."},
+      {"answer": "masses[4]", "correct": false, "feedback": "Incorrect. The list has four elements, but the final index is 3. This gives an `IndexError`."},
+      {"answer": "masses[3]", "correct": true, "feedback": "Correct. The list has four elements, so the final index is 3."},
+      {"answer": "masses[len(masses) - 1]", "correct": true, "feedback": "Correct. This works regardless of the list length."},
+      {"answer": "masses[len(masses)]", "correct": false, "feedback": "Incorrect. This is one index too far and gives an `IndexError`."}
+    ]
+  },
+  {
+    "question": "The atomic masses of C, H, and O are stored in a list. What is printed?",
+    "code": "masses = [12.011, 1.008, 15.999]\nprint(round(sum(masses), 3))",
+    "type": "numeric",
+    "precision": 3,
+    "answers": [
+      {"type": "value", "value": 29.018, "correct": true, "feedback": "Correct. `sum` adds all elements in the list."},
+      {"type": "default", "feedback": "Incorrect. `sum` adds all numerical values in the list. Add the three values and round to three decimal places."}
+    ]
+  }
+]

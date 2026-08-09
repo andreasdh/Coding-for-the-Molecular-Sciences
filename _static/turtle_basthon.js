@@ -88,3 +88,44 @@
     boot();
   }
 })();
+
+/* Give learning outcomes and theory/definition admonitions distinct visual roles. */
+(function () {
+  "use strict";
+
+  var style = document.createElement("style");
+  style.id = "molecular-sciences-admonition-roles";
+  style.textContent = [
+    "div.admonition.theory-definition { border-left-color:#3a7a9c !important; background-color:#eef5fa !important; }",
+    "div.admonition.theory-definition > p.admonition-title { background-color:#3a7a9c !important; color:#faf7f2 !important; }",
+    "div.admonition.learning-outcomes { border-left-color:#58745d !important; background-color:#eef5ef !important; }",
+    "div.admonition.learning-outcomes > p.admonition-title { background-color:#58745d !important; color:#faf7f2 !important; }"
+  ].join("\n");
+  document.head.appendChild(style);
+
+  function classifyAdmonitions() {
+    var semanticClasses = ["tip", "note", "warning", "dropdown", "important", "caution", "attention", "danger", "error", "seealso"];
+
+    document.querySelectorAll("div.admonition > p.admonition-title").forEach(function (title) {
+      var box = title.closest("div.admonition");
+      if (!box) return;
+
+      var label = (title.textContent || "").trim().toLowerCase();
+      if (label === "learning outcomes") {
+        box.classList.add("learning-outcomes");
+        return;
+      }
+
+      var alreadyTyped = semanticClasses.some(function (name) {
+        return box.classList.contains(name);
+      });
+      if (!alreadyTyped) box.classList.add("theory-definition");
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", classifyAdmonitions);
+  } else {
+    classifyAdmonitions();
+  }
+})();

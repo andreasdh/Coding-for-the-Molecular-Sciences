@@ -1,0 +1,67 @@
+name: Build and deploy Jupyter Book
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip setuptools
+          python -m pip install -r requirements.txt
+
+      - name: Build Jupyter Book
+        run: jupyter-book build .
+
+      - name: Add project-root redirect
+        run: |
+          cat > _build/html/index.html <<'EOF'
+          <!doctype html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8">
+              <meta http-equiv="refresh" content="0; url=docs/intro.html">
+              <link rel="canonical" href="docs/intro.html">
+              <title>Coding for the Molecular Sciences</title>
+            </head>
+            <body>
+              <p><a href="docs/intro.html">Go to Coding for the Molecular Sciences</a></p>
+            </body>
+          </html>
+          EOF
+
+      - name: Prepare Basthon
+        run: bash scripts/prepare_basthon.sh "_build/html/basthon"
+
+      - name: Verify publish directory
+        run: |
+          test -f _build/html/index.html
+          test -f _build/html/docs/intro.html
+          test -d _build/html/_static
+          test -f _build/html/basthon/index.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force_orphan: true
+          publish_dir: ./_build/html

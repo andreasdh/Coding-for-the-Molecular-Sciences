@@ -1,0 +1,39 @@
+format: jb-book
+root: docs/intro
+parts:
+- caption: Getting started
+  chapters:
+  - file: docs/getting_started/introduction
+  - file: docs/getting_started/vscode
+
+- caption: Fundamental programming
+  chapters:
+  - file: docs/fundamental_programming/variables
+    sections:
+    - file: docs/fundamental_programming/quiz1
+  - file: docs/fundamental_programming/lists
+    sections:
+    - file: docs/fundamental_programming/quiz2
+  - file: docs/fundamental_programming/conditionals
+    sections:
+    - file: docs/fundamental_programming/quiz3
+  - file: docs/fundamental_programming/loops
+    sections:
+    - file: docs/fundamental_programming/quiz4
+  - file: docs/fundamental_programming/functions
+    sections:
+    - file: docs/fundamental_programming/quiz5
+  - file: docs/fundamental_programming/data_collections
+    sections:
+    - file: docs/fundamental_programming/quiz6
+  - file: docs/fundamental_programming/programming_tools
+
+- caption: Data handling and visualisation
+  chapters:
+  - file: docs/data_handling/chemical_libraries
+  - file: docs/data_handling/molecular_visualisation
+  - file: docs/data_handling/visualising_chemical_data
+  - file: docs/data_handling/reading_and_cleaning_chemical_data
+  - file: docs/data_handling/basic_statistics_for_chemistry
+  - file: docs/data_handling/calibration_and_statistical_inference
+  - file: docs/data_handling/machine_learning_in_chemistry

@@ -2,7 +2,7 @@
 
 A practical introduction to Python programming, data handling, visualisation, statistics, and molecular-science applications.
 
-This repository contains an English-language adaptation of the introductory and data-handling parts of the Norwegian learning resource *Programmering i kjemi*. The material is intended for students and scientists in chemistry and related molecular sciences who want to use programming as a tool for scientific reasoning rather than as an end in itself.
+The material is intended for students and scientists in chemistry and related molecular sciences who want to use programming as a tool for scientific reasoning rather than as an end in itself.
 
 The online book covers:
 

@@ -27,3 +27,13 @@ parts:
     sections:
     - file: docs/fundamental_programming/quiz6
   - file: docs/fundamental_programming/programming_tools
+
+- caption: Data handling and visualisation
+  chapters:
+  - file: docs/data_handling/chemical_libraries
+  - file: docs/data_handling/molecular_visualisation
+  - file: docs/data_handling/visualising_chemical_data
+  - file: docs/data_handling/reading_and_cleaning_chemical_data
+  - file: docs/data_handling/basic_statistics_for_chemistry
+  - file: docs/data_handling/calibration_and_statistical_inference
+  - file: docs/data_handling/machine_learning_in_chemistry

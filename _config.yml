@@ -45,3 +45,4 @@ sphinx:
     html_js_files:
       - chemistryquiz.js
       - turtle_basthon.js
+    copyright: "2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License."

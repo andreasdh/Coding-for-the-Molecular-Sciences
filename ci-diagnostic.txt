@@ -1,1 +1,2 @@
 Temporary file used to trigger pull-request CI for diagnosing the Jupyter Book build.
+Second trigger after enabling pull-request CI on main.

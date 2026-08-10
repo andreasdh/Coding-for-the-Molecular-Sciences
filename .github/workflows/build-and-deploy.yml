@@ -26,6 +26,27 @@ jobs:
         with:
           python-version: '3.8'
 
+      - name: Validate notebook JSON
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import sys
+
+          failures = []
+          for path in sorted(pathlib.Path('docs/data_handling').glob('*.ipynb')):
+              try:
+                  with path.open(encoding='utf-8') as handle:
+                      json.load(handle)
+                  print(f'OK: {path}')
+              except json.JSONDecodeError as exc:
+                  failures.append((path, exc))
+                  print(f'INVALID: {path}: line {exc.lineno}, column {exc.colno}: {exc.msg}')
+
+          if failures:
+              sys.exit(1)
+          PY
+
       - name: Install dependencies
         run: |
           python --version

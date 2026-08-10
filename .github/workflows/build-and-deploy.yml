@@ -26,6 +26,21 @@ jobs:
         with:
           python-version: '3.8'
 
+      - name: Inspect numerical notebooks
+        if: github.event_name == 'pull_request'
+        run: python scripts/inspect_numerical_notebooks.py
+
+      - name: Commit numerical inspection
+        if: github.event_name == 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add numerical_inspection.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Record numerical notebook inspection"
+            git push origin HEAD:${GITHUB_HEAD_REF}
+          fi
+
       - name: Install dependencies
         run: |
           python --version

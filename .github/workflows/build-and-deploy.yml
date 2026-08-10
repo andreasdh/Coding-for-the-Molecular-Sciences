@@ -26,6 +26,21 @@ jobs:
         with:
           python-version: '3.8'
 
+      - name: Revise numerical translations
+        if: github.event_name == 'pull_request'
+        run: python scripts/revise_numerical_translation.py
+
+      - name: Commit revised numerical translations
+        if: github.event_name == 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/numerical_methods docs/_static/basthon_examples/differential_equation_euler_reaction.py numerical_inspection_after.txt
+          if ! git diff --cached --quiet; then
+            git commit -m "Sync numerical chapters with Norwegian source"
+            git push origin HEAD:${GITHUB_HEAD_REF}
+          fi
+
       - name: Install dependencies
         run: |
           python --version

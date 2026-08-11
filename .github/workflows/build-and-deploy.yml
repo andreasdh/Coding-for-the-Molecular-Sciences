@@ -37,7 +37,22 @@ jobs:
         if: github.event_name == 'pull_request'
         run: |
           cd docs/data_handling
-          jupyter nbconvert --to notebook --execute machine_learning_in_chemistry.ipynb --output /tmp/machine_learning_executed.ipynb --ExecutePreprocessor.timeout=120
+          python - <<'PY'
+          import nbformat
+          from nbclient import NotebookClient
+
+          with open('machine_learning_in_chemistry.ipynb', encoding='utf-8') as f:
+              nb = nbformat.read(f, as_version=4)
+
+          client = NotebookClient(
+              nb,
+              timeout=120,
+              kernel_name='python3',
+              resources={'metadata': {'path': '.'}},
+          )
+          client.execute()
+          nbformat.write(nb, '/tmp/machine_learning_executed.ipynb')
+          PY
 
       - name: Build Jupyter Book
         run: jupyter-book build .

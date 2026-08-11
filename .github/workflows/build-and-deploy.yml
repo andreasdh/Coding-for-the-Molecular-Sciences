@@ -41,7 +41,8 @@ jobs:
           import nbformat
           from nbclient import NotebookClient
 
-          with open('machine_learning_in_chemistry.ipynb', encoding='utf-8') as f:
+          path = 'machine_learning_in_chemistry.ipynb'
+          with open(path, encoding='utf-8') as f:
               nb = nbformat.read(f, as_version=4)
 
           client = NotebookClient(
@@ -51,8 +52,19 @@ jobs:
               resources={'metadata': {'path': '.'}},
           )
           client.execute()
-          nbformat.write(nb, '/tmp/machine_learning_executed.ipynb')
+          nbformat.write(nb, path)
           PY
+
+      - name: Commit clean machine-learning outputs
+        if: github.event_name == 'pull_request'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data_handling/machine_learning_in_chemistry.ipynb
+          if ! git diff --cached --quiet; then
+            git commit -m "Re-execute machine-learning notebook"
+            git push origin HEAD:${GITHUB_HEAD_REF}
+          fi
 
       - name: Build Jupyter Book
         run: jupyter-book build .

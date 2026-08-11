@@ -33,6 +33,12 @@ jobs:
           python -m pip install -r requirements.txt
           python -m pip install attrs
 
+      - name: Execute machine-learning notebook
+        if: github.event_name == 'pull_request'
+        run: |
+          cd docs/data_handling
+          jupyter nbconvert --to notebook --execute machine_learning_in_chemistry.ipynb --output /tmp/machine_learning_executed.ipynb --ExecutePreprocessor.timeout=120
+
       - name: Build Jupyter Book
         run: jupyter-book build .
 

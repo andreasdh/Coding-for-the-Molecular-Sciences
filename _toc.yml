@@ -35,7 +35,6 @@ parts:
   - file: docs/data_handling/reading_and_cleaning_chemical_data
   - file: docs/data_handling/basic_statistics_for_chemistry
   - file: docs/data_handling/calibration_and_statistical_inference
-  - file: docs/data_handling/machine_learning_in_chemistry
 
 - caption: Numerical methods and modelling
   chapters:
@@ -43,3 +42,4 @@ parts:
   - file: docs/numerical_methods/numerical_differentiation
   - file: docs/numerical_methods/numerical_integration
   - file: docs/numerical_methods/differential_equations
+  - file: docs/data_handling/machine_learning_in_chemistry

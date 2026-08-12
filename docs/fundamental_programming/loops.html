@@ -1,0 +1,1462 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Loops &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/fundamental_programming/loops';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Quiz 4: Loops" href="quiz4.html" />
+    <link rel="prev" title="Quiz 3: Conditionals" href="quiz3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Loops</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/equations.html">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/fundamental_programming/loops.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Loops</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtle-graphics">Turtle graphics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simplified-representation-of-a-benzene-ring">A simplified representation of a benzene ring</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#randomness-and-the-random-library">Randomness and the <code class="docutils literal notranslate"><span class="pre">random</span></code> library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-random-walk-as-a-model-of-diffusion">A random walk as a model of diffusion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops"><code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-range-function">The <code class="docutils literal notranslate"><span class="pre">range</span></code> function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-through-lists">Looping through lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#following-variables-through-a-loop">Following variables through a loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thinking-in-loops">Thinking in loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-chemical-data">Processing chemical data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-kinetic-model">A simple kinetic model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-and-series">Sequences and series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-loops">Nested loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-exercises">Fundamental exercises</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry-and-modelling">Chemistry and modelling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-mathematics-exercises">Additional mathematics exercises</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-loop-practice">Additional loop practice</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="loops">
+<h1>Loops<a class="headerlink" href="#loops" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this topic, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>use <code class="docutils literal notranslate"><span class="pre">while</span></code> and <code class="docutils literal notranslate"><span class="pre">for</span></code> loops to repeat code</p></li>
+<li><p>explain when a counting loop is appropriate and when a condition-controlled loop is appropriate</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">range</span></code> and lists in <code class="docutils literal notranslate"><span class="pre">for</span></code> loops</p></li>
+<li><p>use loops to process chemical data and explore simple chemical models</p></li>
+<li><p>create and evaluate a simple model of random particle motion</p></li>
+</ol>
+</div>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h2>
+<p>Loops are among the most important structures in programming. They allow a computer to repeat an operation as many times as needed, which is one of the computer’s great strengths.</p>
+<p>Repetition occurs throughout chemistry and molecular science. We may perform the same calculation for every wavelength in a spectrum, inspect every measurement in a data set, update concentrations over many small time steps, or simulate the motion of many particles. Without loops, we would have to write the same code again for every measurement, time step, or particle.</p>
+<div class="admonition-loops admonition">
+<p class="admonition-title">Loops</p>
+<p>A loop is a structure that repeats code. A <em>counting loop</em> repeats something a specified number of times, while a <em>condition-controlled loop</em> repeats something as long as a condition is true. In Python, these are normally written as <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code> loops, respectively.</p>
+</div>
+<p>We begin with a visual representation of repetition before applying the same principles to chemical data and models.</p>
+</section>
+<section id="turtle-graphics">
+<h2>Turtle graphics<a class="headerlink" href="#turtle-graphics" title="Permalink to this heading">#</a></h2>
+<p>We will first explore loops using a turtle. It follows simple commands such as <code class="docutils literal notranslate"><span class="pre">forward</span></code>, <code class="docutils literal notranslate"><span class="pre">backward</span></code>, <code class="docutils literal notranslate"><span class="pre">right</span></code>, and <code class="docutils literal notranslate"><span class="pre">left</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>     <span class="c1"># Give the pointer a turtle shape</span>
+<span class="n">color</span><span class="p">(</span><span class="s2">&quot;limegreen&quot;</span><span class="p">)</span>  <span class="c1"># Make the turtle lime green</span>
+<span class="n">forward</span><span class="p">(</span><span class="mi">80</span><span class="p">)</span>            <span class="c1"># Move forward by 80 pixels</span>
+<span class="n">left</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>               <span class="c1"># Turn 60 degrees to the left</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first line imports commands from the <code class="docutils literal notranslate"><span class="pre">turtle</span></code> library. A library is a collection of pre-written functions that we can use in our programs. We did not create <code class="docutils literal notranslate"><span class="pre">forward</span></code> or <code class="docutils literal notranslate"><span class="pre">left</span></code>; they are defined in <code class="docutils literal notranslate"><span class="pre">turtle</span></code>.</p>
+<section id="a-simplified-representation-of-a-benzene-ring">
+<h3>A simplified representation of a benzene ring<a class="headerlink" href="#a-simplified-representation-of-a-benzene-ring" title="Permalink to this heading">#</a></h3>
+<p>A useful chemical starting point is the hexagonal geometry associated with benzene. Without a loop, we would have to repeat <code class="docutils literal notranslate"><span class="pre">forward(80)</span></code> and <code class="docutils literal notranslate"><span class="pre">left(60)</span></code> six times. With a loop, we can write:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">color</span><span class="p">(</span><span class="s2">&quot;limegreen&quot;</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">number_of_sides</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">side_length</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">turning_angle</span> <span class="o">=</span> <span class="mi">360</span> <span class="o">/</span> <span class="n">number_of_sides</span>
+
+<span class="k">for</span> <span class="n">side</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_sides</span><span class="p">):</span>
+    <span class="n">forward</span><span class="p">(</span><span class="n">side_length</span><span class="p">)</span>
+    <span class="n">left</span><span class="p">(</span><span class="n">turning_angle</span><span class="p">)</span>
+
+<span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The loop repeats the indented statements six times. On the first iteration, <code class="docutils literal notranslate"><span class="pre">side</span> <span class="pre">=</span> <span class="pre">0</span></code>; then <code class="docutils literal notranslate"><span class="pre">side</span></code> takes the values 1, 2, 3, 4, and 5. Thus <code class="docutils literal notranslate"><span class="pre">range(6)</span></code> produces six integers from 0 up to, but not including, 6.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<ol class="arabic simple">
+<li><p>Why does the turtle turn 60° when the angles between bonds in planar benzene are approximately 120°?</p></li>
+<li><p>What role does the variable <code class="docutils literal notranslate"><span class="pre">side</span></code> play?</p></li>
+<li><p>What should be changed to draw shorter sides?</p></li>
+</ol>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>The turtle follows the edge of the hexagon and therefore turns through the <em>external</em> angle. The internal angle is 120°, so the turn is <span class="math notranslate nohighlight">\(180^\circ-120^\circ=60^\circ\)</span>. The variable <code class="docutils literal notranslate"><span class="pre">side</span></code> receives a new value on every iteration, but its value is not otherwise used; it still causes the loop to run six times. Reduce <code class="docutils literal notranslate"><span class="pre">side_length</span></code> to draw shorter sides.</p>
+</div>
+</section>
+</section>
+<section id="randomness-and-the-random-library">
+<h2>Randomness and the <code class="docutils literal notranslate"><span class="pre">random</span></code> library<a class="headerlink" href="#randomness-and-the-random-library" title="Permalink to this heading">#</a></h2>
+<p>The motion of particles in a liquid or gas is influenced by an enormous number of collisions. A simple model cannot follow all of them directly. Instead, we can allow a model particle to choose a random direction at each step. Python’s standard <code class="docutils literal notranslate"><span class="pre">random</span></code> library provides tools for this. We begin with <code class="docutils literal notranslate"><span class="pre">choice</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choice</span>
+
+<span class="n">possible_directions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">270</span><span class="p">]</span>
+<span class="n">direction</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">possible_directions</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">choice</span></code> selects one random element from a list, so repeated runs may produce different directions. Computers generate <em>pseudorandom</em> values using algorithms, but they behave randomly enough for this simple model. In more advanced work it can be useful to control the random seed so that a simulation can be reproduced exactly.</p>
+<section id="a-random-walk-as-a-model-of-diffusion">
+<h3>A random walk as a model of diffusion<a class="headerlink" href="#a-random-walk-as-a-model-of-diffusion" title="Permalink to this heading">#</a></h3>
+<p>We can combine <code class="docutils literal notranslate"><span class="pre">choice</span></code>, <code class="docutils literal notranslate"><span class="pre">turtle</span></code>, and a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choice</span>
+
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pensize</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">possible_directions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">270</span><span class="p">]</span>
+<span class="n">number_of_steps</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">step_length</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">dot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">)</span>             <span class="c1"># Starting point</span>
+
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_steps</span><span class="p">):</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">possible_directions</span><span class="p">)</span>
+    <span class="n">setheading</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+    <span class="n">forward</span><span class="p">(</span><span class="n">step_length</span><span class="p">)</span>
+
+<span class="n">dot</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;blue&quot;</span><span class="p">)</span>            <span class="c1"># Final point</span>
+<span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At each step, the program selects one of four directions with equal probability. <code class="docutils literal notranslate"><span class="pre">setheading</span></code> points the turtle in the selected direction and <code class="docutils literal notranslate"><span class="pre">forward</span></code> moves it one step. The red dot marks the start and the blue dot the finish.</p>
+<p>This is a <em>random walk</em>. It can illustrate how many random motions produce a net displacement over time, but the model is highly simplified:</p>
+<ul class="simple">
+<li><p>a molecule moves in three dimensions, while the turtle moves in two;</p></li>
+<li><p>molecules can move in far more than four directions;</p></li>
+<li><p>molecular motion does not consist of equal-length steps on a grid;</p></li>
+<li><p>one trajectory describes one model particle, not the spreading of an ensemble.</p></li>
+</ul>
+<p>The model is therefore not a literal picture of molecular motion, but it can still help us explore basic features of diffusion.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Run the program several times in an editor that supports turtle graphics. Does the particle end in the same place? What happens when you increase <code class="docutils literal notranslate"><span class="pre">number_of_steps</span></code> or change <code class="docutils literal notranslate"><span class="pre">step_length</span></code>? Why can we not draw conclusions about diffusion from a single random trajectory?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>The final position normally varies because the program makes new random choices. More or longer steps allow the particle to reach larger distances, but it can also return towards previously visited regions. Diffusion describes how an ensemble of particles spreads; one trajectory may be unusual and tells us little about the entire distribution. A more systematic study would simulate many particles or repeat the simulation many times and analyse the results collectively.</p>
+</div>
+</section>
+</section>
+<section id="while-loops">
+<h2><code class="docutils literal notranslate"><span class="pre">while</span></code> loops<a class="headerlink" href="#while-loops" title="Permalink to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is condition-controlled: it repeats code while a condition remains true. It is useful when we do not know in advance exactly how many repetitions will be needed.</p>
+<p>Suppose we perform a series of 1:2 dilutions. After each dilution, the concentration is half its previous value. We want to find how many dilutions are needed before the concentration falls below a threshold.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">concentration</span> <span class="o">=</span> <span class="mf">0.80</span>       <span class="c1"># mol/L</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="mf">0.05</span>               <span class="c1"># mol/L</span>
+<span class="n">number_of_dilutions</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">concentration</span> <span class="o">&gt;=</span> <span class="n">limit</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">number_of_dilutions</span><span class="si">}</span><span class="s2"> dilutions: </span><span class="si">{</span><span class="n">concentration</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L&quot;</span><span class="p">)</span>
+    <span class="n">concentration</span> <span class="o">=</span> <span class="n">concentration</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">number_of_dilutions</span> <span class="o">=</span> <span class="n">number_of_dilutions</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration is now </span><span class="si">{</span><span class="n">concentration</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before every iteration, Python checks whether <code class="docutils literal notranslate"><span class="pre">concentration</span> <span class="pre">&gt;=</span> <span class="pre">limit</span></code> is true. If it is true, the indented statements run and the condition is checked again. When the concentration falls below the limit, the loop stops.</p>
+<p>Something inside a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop must be able to make the condition false. If we forget to update <code class="docutils literal notranslate"><span class="pre">concentration</span></code>, the condition remains true and we create an <em>infinite loop</em>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Predict how many dilutions are required. What changes if the condition is changed from <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> to <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>? A loop table with iteration, concentration, and number of dilutions may help.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>The concentration takes the values 0.80, 0.40, 0.20, 0.10, and 0.05 mol/L before becoming 0.025 mol/L. With <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, five dilutions are performed before the concentration is below 0.05 mol/L. With <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, the loop ends at exactly 0.05 mol/L, after four dilutions. The comparison operator must match the scientific question.</p>
+</div>
+<p>You can run and modify the dilution program below.</p>
+<iframe src="../../basthon/?from=examples/loops_dilution.py" width="100%" height="600" frameborder="0" title="Interactive Python editor for a dilution loop" loading="lazy" allowfullscreen></iframe>
+</section>
+<section id="for-loops">
+<h2><code class="docutils literal notranslate"><span class="pre">for</span></code> loops<a class="headerlink" href="#for-loops" title="Permalink to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">for</span></code> loop is a counting loop. It is useful when we know how many times something should be repeated or when we want to perform the same operation for every item in a collection.</p>
+<section id="the-range-function">
+<h3>The <code class="docutils literal notranslate"><span class="pre">range</span></code> function<a class="headerlink" href="#the-range-function" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">range</span></code> generates a sequence of integers that a loop can traverse:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Command</p></th>
+<th class="head"><p>Values</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">range(3)</span></code></p></td>
+<td><p>0, 1, 2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">range(2,</span> <span class="pre">4)</span></code></p></td>
+<td><p>2, 3</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">range(1,</span> <span class="pre">8,</span> <span class="pre">2)</span></code></p></td>
+<td><p>1, 3, 5, 7</p></td>
+</tr>
+</tbody>
+</table>
+<p>A general form is <code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code>. The stop value is excluded. With one argument, the sequence begins at 0. If no step is given, the step is 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">measurement</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Performing measurement number </span><span class="si">{</span><span class="n">measurement</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The variable <code class="docutils literal notranslate"><span class="pre">measurement</span></code> takes the values 0, 1, 2, 3, and 4. We add 1 in the printed output because people normally call the first measurement measurement 1 rather than measurement 0.</p>
+</section>
+<section id="looping-through-lists">
+<h3>Looping through lists<a class="headerlink" href="#looping-through-lists" title="Permalink to this heading">#</a></h3>
+<p>We do not always need <code class="docutils literal notranslate"><span class="pre">range</span></code>. To process every value in a list, the loop variable can take the values directly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">absorbance_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.39</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.41</span><span class="p">]</span>
+<span class="n">total_absorbance</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">absorbance</span> <span class="ow">in</span> <span class="n">absorbance_values</span><span class="p">:</span>
+    <span class="n">total_absorbance</span> <span class="o">=</span> <span class="n">total_absorbance</span> <span class="o">+</span> <span class="n">absorbance</span>
+
+<span class="n">mean_absorbance</span> <span class="o">=</span> <span class="n">total_absorbance</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">absorbance_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean absorbance: </span><span class="si">{</span><span class="n">mean_absorbance</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>On the first iteration, <code class="docutils literal notranslate"><span class="pre">absorbance</span> <span class="pre">=</span> <span class="pre">0.42</span></code>; on the next, it is 0.39, and so on until every element has been used. <code class="docutils literal notranslate"><span class="pre">total_absorbance</span></code> is updated after each measurement.</p>
+</section>
+<section id="following-variables-through-a-loop">
+<h3>Following variables through a loop<a class="headerlink" href="#following-variables-through-a-loop" title="Permalink to this heading">#</a></h3>
+<p>A <em>loop table</em> can help us track variables systematically:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">concentration</span> <span class="o">=</span> <span class="mf">0.80</span>
+
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">concentration</span> <span class="o">=</span> <span class="n">concentration</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Fill in the rest of the loop table, showing the values after the indented line has run on each iteration.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Iteration</p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">step</span></code></p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">concentration</span></code> after dilution (mol/L)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Initial value</p></td>
+<td class="text-right"><p>–</p></td>
+<td class="text-right"><p>0.80</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0.40</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td class="text-right"><p></p></td>
+<td class="text-right"><p></p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Iteration</p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">step</span></code></p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">concentration</span></code> after dilution (mol/L)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Initial value</p></td>
+<td class="text-right"><p>–</p></td>
+<td class="text-right"><p>0.80</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>0.40</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>0.20</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>0.10</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-right"><p>0.05</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The loop runs four times even though the final value of <code class="docutils literal notranslate"><span class="pre">step</span></code> is 3. This is a common source of confusion: we count four values but begin at 0.</p>
+<p>If the loop variable is not used, <code class="docutils literal notranslate"><span class="pre">_</span></code> is a common name indicating that its value is intentionally ignored:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amount_mg</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">amount_mg</span> <span class="o">=</span> <span class="n">amount_mg</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After five half-lives, </span><span class="si">{</span><span class="n">amount_mg</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg remains.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Rewrite the program so that it prints the amount after every half-life. If you want to include the half-life number in the output, should you still use <code class="docutils literal notranslate"><span class="pre">_</span></code> as the loop variable?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">amount_mg</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="k">for</span> <span class="n">half_life</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">amount_mg</span> <span class="o">=</span> <span class="n">amount_mg</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">half_life</span><span class="si">}</span><span class="s2"> half-lives: </span><span class="si">{</span><span class="n">amount_mg</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="thinking-in-loops">
+<h2>Thinking in loops<a class="headerlink" href="#thinking-in-loops" title="Permalink to this heading">#</a></h2>
+<p>Loops can sum sequences, process measurements, and explore how chemical systems develop over time. To use a loop, we divide a problem into a small set of steps that can be repeated. In mathematical science we often represent relationships using continuous functions and equations; in code, we can instead perform a small operation at a time. This is an <em>iterative</em> way of solving a problem.</p>
+<section id="processing-chemical-data">
+<h3>Processing chemical data<a class="headerlink" href="#processing-chemical-data" title="Permalink to this heading">#</a></h3>
+<p>Suppose absorbance values from 0.10 to 1.00 lie within the recommended working range for a particular method. We can select them as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">absorbance_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.39</span><span class="p">,</span> <span class="mf">1.18</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">]</span>
+<span class="n">valid_measurements</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">absorbance</span> <span class="ow">in</span> <span class="n">absorbance_values</span><span class="p">:</span>
+    <span class="k">if</span> <span class="mf">0.10</span> <span class="o">&lt;=</span> <span class="n">absorbance</span> <span class="o">&lt;=</span> <span class="mf">1.00</span><span class="p">:</span>
+        <span class="n">valid_measurements</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">absorbance</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">valid_measurements</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The list, loop, and conditional work together: each absorbance is checked in turn, and only values satisfying the criterion are added to the new list. The range is merely an example; in a real analysis it must be determined from the instrument, calibration, and method. A program can apply a criterion consistently, but it cannot decide whether the criterion is scientifically appropriate.</p>
+</section>
+<section id="a-simple-kinetic-model">
+<h3>A simple kinetic model<a class="headerlink" href="#a-simple-kinetic-model" title="Permalink to this heading">#</a></h3>
+<p>We can also use a loop to explore how a reaction changes with time. Consider the irreversible reaction</p>
+<div class="math notranslate nohighlight">
+\[A \rightarrow B\]</div>
+<p>with rate <span class="math notranslate nohighlight">\(v=k[A]\)</span>. During a small time step <span class="math notranslate nohighlight">\(\Delta t\)</span>, we approximate</p>
+<div class="math notranslate nohighlight">
+\[\Delta[A] \approx -k[A]\Delta t.\]</div>
+<p>We can therefore update the concentrations step by step:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mf">0.15</span>             <span class="c1"># rate constant in s^-1</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1.00</span>             <span class="c1"># initial concentration of A in mol/L</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mf">0.00</span>             <span class="c1"># initial concentration of B in mol/L</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.10</span>            <span class="c1"># time step in s</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="mi">10</span>        <span class="c1"># final time in s</span>
+
+<span class="n">number_of_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">end_time</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_steps</span><span class="p">):</span>
+    <span class="n">change</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">change</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">B</span> <span class="o">+</span> <span class="n">change</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">end_time</span><span class="si">}</span><span class="s2"> s, [A] = </span><span class="si">{</span><span class="n">A</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">end_time</span><span class="si">}</span><span class="s2"> s, [B] = </span><span class="si">{</span><span class="n">B</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total concentration: </span><span class="si">{</span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At every time step, we calculate how much A is converted. The same change is subtracted from A and added to B, conserving total concentration in this simplified model. This is a numerical approximation: we assume, among other things, that the rate is approximately constant within each small time step. If <code class="docutils literal notranslate"><span class="pre">dt</span></code> is too large, the approximation becomes poorer.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Run the program with <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.1</span></code>, and <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.01</span></code>. How does the final value of A change? Why must <code class="docutils literal notranslate"><span class="pre">number_of_steps</span></code> change when the time step changes?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>As the time step becomes smaller, the rate is updated more frequently and the result approaches a stable value. A smaller time step requires more iterations. The final time must remain the same, so <code class="docutils literal notranslate"><span class="pre">number_of_steps</span> <span class="pre">=</span> <span class="pre">end_time</span> <span class="pre">/</span> <span class="pre">dt</span></code>. With an end time of 10 s, <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">1</span></code> gives ten steps while <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.01</span></code> gives one thousand.</p>
+</div>
+</section>
+</section>
+<section id="sequences-and-series">
+<h2>Sequences and series<a class="headerlink" href="#sequences-and-series" title="Permalink to this heading">#</a></h2>
+<p>Loops are often used to generate sequences. After each half-life, for example, the fraction of a radioactive substance remaining is</p>
+<div class="math notranslate nohighlight">
+\[1,\frac12,\frac14,\frac18,\frac1{16},\ldots\]</div>
+<p>If <span class="math notranslate nohighlight">\(N_n\)</span> is the amount after <span class="math notranslate nohighlight">\(n\)</span> half-lives, the sequence can be written recursively as <span class="math notranslate nohighlight">\(N_{n+1}=N_n/2\)</span>. A recursive relationship uses an earlier value to calculate the next one, which maps naturally onto a loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">amount</span> <span class="o">=</span> <span class="mf">4.0</span>  <span class="c1"># kg</span>
+
+<span class="k">for</span> <span class="n">number_of_half_lives</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">11</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n = </span><span class="si">{</span><span class="n">number_of_half_lives</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> kg&quot;</span><span class="p">)</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A sequence whose terms are added is a <em>series</em>. Consider the geometric series</p>
+<div class="math notranslate nohighlight">
+\[1+\frac23+\frac49+\frac8{27}+\ldots\]</div>
+<p>whose <span class="math notranslate nohighlight">\(n\)</span>th term is <span class="math notranslate nohighlight">\((2/3)^n\)</span>. A computer cannot sum infinitely many terms, but we can approximate the sum using a large finite number:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">number_of_terms</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_terms</span><span class="p">):</span>
+    <span class="n">term</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="n">n</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">term</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The analytical sum is 3. The program produces a value extremely close to 3, but it is still a numerical approximation. The example illustrates a general pattern: start with an initial value, calculate a new contribution, and update an accumulated value on every iteration.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Modify the program to use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop that continues until the next term is smaller than <span class="math notranslate nohighlight">\(10^{-8}\)</span>. Why is a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop appropriate when the stopping criterion is expressed this way?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">term</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">while</span> <span class="n">term</span> <span class="o">&gt;=</span> <span class="mf">1E-8</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">term</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">term</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span><span class="o">**</span><span class="n">n</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The sum is approximately </span><span class="si">{</span><span class="n">total</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;We used </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> terms.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We do not know in advance exactly how many terms will be needed; the loop should continue while the term remains above the tolerance.</p>
+</div>
+</section>
+<section id="nested-loops">
+<h2>Nested loops<a class="headerlink" href="#nested-loops" title="Permalink to this heading">#</a></h2>
+<p>A nested loop is a loop inside another loop. The inner loop is repeated for every iteration of the outer loop.</p>
+<p>For example, an electron beginning in hydrogen energy level <span class="math notranslate nohighlight">\(n\)</span> may de-excite to any lower level <span class="math notranslate nohighlight">\(m&lt;n\)</span>. We can print all downward transitions from levels 2 through 5:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Possible transition: n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> to m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">2</span></code>, the inner loop contains only <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">1</span></code>; for <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">=</span> <span class="pre">3</span></code>, it contains 1 and 2. The inner loop therefore becomes longer for each new energy level. The program prints <span class="math notranslate nohighlight">\(1+2+3+4=10\)</span> transitions.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Extend the program to initial levels 2–7. How many transitions are printed? Then modify it so that only transitions ending at <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">2</span></code> are printed.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>There are <span class="math notranslate nohighlight">\(1+2+3+4+5+6=21\)</span> transitions from levels 2–7. If only transitions to <code class="docutils literal notranslate"><span class="pre">m</span> <span class="pre">=</span> <span class="pre">2</span></code> are needed, we do not need the inner loop:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Possible transition: n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> to m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Do not use a nested loop when a simpler structure solves the problem.</p>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<section id="fundamental-exercises">
+<h3>Fundamental exercises<a class="headerlink" href="#fundamental-exercises" title="Permalink to this heading">#</a></h3>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.1</p>
+<p>Compare the two programs. What do they print, and when would you prefer one form over the other?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">concentration</span> <span class="o">=</span> <span class="mf">0.80</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">concentration</span> <span class="o">=</span> <span class="n">concentration</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">concentration</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">concentration</span> <span class="o">=</span> <span class="mf">0.80</span>
+<span class="n">step</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">step</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="n">concentration</span> <span class="o">=</span> <span class="n">concentration</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">concentration</span><span class="p">)</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">step</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>Both programs print 0.40, 0.20, 0.10, and 0.05. The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop repeats four times because <code class="docutils literal notranslate"><span class="pre">range(4)</span></code> contains four values. The <code class="docutils literal notranslate"><span class="pre">while</span></code> loop repeats while <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">&lt;</span> <span class="pre">4</span></code>; we must create and update the counter ourselves. When the number of repetitions is known, <code class="docutils literal notranslate"><span class="pre">for</span></code> is usually simpler. <code class="docutils literal notranslate"><span class="pre">while</span></code> is particularly useful when a scientific condition should determine when to stop.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.2</p>
+<p>Create a loop table containing iteration, <code class="docutils literal notranslate"><span class="pre">i</span></code>, <code class="docutils literal notranslate"><span class="pre">amount</span></code>, and <code class="docutils literal notranslate"><span class="pre">measured_amount</span></code> for:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">amount</span> <span class="o">=</span> <span class="mf">8.0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">amount</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">measured_amount</span> <span class="o">=</span> <span class="n">amount</span> <span class="o">*</span> <span class="mf">0.95</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Iteration</p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">i</span></code></p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">amount</span></code></p></th>
+<th class="head text-right"><p><code class="docutils literal notranslate"><span class="pre">measured_amount</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Initial value</p></td>
+<td class="text-right"><p>–</p></td>
+<td class="text-right"><p>8.0</p></td>
+<td class="text-right"><p>–</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td class="text-right"><p>0</p></td>
+<td class="text-right"><p>4.0</p></td>
+<td class="text-right"><p>3.8</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td class="text-right"><p>1</p></td>
+<td class="text-right"><p>2.0</p></td>
+<td class="text-right"><p>1.9</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td class="text-right"><p>2</p></td>
+<td class="text-right"><p>1.0</p></td>
+<td class="text-right"><p>0.95</p></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td class="text-right"><p>3</p></td>
+<td class="text-right"><p>0.5</p></td>
+<td class="text-right"><p>0.475</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.3</p>
+<p>Write a program that prints <code class="docutils literal notranslate"><span class="pre">Measurement</span> <span class="pre">recorded</span></code> five times. What role does the loop variable play? Choose a variable name that makes clear whether its value is used.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Measurement recorded&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The loop variable makes the loop run five times, but its value is unused, so <code class="docutils literal notranslate"><span class="pre">_</span></code> is appropriate.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.4</p>
+<p>The program below sums the first eight values of a sequence in which each term is twice the previous one. Explain how it works and identify the eight values.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p><code class="docutils literal notranslate"><span class="pre">number</span></code> stores the term to add and <code class="docutils literal notranslate"><span class="pre">total</span></code> stores the accumulated sum. The terms are <span class="math notranslate nohighlight">\(1+2+4+8+16+32+64+128=255\)</span>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.5</p>
+<p>Rewrite Exercise 4.4 using a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">number_of_terms</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">number_of_terms</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">number</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="n">number_of_terms</span> <span class="o">=</span> <span class="n">number_of_terms</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.6</p>
+<p>What is printed? Work through the program by hand before checking it in an editor.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">concentration</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">concentration</span><span class="p">)</span>
+    <span class="n">concentration</span> <span class="o">=</span> <span class="n">concentration</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Final:&quot;</span><span class="p">,</span> <span class="n">concentration</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>The output is <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">0.5</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">0.25</span></code>, <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">0.125</span></code>, followed by <code class="docutils literal notranslate"><span class="pre">Final:</span> <span class="pre">0.0625</span></code>. The print statement inside the loop occurs before the concentration is halved.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.7</p>
+<p>Use turtle graphics to draw a simple zig-zag chain with ten bonds, alternating turns of 60° left and right. You can use the modulus operator <code class="docutils literal notranslate"><span class="pre">%</span></code> and a conditional to distinguish even and odd values. How does this two-dimensional line drawing differ from a molecular model?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">bond</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">forward</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">bond</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">left</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">right</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+<span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The drawing is a two-dimensional line representation. It does not show atoms, electrons, bond types, or the molecule’s three-dimensional conformation.</p>
+</div>
+</section>
+<section id="chemistry-and-modelling">
+<h3>Chemistry and modelling<a class="headerlink" href="#chemistry-and-modelling" title="Permalink to this heading">#</a></h3>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.8</p>
+<p>Modify the random-walk program so that the particle can move in eight directions: 0°, 45°, 90°, 135°, 180°, 225°, 270°, and 315°. Compare the trajectories with the four-direction model. Which looks more continuous, and which major simplifications remain?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">turtle</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">random</span><span class="w"> </span><span class="kn">import</span> <span class="n">choice</span>
+<span class="n">shape</span><span class="p">(</span><span class="s2">&quot;turtle&quot;</span><span class="p">)</span>
+<span class="n">speed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">possible_directions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">45</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">135</span><span class="p">,</span> <span class="mi">180</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">270</span><span class="p">,</span> <span class="mi">315</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">200</span><span class="p">):</span>
+    <span class="n">direction</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="n">possible_directions</span><span class="p">)</span>
+    <span class="n">setheading</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+    <span class="n">forward</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">done</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Eight directions provide more possible trajectories and look less grid-like, but the particle still moves in two dimensions with fixed step lengths and a small set of directions; collisions and forces are not represented explicitly.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.9</p>
+<p>For absorbance values <code class="docutils literal notranslate"><span class="pre">[0.08,</span> <span class="pre">0.42,</span> <span class="pre">0.39,</span> <span class="pre">1.18,</span> <span class="pre">0.44,</span> <span class="pre">0.41]</span></code>, treat values from 0.10 through 1.00 as valid. Count valid and invalid measurements, calculate the mean of the valid values, and handle the case in which no values are valid.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">absorbance_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.39</span><span class="p">,</span> <span class="mf">1.18</span><span class="p">,</span> <span class="mf">0.44</span><span class="p">,</span> <span class="mf">0.41</span><span class="p">]</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">number_valid</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">number_invalid</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">absorbance</span> <span class="ow">in</span> <span class="n">absorbance_values</span><span class="p">:</span>
+    <span class="k">if</span> <span class="mf">0.10</span> <span class="o">&lt;=</span> <span class="n">absorbance</span> <span class="o">&lt;=</span> <span class="mf">1.00</span><span class="p">:</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="n">absorbance</span>
+        <span class="n">number_valid</span> <span class="o">=</span> <span class="n">number_valid</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">number_invalid</span> <span class="o">=</span> <span class="n">number_invalid</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">number_valid</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">total</span> <span class="o">/</span> <span class="n">number_valid</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No valid measurements.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Valid measurements: </span><span class="si">{</span><span class="n">number_valid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Invalid measurements: </span><span class="si">{</span><span class="n">number_invalid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.10</p>
+<p>A solution begins at 1.00 mol/L and is repeatedly diluted 1:2. Continue until the concentration is below 0.010 mol/L, then print the number of dilutions and the final concentration.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">concentration</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">limit</span> <span class="o">=</span> <span class="mf">0.010</span>
+<span class="n">number_of_dilutions</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">concentration</span> <span class="o">&gt;=</span> <span class="n">limit</span><span class="p">:</span>
+    <span class="n">concentration</span> <span class="o">=</span> <span class="n">concentration</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">number_of_dilutions</span> <span class="o">=</span> <span class="n">number_of_dilutions</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Number of dilutions: </span><span class="si">{</span><span class="n">number_of_dilutions</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final concentration: </span><span class="si">{</span><span class="n">concentration</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2"> mol/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.11</p>
+<p>Extend the kinetic model for <span class="math notranslate nohighlight">\(A\rightarrow B\)</span> so that time and the concentration of A are stored in lists. Plot <span class="math notranslate nohighlight">\([A]\)</span> against time and compare at least two different time steps.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.10</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">number_of_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">end_time</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">time</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">A_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">A</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_steps</span><span class="p">):</span>
+    <span class="n">change</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">change</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="n">step</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">A_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">A_values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;[A] (mol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Run again with, for example, <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">0.1</span></code>, and <code class="docutils literal notranslate"><span class="pre">0.01</span></code>, recalculating <code class="docutils literal notranslate"><span class="pre">number_of_steps</span></code> each time.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.12</p>
+<p>For a hydrogen transition from level <span class="math notranslate nohighlight">\(n\)</span> to a lower level <span class="math notranslate nohighlight">\(m\)</span>, the photon energy is <span class="math notranslate nohighlight">\(\Delta E=B(1/m^2-1/n^2)\)</span>, where <span class="math notranslate nohighlight">\(B=2.18\times10^{-18}\)</span> J. Use <span class="math notranslate nohighlight">\(\Delta E=hf\)</span> and <span class="math notranslate nohighlight">\(\lambda=c/f\)</span>. (a) Calculate the wavelength for <span class="math notranslate nohighlight">\(n=5\)</span> to <span class="math notranslate nohighlight">\(m=2\)</span> (about 434 nm). (b) Use a loop for all transitions from one selected initial level. (c) Use nested loops for all transitions from levels 2–6.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="mf">2.18E-18</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">6.626E-34</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">3.00E8</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">frequency</span> <span class="o">=</span> <span class="n">energy</span> <span class="o">/</span> <span class="n">h</span>
+<span class="n">wavelength_nm</span> <span class="o">=</span> <span class="n">c</span> <span class="o">/</span> <span class="n">frequency</span> <span class="o">*</span> <span class="mf">1E9</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> to m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">wavelength_nm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> nm&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+        <span class="n">energy</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">m</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">frequency</span> <span class="o">=</span> <span class="n">energy</span> <span class="o">/</span> <span class="n">h</span>
+        <span class="n">wavelength_nm</span> <span class="o">=</span> <span class="n">c</span> <span class="o">/</span> <span class="n">frequency</span> <span class="o">*</span> <span class="mf">1E9</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;n = </span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> to m = </span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">wavelength_nm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> nm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.13</p>
+<p>For radioactive decay, <span class="math notranslate nohighlight">\(N(t)=N_0e^{-at}\)</span> with <span class="math notranslate nohighlight">\(a=\ln(2)/T\)</span>. Plutonium-239 has a half-life of about 24,000 years. Print the amount remaining every 5,000 years for 50,000 years, beginning with 4.0 kg.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">exp</span>
+<span class="n">initial_amount</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="n">half_life</span> <span class="o">=</span> <span class="mi">24000</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">half_life</span>
+<span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50001</span><span class="p">,</span> <span class="mi">5000</span><span class="p">):</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">initial_amount</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">a</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;After </span><span class="si">{</span><span class="n">time</span><span class="si">:</span><span class="s2">5d</span><span class="si">}</span><span class="s2"> years: </span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> kg remains.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.14</p>
+<p>Use <span class="math notranslate nohighlight">\(PV=nRT\)</span> to calculate and plot the volume in litres of 1.00 mol ideal gas at 298 K for pressures from 100 through 400 kPa in steps of 25 kPa. Store pressures and volumes in lists. Use <span class="math notranslate nohighlight">\(R=8.314\)</span> Pa m<span class="math notranslate nohighlight">\(^3\)</span> K<span class="math notranslate nohighlight">\(^{-1}\)</span> mol<span class="math notranslate nohighlight">\(^{-1}\)</span>, so pressure must be converted to Pa and volume from m<span class="math notranslate nohighlight">\(^3\)</span> to L.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">298</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>
+<span class="n">pressures_kPa</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">volumes_L</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">pressure</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">401</span><span class="p">,</span> <span class="mi">25</span><span class="p">):</span>
+    <span class="n">pressures_kPa</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span>
+    <span class="n">pressure_Pa</span> <span class="o">=</span> <span class="n">pressure</span> <span class="o">*</span> <span class="mi">1000</span>
+    <span class="n">volume_m3</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="n">pressure_Pa</span>
+    <span class="n">volumes_L</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">volume_m3</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">pressures_kPa</span><span class="p">,</span> <span class="n">volumes_L</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Pressure (kPa)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Volume (L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>At 100 kPa, the result is about 24.8 L, consistent with the approximate molar volume of an ideal gas near room temperature and atmospheric pressure.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.15</p>
+<p>Use nested loops to simulate the kinetic model for every combination of <code class="docutils literal notranslate"><span class="pre">initial_concentrations</span> <span class="pre">=</span> <span class="pre">[0.50,</span> <span class="pre">1.00]</span></code> mol/L and <code class="docutils literal notranslate"><span class="pre">rate_constants</span> <span class="pre">=</span> <span class="pre">[0.05,</span> <span class="pre">0.10,</span> <span class="pre">0.20]</span></code> s<span class="math notranslate nohighlight">\(^{-1}\)</span>. Use <code class="docutils literal notranslate"><span class="pre">dt</span> <span class="pre">=</span> <span class="pre">0.01</span></code> s and <code class="docutils literal notranslate"><span class="pre">end_time</span> <span class="pre">=</span> <span class="pre">10</span></code> s and print the final concentration of A for each combination.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">initial_concentrations</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">]</span>
+<span class="n">rate_constants</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">]</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">end_time</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">number_of_steps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">end_time</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">initial_concentration</span> <span class="ow">in</span> <span class="n">initial_concentrations</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">rate_constants</span><span class="p">:</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">initial_concentration</span>
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_steps</span><span class="p">):</span>
+            <span class="n">change</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">dt</span>
+            <span class="n">A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">change</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[A]0 = </span><span class="si">{</span><span class="n">initial_concentration</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mol/L, k = </span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> s^-1: [A] = </span><span class="si">{</span><span class="n">A</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The two outer loops traverse parameter combinations; the inner loop performs the time simulation.</p>
+</div>
+</section>
+<section id="additional-mathematics-exercises">
+<h3>Additional mathematics exercises<a class="headerlink" href="#additional-mathematics-exercises" title="Permalink to this heading">#</a></h3>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.16</p>
+<p>Calculate <span class="math notranslate nohighlight">\(\sum_{n=0}^{50}1/2^n\)</span> using both a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">51</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span><span class="o">**</span><span class="n">n</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.17</p>
+<p>Write a program that prints the first <code class="docutils literal notranslate"><span class="pre">n</span></code> values of the Fibonacci sequence <span class="math notranslate nohighlight">\(1,1,2,3,5,8,13,21,\ldots\)</span>.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">x0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fibonacci number </span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">x1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">x0</span><span class="p">,</span> <span class="n">x1</span> <span class="o">=</span> <span class="n">x1</span><span class="p">,</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">x1</span>
+</pre></div>
+</div>
+<p>The right-hand side of the final line is evaluated before the two new values are stored.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.18</p>
+<p>Write a program that calculates the factorial of a positive integer, <span class="math notranslate nohighlight">\(n!=\prod_{k=1}^{n}k\)</span>.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter a positive integer: &quot;</span><span class="p">))</span>
+<span class="n">factorial</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">factorial</span> <span class="o">=</span> <span class="n">factorial</span> <span class="o">*</span> <span class="n">k</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">! = </span><span class="si">{</span><span class="n">factorial</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4.19</p>
+<p>The exponential function can be approximated by <span class="math notranslate nohighlight">\(e^x\approx\sum_{i=0}^{n-1}x^i/i!\)</span>. Create <code class="docutils literal notranslate"><span class="pre">exp_taylor(x,</span> <span class="pre">n)</span></code> and use a loop to compare it with <code class="docutils literal notranslate"><span class="pre">math.exp(x)</span></code> for the integers 1–10.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">factorial</span><span class="p">,</span> <span class="n">exp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">exp_taylor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">approximation</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">approximation</span> <span class="o">=</span> <span class="n">approximation</span> <span class="o">+</span> <span class="n">x</span><span class="o">**</span><span class="n">i</span> <span class="o">/</span> <span class="n">factorial</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">approximation</span>
+
+<span class="n">number_of_terms</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">):</span>
+    <span class="n">numerical</span> <span class="o">=</span> <span class="n">exp_taylor</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">number_of_terms</span><span class="p">)</span>
+    <span class="n">exact</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">numerical</span> <span class="o">-</span> <span class="n">exact</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">: approximation = </span><span class="si">{</span><span class="n">numerical</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">, error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.2E</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="additional-loop-practice">
+<h3>Additional loop practice<a class="headerlink" href="#additional-loop-practice" title="Permalink to this heading">#</a></h3>
+<p>As short practice exercises, use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and then a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to calculate the sum of all integers from 1 through 449.</p>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/fundamental_programming"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="quiz3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quiz 3: Conditionals</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="quiz4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quiz 4: Loops</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turtle-graphics">Turtle graphics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simplified-representation-of-a-benzene-ring">A simplified representation of a benzene ring</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#randomness-and-the-random-library">Randomness and the <code class="docutils literal notranslate"><span class="pre">random</span></code> library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-random-walk-as-a-model-of-diffusion">A random walk as a model of diffusion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#while-loops"><code class="docutils literal notranslate"><span class="pre">while</span></code> loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-loops"><code class="docutils literal notranslate"><span class="pre">for</span></code> loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-range-function">The <code class="docutils literal notranslate"><span class="pre">range</span></code> function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-through-lists">Looping through lists</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#following-variables-through-a-loop">Following variables through a loop</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#thinking-in-loops">Thinking in loops</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processing-chemical-data">Processing chemical data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-kinetic-model">A simple kinetic model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequences-and-series">Sequences and series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-loops">Nested loops</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-exercises">Fundamental exercises</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chemistry-and-modelling">Chemistry and modelling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-mathematics-exercises">Additional mathematics exercises</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-loop-practice">Additional loop practice</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

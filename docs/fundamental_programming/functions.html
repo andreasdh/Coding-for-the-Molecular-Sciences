@@ -1,0 +1,1073 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Functions &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/fundamental_programming/functions';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Quiz 5: Functions" href="quiz5.html" />
+    <link rel="prev" title="Quiz 4: Loops" href="quiz4.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Functions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/equations.html">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/fundamental_programming/functions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Functions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-and-print"><code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">print</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-with-several-parameters">Functions with several parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-with-several-return-values">Functions with several return values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-and-global-variables">Local and global variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-parameter-values">Default parameter values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this topic, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>use functions to structure and reuse code</p></li>
+<li><p>explain the difference between a parameter and an argument</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">return</span></code> to retrieve values from a function</p></li>
+<li><p>explain what is meant by local and global variables</p></li>
+<li><p>use functions to represent chemical relationships and calculations</p></li>
+</ol>
+</div>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h2>
+<p>In addition to built-in Python functions such as <code class="docutils literal notranslate"><span class="pre">print</span></code> and <code class="docutils literal notranslate"><span class="pre">input</span></code>, we can define our own functions. This makes programs easier to organise and is particularly useful when we need to perform the same type of calculation several times.</p>
+<p>Chemistry constantly uses relationships that take some quantities as input and produce a new quantity. From mass and molar mass we can find amount of substance; from hydronium-ion concentration we can find pH; and from pressure, volume, and temperature we can use the ideal-gas equation to calculate amount of substance. Such relationships are naturally represented as functions.</p>
+<p>We begin with</p>
+<div class="math notranslate nohighlight">
+\[n=\frac{m}{M},\]</div>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> is the amount of substance in mol, <span class="math notranslate nohighlight">\(m\)</span> is the mass in grams, and <span class="math notranslate nohighlight">\(M\)</span> is the molar mass in g/mol.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">amount_in_moles</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">mass</span> <span class="o">/</span> <span class="n">molar_mass</span>
+    <span class="k">return</span> <span class="n">amount</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The keyword <code class="docutils literal notranslate"><span class="pre">def</span></code> defines a function. Here the function is called <code class="docutils literal notranslate"><span class="pre">amount_in_moles</span></code>. The names in parentheses, <code class="docutils literal notranslate"><span class="pre">mass</span></code> and <code class="docutils literal notranslate"><span class="pre">molar_mass</span></code>, are <em>parameters</em>. Everything belonging to the function is indented.</p>
+<p><code class="docutils literal notranslate"><span class="pre">return</span></code> specifies the value that the function gives back. We can store that value in a variable or use it directly in another calculation. Merely defining a function produces no visible result; we must <em>call</em> it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">amount_in_moles</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">mass</span> <span class="o">/</span> <span class="n">molar_mass</span>
+    <span class="k">return</span> <span class="n">amount</span>
+
+<span class="n">moles_NaCl</span> <span class="o">=</span> <span class="n">amount_in_moles</span><span class="p">(</span><span class="mf">5.85</span><span class="p">,</span> <span class="mf">58.44</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The amount of NaCl is </span><span class="si">{</span><span class="n">moles_NaCl</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol.&quot;</span><span class="p">)</span>
+
+<span class="c1"># We can also call the function directly inside print:</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">amount_in_moles</span><span class="p">(</span><span class="mf">5.85</span><span class="p">,</span> <span class="mf">58.44</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The numbers <code class="docutils literal notranslate"><span class="pre">5.85</span></code> and <code class="docutils literal notranslate"><span class="pre">58.44</span></code> are <em>arguments</em>. When the function is called, these values are passed to the parameters <code class="docutils literal notranslate"><span class="pre">mass</span></code> and <code class="docutils literal notranslate"><span class="pre">molar_mass</span></code>. Parameters are therefore the names used in the function definition, whereas arguments are the actual values supplied in a function call.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Create a function that calculates concentration, <span class="math notranslate nohighlight">\(c=n/V\)</span>. The function should take amount of substance in mol and volume in litres as parameters. Use it to find the concentration when 0.15 mol of solute is present in 0.50 L of solution.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">concentration</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">volume</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">amount</span> <span class="o">/</span> <span class="n">volume</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">concentration</span><span class="p">(</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The concentration is </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="return-and-print">
+<h2><code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">print</span></code><a class="headerlink" href="#return-and-print" title="Permalink to this heading">#</a></h2>
+<p>A function does not have to return a value. It can, for example, only print something:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">print_amount</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">mass</span> <span class="o">/</span> <span class="n">molar_mass</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The amount of substance is </span><span class="si">{</span><span class="n">amount</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol.&quot;</span><span class="p">)</span>
+
+<span class="n">print_amount</span><span class="p">(</span><span class="mf">5.85</span><span class="p">,</span> <span class="mf">58.44</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we do not need <code class="docutils literal notranslate"><span class="pre">print</span></code> when calling the function because printing occurs inside it. Why, then, do we usually prefer <code class="docutils literal notranslate"><span class="pre">return</span></code> for calculated quantities?</p>
+<p>If the result is needed later, the function must return a value. Printed output is text displayed to the user; it is not a numerical result that another part of the program can use. This program works because both function calls return numbers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">amount_in_moles</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mass</span> <span class="o">/</span> <span class="n">molar_mass</span>
+
+<span class="n">moles_NaCl</span> <span class="o">=</span> <span class="n">amount_in_moles</span><span class="p">(</span><span class="mf">5.85</span><span class="p">,</span> <span class="mf">58.44</span><span class="p">)</span>
+<span class="n">moles_KCl</span> <span class="o">=</span> <span class="n">amount_in_moles</span><span class="p">(</span><span class="mf">7.46</span><span class="p">,</span> <span class="mf">74.55</span><span class="p">)</span>
+
+<span class="n">total_amount</span> <span class="o">=</span> <span class="n">moles_NaCl</span> <span class="o">+</span> <span class="n">moles_KCl</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total_amount</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A function without an explicit <code class="docutils literal notranslate"><span class="pre">return</span></code> returns the special value <code class="docutils literal notranslate"><span class="pre">None</span></code>. As a general rule, it is therefore useful to return calculated values and decide separately how they should be displayed.</p>
+</section>
+<section id="functions-with-several-parameters">
+<h2>Functions with several parameters<a class="headerlink" href="#functions-with-several-parameters" title="Permalink to this heading">#</a></h2>
+<p>A function can have as many parameters as it needs. For an ideal gas,</p>
+<p>$$P=\frac{nRT}{V}.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">ideal_gas_pressure</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">volume</span><span class="p">):</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>  <span class="c1"># J/(mol K)</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">temperature</span> <span class="o">/</span> <span class="n">volume</span>
+    <span class="k">return</span> <span class="n">pressure</span>
+
+<span class="c1"># Function call 1: the arguments are numerical values</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ideal_gas_pressure</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">298.15</span><span class="p">,</span> <span class="mf">0.0025</span><span class="p">))</span>
+
+<span class="c1"># Function call 2: the arguments are variables</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">0.10</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">298.15</span>
+<span class="n">V</span> <span class="o">=</span> <span class="mf">0.0025</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">ideal_gas_pressure</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The pressure is </span><span class="si">{</span><span class="n">P</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kPa.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Variables outside the function do not need the same names as its parameters. With positional arguments, order determines where the values go: the first argument is assigned to <code class="docutils literal notranslate"><span class="pre">amount</span></code>, the second to <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, and the third to <code class="docutils literal notranslate"><span class="pre">volume</span></code>. Clear scientific names nevertheless make code easier to read.</p>
+</section>
+<section id="functions-with-several-return-values">
+<h2>Functions with several return values<a class="headerlink" href="#functions-with-several-return-values" title="Permalink to this heading">#</a></h2>
+<p>Unlike a mathematical function in the elementary sense, a programming function can return several values. During a dilution, for example, we can calculate both the final concentration and the dilution factor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dilution</span><span class="p">(</span><span class="n">initial_concentration</span><span class="p">,</span> <span class="n">initial_volume</span><span class="p">,</span> <span class="n">final_volume</span><span class="p">):</span>
+    <span class="n">final_concentration</span> <span class="o">=</span> <span class="n">initial_concentration</span> <span class="o">*</span> <span class="n">initial_volume</span> <span class="o">/</span> <span class="n">final_volume</span>
+    <span class="n">dilution_factor</span> <span class="o">=</span> <span class="n">final_volume</span> <span class="o">/</span> <span class="n">initial_volume</span>
+    <span class="k">return</span> <span class="n">final_concentration</span><span class="p">,</span> <span class="n">dilution_factor</span>
+
+<span class="n">c2</span><span class="p">,</span> <span class="n">factor</span> <span class="o">=</span> <span class="n">dilution</span><span class="p">(</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The final concentration is </span><span class="si">{</span><span class="n">c2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The solution has been diluted by a factor of </span><span class="si">{</span><span class="n">factor</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The returned values are assigned to <code class="docutils literal notranslate"><span class="pre">c2</span></code> and <code class="docutils literal notranslate"><span class="pre">factor</span></code> in the same order in which they appear after <code class="docutils literal notranslate"><span class="pre">return</span></code>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<p>Explain how the program above works. Extend the function so that it also returns the amount of dissolved solute. Assume that the volumes are given in mL. Print all three results using f-strings.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dilution</span><span class="p">(</span><span class="n">initial_concentration</span><span class="p">,</span> <span class="n">initial_volume</span><span class="p">,</span> <span class="n">final_volume</span><span class="p">):</span>
+    <span class="n">final_concentration</span> <span class="o">=</span> <span class="n">initial_concentration</span> <span class="o">*</span> <span class="n">initial_volume</span> <span class="o">/</span> <span class="n">final_volume</span>
+    <span class="n">dilution_factor</span> <span class="o">=</span> <span class="n">final_volume</span> <span class="o">/</span> <span class="n">initial_volume</span>
+    <span class="n">amount</span> <span class="o">=</span> <span class="n">initial_concentration</span> <span class="o">*</span> <span class="n">initial_volume</span> <span class="o">/</span> <span class="mi">1000</span>
+    <span class="k">return</span> <span class="n">final_concentration</span><span class="p">,</span> <span class="n">dilution_factor</span><span class="p">,</span> <span class="n">amount</span>
+
+<span class="n">c2</span><span class="p">,</span> <span class="n">factor</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">dilution</span><span class="p">(</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final concentration: </span><span class="si">{</span><span class="n">c2</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dilution factor: </span><span class="si">{</span><span class="n">factor</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Amount of substance: </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> mol&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>You can run and extend the dilution function in the editor below.</p>
+<iframe src="../../basthon/?from=examples/functions_dilution.py" width="100%" height="600" frameborder="0" title="Interactive Python editor for functions with multiple return values" loading="lazy" allowfullscreen></iframe>
+</section>
+<section id="local-and-global-variables">
+<h2>Local and global variables<a class="headerlink" href="#local-and-global-variables" title="Permalink to this heading">#</a></h2>
+<p>Variables defined inside a function are available only inside that function and are called <em>local variables</em>. Function parameters are local as well. Variables defined outside functions are <em>global variables</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>  <span class="c1"># global variable</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ideal_gas_pressure</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">V</span><span class="p">):</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="n">V</span>  <span class="c1"># local variable</span>
+    <span class="k">return</span> <span class="n">pressure</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">ideal_gas_pressure</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">298.15</span><span class="p">,</span> <span class="mf">0.0025</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">R</span></code> is global and can be read both outside and inside the function. The parameters <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>, and <code class="docutils literal notranslate"><span class="pre">V</span></code>, and the variable <code class="docutils literal notranslate"><span class="pre">pressure</span></code>, are local. <code class="docutils literal notranslate"><span class="pre">P</span></code> is global because it is created outside the function. What happens if we try to use the local variable <code class="docutils literal notranslate"><span class="pre">pressure</span></code> outside the function?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">ideal_gas_pressure</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">V</span><span class="p">):</span>
+    <span class="n">pressure</span> <span class="o">=</span> <span class="n">n</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">T</span> <span class="o">/</span> <span class="n">V</span>
+    <span class="k">return</span> <span class="n">pressure</span>
+
+<span class="n">P</span> <span class="o">=</span> <span class="n">ideal_gas_pressure</span><span class="p">(</span><span class="mf">0.10</span><span class="p">,</span> <span class="mf">298.15</span><span class="p">,</span> <span class="mf">0.0025</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span>  <span class="c1"># raises NameError</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We obtain an error even though <code class="docutils literal notranslate"><span class="pre">pressure</span></code> is visibly defined in the function. The variable exists only locally while the function is executing. Its value is nevertheless available outside because the function returns it and we store it in <code class="docutils literal notranslate"><span class="pre">P</span></code>.</p>
+<p>Python has a <code class="docutils literal notranslate"><span class="pre">global</span></code> keyword that can be used to modify a global variable inside a function. It is rarely necessary and often makes changes to program state harder to follow. Passing values in as arguments and returning results is usually clearer, easier to test, and easier to reuse.</p>
+</section>
+<section id="default-parameter-values">
+<h2>Default parameter values<a class="headerlink" href="#default-parameter-values" title="Permalink to this heading">#</a></h2>
+<p>Sometimes a parameter usually has one value but should remain adjustable. We can then give it a default. In measured data it is rarely sensible to demand that two floating-point values be exactly equal, so we might ask whether a measured pH lies within a chosen tolerance around 7.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_neutral</span><span class="p">(</span><span class="n">pH</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">7</span> <span class="o">-</span> <span class="n">tolerance</span> <span class="o">&lt;=</span> <span class="n">pH</span> <span class="o">&lt;=</span> <span class="mi">7</span> <span class="o">+</span> <span class="n">tolerance</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">is_neutral</span><span class="p">(</span><span class="mf">7.05</span><span class="p">))</span>       <span class="c1"># uses the default value 0.1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_neutral</span><span class="p">(</span><span class="mf">7.15</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">))</span>  <span class="c1"># uses a tolerance of 0.2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Parameters with default values are normally placed after required parameters. The function can be called either with or without a separate argument for <code class="docutils literal notranslate"><span class="pre">tolerance</span></code>.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.1</p>
+<p>Explain how the program works and calculate the result by hand before running it.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">mass</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">molar_mass</span>
+
+<span class="n">mass_NaCl</span> <span class="o">=</span> <span class="n">mass</span><span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">58.44</span><span class="p">)</span>
+<span class="n">mass_H2O</span> <span class="o">=</span> <span class="n">mass</span><span class="p">(</span><span class="mf">0.20</span><span class="p">,</span> <span class="mf">18.02</span><span class="p">)</span>
+<span class="n">difference</span> <span class="o">=</span> <span class="n">mass_NaCl</span> <span class="o">-</span> <span class="n">mass_H2O</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">difference</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>The function calculates mass from <span class="math notranslate nohighlight">\(m=nM\)</span>. Both calls use 0.20 mol but different molar masses. The difference is <span class="math notranslate nohighlight">\(0.20\cdot58.44-0.20\cdot18.02=8.084\)</span> g.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.2</p>
+<p>The Beer–Lambert law is <span class="math notranslate nohighlight">\(A=\varepsilon lc\)</span>. Create a function that takes molar absorptivity, path length, and concentration as parameters and returns absorbance. Test it with <span class="math notranslate nohighlight">\(\varepsilon=4700\)</span> L/(mol cm), <span class="math notranslate nohighlight">\(l=1.00\)</span> cm, and <span class="math notranslate nohighlight">\(c=2.5\times10^{-5}\)</span> mol/L.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">absorbance</span><span class="p">(</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">path_length</span><span class="p">,</span> <span class="n">concentration</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">path_length</span> <span class="o">*</span> <span class="n">concentration</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">absorbance</span><span class="p">(</span><span class="mi">4700</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="mf">2.5E-5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The absorbance is </span><span class="si">{</span><span class="n">A</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.3</p>
+<p>Each program contains errors. Find and correct them.</p>
+<ol class="arabic simple">
+<li><p>The function should calculate <span class="math notranslate nohighlight">\(c=n/V\)</span>:</p></li>
+</ol>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">concentration</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">V</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">/</span> <span class="n">V</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">concentration</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">))</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>The program should request <span class="math notranslate nohighlight">\([H_3O^+]\)</span> and calculate pH:</p></li>
+</ol>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">log10</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pH</span><span class="p">(</span><span class="n">hydronium</span><span class="p">):</span>
+<span class="k">return</span> <span class="n">log10</span><span class="p">(</span><span class="n">hydronium</span><span class="p">)</span>
+<span class="n">H3O</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter [H3O+] in mol/L: &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pH</span><span class="p">(</span><span class="n">H3O</span><span class="p">))</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>The program should print absorbance:</p></li>
+</ol>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">beer_lambert</span><span class="p">(</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">path_length</span><span class="p">,</span> <span class="n">concentration</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">path_length</span> <span class="o">*</span> <span class="n">concentration</span>
+    <span class="k">return</span> <span class="n">A</span>
+<span class="n">beer_lambert</span><span class="p">(</span><span class="mi">4700</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.5E-5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>Program 1 is missing <code class="docutils literal notranslate"><span class="pre">return</span></code>. Program 2 is missing indentation, the minus sign in front of the logarithm, and conversion of user input to <code class="docutils literal notranslate"><span class="pre">float</span></code>. In program 3, <code class="docutils literal notranslate"><span class="pre">A</span></code> is local; the returned value must be stored or the function called directly inside <code class="docutils literal notranslate"><span class="pre">print</span></code>.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">concentration</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">V</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">n</span> <span class="o">/</span> <span class="n">V</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">concentration</span><span class="p">(</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">))</span>
+
+<span class="c1"># 2</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">log10</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pH</span><span class="p">(</span><span class="n">hydronium</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">log10</span><span class="p">(</span><span class="n">hydronium</span><span class="p">)</span>
+<span class="n">H3O</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter [H3O+] in mol/L: &quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pH</span><span class="p">(</span><span class="n">H3O</span><span class="p">))</span>
+
+<span class="c1"># 3</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">beer_lambert</span><span class="p">(</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">path_length</span><span class="p">,</span> <span class="n">concentration</span><span class="p">):</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">path_length</span> <span class="o">*</span> <span class="n">concentration</span>
+    <span class="k">return</span> <span class="n">A</span>
+<span class="n">absorbance_value</span> <span class="o">=</span> <span class="n">beer_lambert</span><span class="p">(</span><span class="mi">4700</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.5E-5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">absorbance_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.4</p>
+<p>Create a small set of functions for amount-of-substance calculations: (1) amount from mass and molar mass, (2) mass from amount and molar mass, (3) concentration from amount and volume, and (4) required mass from desired concentration, volume, and molar mass. Test them with realistic values and units.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">amount</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mass</span> <span class="o">/</span> <span class="n">molar_mass</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mass</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">molar_mass</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">concentration</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">volume</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">amount</span> <span class="o">/</span> <span class="n">volume</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">required_mass</span><span class="p">(</span><span class="n">concentration</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+    <span class="n">amount_value</span> <span class="o">=</span> <span class="n">concentration</span> <span class="o">*</span> <span class="n">volume</span>
+    <span class="k">return</span> <span class="n">amount_value</span> <span class="o">*</span> <span class="n">molar_mass</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">amount</span><span class="p">(</span><span class="mf">5.844</span><span class="p">,</span> <span class="mf">58.44</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mass</span><span class="p">(</span><span class="mf">0.100</span><span class="p">,</span> <span class="mf">58.44</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">concentration</span><span class="p">(</span><span class="mf">0.100</span><span class="p">,</span> <span class="mf">0.250</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">required_mass</span><span class="p">(</span><span class="mf">0.100</span><span class="p">,</span> <span class="mf">0.250</span><span class="p">,</span> <span class="mf">58.44</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.5</p>
+<p>What is the value of <code class="docutils literal notranslate"><span class="pre">c2</span></code>, and why? Correct the program so that <code class="docutils literal notranslate"><span class="pre">c2</span></code> receives a numerical value.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dilution</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">V1</span><span class="p">,</span> <span class="n">V2</span><span class="p">):</span>
+    <span class="n">c2</span> <span class="o">=</span> <span class="n">c1</span> <span class="o">*</span> <span class="n">V1</span> <span class="o">/</span> <span class="n">V2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">dilution</span><span class="p">(</span><span class="mf">0.50</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>The function prints the number but returns no value, so <code class="docutils literal notranslate"><span class="pre">c2</span></code> becomes <code class="docutils literal notranslate"><span class="pre">None</span></code>. Replace <code class="docutils literal notranslate"><span class="pre">print(c2)</span></code> inside the function with <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">c2</span></code>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.6</p>
+<p>Percentage yield is <span class="math notranslate nohighlight">\(\text{percentage yield}=\text{actual yield}/\text{theoretical yield}\times100\%\)</span>. Create a function and test it with an actual yield of 7.85 g and a theoretical yield of 9.20 g.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">percentage_yield</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">theoretical</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">actual</span> <span class="o">/</span> <span class="n">theoretical</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="n">yield_percent</span> <span class="o">=</span> <span class="n">percentage_yield</span><span class="p">(</span><span class="mf">7.85</span><span class="p">,</span> <span class="mf">9.20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The percentage yield is </span><span class="si">{</span><span class="n">yield_percent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.7</p>
+<p>Create a program that calculates amount of substance when the user enters the substance name, mass, and molar mass. Put the formula itself in a function and use an f-string for the output.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">amount</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mass</span> <span class="o">/</span> <span class="n">molar_mass</span>
+<span class="n">substance</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the substance name: &quot;</span><span class="p">)</span>
+<span class="n">mass_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the mass in grams: &quot;</span><span class="p">))</span>
+<span class="n">molar_mass</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Enter the molar mass in g/mol: &quot;</span><span class="p">))</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">amount</span><span class="p">(</span><span class="n">mass_value</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The amount of </span><span class="si">{</span><span class="n">substance</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> mol.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.8</p>
+<p>Create a function that calculates pH from <span class="math notranslate nohighlight">\([H_3O^+]\)</span>. Test it with at least three concentrations.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pH</span><span class="p">(</span><span class="n">hydronium_concentration</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hydronium_concentration</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pH</span><span class="p">(</span><span class="mf">1.0E-2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pH</span><span class="p">(</span><span class="mf">1.0E-5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pH</span><span class="p">(</span><span class="mf">1.0E-7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.9</p>
+<p>Create one function that calculates absorbance using the Beer–Lambert law and another that calculates concentration from measured absorbance. Check that the functions are consistent by passing the result from the first into the second.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">absorbance</span><span class="p">(</span><span class="n">epsilon</span><span class="p">,</span> <span class="n">path_length</span><span class="p">,</span> <span class="n">concentration</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">epsilon</span> <span class="o">*</span> <span class="n">path_length</span> <span class="o">*</span> <span class="n">concentration</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">concentration</span><span class="p">(</span><span class="n">absorbance_value</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">path_length</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">absorbance_value</span> <span class="o">/</span> <span class="p">(</span><span class="n">epsilon</span> <span class="o">*</span> <span class="n">path_length</span><span class="p">)</span>
+<span class="n">c_initial</span> <span class="o">=</span> <span class="mf">2.5E-5</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">absorbance</span><span class="p">(</span><span class="mi">4700</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">,</span> <span class="n">c_initial</span><span class="p">)</span>
+<span class="n">c_calculated</span> <span class="o">=</span> <span class="n">concentration</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">4700</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Absorbance: </span><span class="si">{</span><span class="n">A</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Calculated concentration: </span><span class="si">{</span><span class="n">c_calculated</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2"> mol/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.10</p>
+<p>The energy of an electron in level <span class="math notranslate nohighlight">\(n\)</span> of a hydrogen atom is <span class="math notranslate nohighlight">\(E_n=-B/n^2\)</span>, where <span class="math notranslate nohighlight">\(B=2.18\times10^{-18}\)</span> J. Create one function for the energy of a level and one for the wavelength of a photon emitted during a transition from <span class="math notranslate nohighlight">\(n\)</span> to lower level <span class="math notranslate nohighlight">\(m\)</span>. Use <span class="math notranslate nohighlight">\(|\Delta E|=hc/\lambda\)</span>, <span class="math notranslate nohighlight">\(h=6.626\times10^{-34}\)</span> J s, and <span class="math notranslate nohighlight">\(c=3.00\times10^8\)</span> m/s. Test the transition from <span class="math notranslate nohighlight">\(n=3\)</span> to <span class="math notranslate nohighlight">\(m=2\)</span>.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">B</span> <span class="o">=</span> <span class="mf">2.18E-18</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">6.626E-34</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">3.00E8</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">energy_level</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">B</span> <span class="o">/</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">wavelength</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+    <span class="n">delta_E</span> <span class="o">=</span> <span class="n">energy_level</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">energy_level</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">h</span> <span class="o">*</span> <span class="n">c</span> <span class="o">/</span> <span class="nb">abs</span><span class="p">(</span><span class="n">delta_E</span><span class="p">)</span>
+<span class="n">wavelength_nm</span> <span class="o">=</span> <span class="n">wavelength</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1E9</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The wavelength is </span><span class="si">{</span><span class="n">wavelength_nm</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> nm.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.11</p>
+<p>Create a function that takes the initial and final amounts of a reactant and returns both the amount consumed and the percentage conversion. Test it with 0.250 mol initially and 0.040 mol finally.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">conversion</span><span class="p">(</span><span class="n">initial_amount</span><span class="p">,</span> <span class="n">final_amount</span><span class="p">):</span>
+    <span class="n">amount_consumed</span> <span class="o">=</span> <span class="n">initial_amount</span> <span class="o">-</span> <span class="n">final_amount</span>
+    <span class="n">conversion_percent</span> <span class="o">=</span> <span class="n">amount_consumed</span> <span class="o">/</span> <span class="n">initial_amount</span> <span class="o">*</span> <span class="mi">100</span>
+    <span class="k">return</span> <span class="n">amount_consumed</span><span class="p">,</span> <span class="n">conversion_percent</span>
+<span class="n">consumed</span><span class="p">,</span> <span class="n">percent</span> <span class="o">=</span> <span class="n">conversion</span><span class="p">(</span><span class="mf">0.250</span><span class="p">,</span> <span class="mf">0.040</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Amount consumed: </span><span class="si">{</span><span class="n">consumed</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mol&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Conversion: </span><span class="si">{</span><span class="n">percent</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> %&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.12</p>
+<p>Why does the global variable <code class="docutils literal notranslate"><span class="pre">concentration</span></code> have the same value before and after the function call?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dilute</span><span class="p">(</span><span class="n">concentration</span><span class="p">):</span>
+    <span class="n">concentration</span> <span class="o">=</span> <span class="n">concentration</span> <span class="o">/</span> <span class="mi">10</span>
+    <span class="k">return</span> <span class="n">concentration</span>
+<span class="n">concentration</span> <span class="o">=</span> <span class="mf">0.50</span>
+<span class="n">new_concentration</span> <span class="o">=</span> <span class="n">dilute</span><span class="p">(</span><span class="n">concentration</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">concentration</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">new_concentration</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">concentration</span></code> inside the function is local even though it has the same name as the global variable. The local value is changed and returned, while the global variable remains 0.50 mol/L.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.13</p>
+<p>Most gases can often be approximated using <span class="math notranslate nohighlight">\(PV=nRT\)</span>. Create one function for pressure and another for temperature. Use SI units and test them with realistic values.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pressure</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">volume</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">temperature</span> <span class="o">/</span> <span class="n">volume</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">temperature</span><span class="p">(</span><span class="n">pressure_value</span><span class="p">,</span> <span class="n">volume</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pressure_value</span> <span class="o">*</span> <span class="n">volume</span> <span class="o">/</span> <span class="p">(</span><span class="n">amount</span> <span class="o">*</span> <span class="n">R</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">pressure</span><span class="p">(</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">298.15</span><span class="p">,</span> <span class="mf">0.0245</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">temperature</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="mf">0.0245</span><span class="p">,</span> <span class="mf">1.00</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pressure: </span><span class="si">{</span><span class="n">P</span><span class="o">/</span><span class="mi">1000</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> kPa&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature: </span><span class="si">{</span><span class="n">T</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> K&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.14</p>
+<p>Study the program. Which variables are local and which are global? What is printed?</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mf">8.314</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">volume</span><span class="p">(</span><span class="n">amount</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">pressure</span><span class="p">):</span>
+    <span class="n">calculated_volume</span> <span class="o">=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">R</span> <span class="o">*</span> <span class="n">temperature</span> <span class="o">/</span> <span class="n">pressure</span>
+    <span class="k">return</span> <span class="n">calculated_volume</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">298.15</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">101325</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">volume</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<p><code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">n</span></code>, <code class="docutils literal notranslate"><span class="pre">T</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span></code>, and <code class="docutils literal notranslate"><span class="pre">V</span></code> are global. The parameters <code class="docutils literal notranslate"><span class="pre">amount</span></code>, <code class="docutils literal notranslate"><span class="pre">temperature</span></code>, and <code class="docutils literal notranslate"><span class="pre">pressure</span></code>, and the variable <code class="docutils literal notranslate"><span class="pre">calculated_volume</span></code>, are local. The program prints approximately 0.0245 m³, corresponding to 24.5 L.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.15</p>
+<p>Create a function that takes <span class="math notranslate nohighlight">\([H_3O^+]\)</span> and an optional tolerance. It should return both pH and the text <code class="docutils literal notranslate"><span class="pre">acidic</span></code>, <code class="docutils literal notranslate"><span class="pre">neutral</span></code>, or <code class="docutils literal notranslate"><span class="pre">basic</span></code>. Use a default tolerance of 0.1 pH units and test <span class="math notranslate nohighlight">\(1.0\times10^{-5}\)</span>, <span class="math notranslate nohighlight">\(1.1\times10^{-7}\)</span>, and <span class="math notranslate nohighlight">\(1.0\times10^{-9}\)</span> mol/L.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">classify_solution</span><span class="p">(</span><span class="n">hydronium</span><span class="p">,</span> <span class="n">tolerance</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+    <span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hydronium</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pH</span> <span class="o">&lt;</span> <span class="mi">7</span> <span class="o">-</span> <span class="n">tolerance</span><span class="p">:</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;acidic&quot;</span>
+    <span class="k">elif</span> <span class="n">pH</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="o">+</span> <span class="n">tolerance</span><span class="p">:</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;basic&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;neutral&quot;</span>
+    <span class="k">return</span> <span class="n">pH</span><span class="p">,</span> <span class="n">description</span>
+<span class="k">for</span> <span class="n">concentration_value</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1.0E-5</span><span class="p">,</span> <span class="mf">1.1E-7</span><span class="p">,</span> <span class="mf">1.0E-9</span><span class="p">]:</span>
+    <span class="n">pH_value</span><span class="p">,</span> <span class="n">solution_type</span> <span class="o">=</span> <span class="n">classify_solution</span><span class="p">(</span><span class="n">concentration_value</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pH = </span><span class="si">{</span><span class="n">pH_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">solution_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.16</p>
+<p>For a buffer pair HA/A<span class="math notranslate nohighlight">\(^-\)</span>, <span class="math notranslate nohighlight">\(pH=pK_a+\log_{10}([A^-]/[HA])\)</span>. Create a function taking <span class="math notranslate nohighlight">\(pK_a\)</span>, acid concentration, and base concentration as parameters. Test an acetic acid/acetate buffer with <span class="math notranslate nohighlight">\(pK_a=4.76\)</span>, <span class="math notranslate nohighlight">\([CH_3COOH]=2.3\times10^{-3}\)</span> mol/L, and <span class="math notranslate nohighlight">\([CH_3COO^-]=2.0\times10^{-3}\)</span> mol/L.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">buffer_pH</span><span class="p">(</span><span class="n">pKa</span><span class="p">,</span> <span class="n">acid</span><span class="p">,</span> <span class="n">base</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pKa</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">base</span> <span class="o">/</span> <span class="n">acid</span><span class="p">)</span>
+<span class="n">pH_value</span> <span class="o">=</span> <span class="n">buffer_pH</span><span class="p">(</span><span class="mf">4.76</span><span class="p">,</span> <span class="mf">2.3E-3</span><span class="p">,</span> <span class="mf">2.0E-3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The buffer pH is </span><span class="si">{</span><span class="n">pH_value</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.17</p>
+<p>For a simple calorimetric calculation, <span class="math notranslate nohighlight">\(q=mc\Delta T\)</span>. Create a function taking mass, specific heat capacity, initial temperature, and final temperature. Return both <span class="math notranslate nohighlight">\(q\)</span> and <span class="math notranslate nohighlight">\(\Delta T\)</span>.</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">heat_absorbed</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">heat_capacity</span><span class="p">,</span> <span class="n">initial_temperature</span><span class="p">,</span> <span class="n">final_temperature</span><span class="p">):</span>
+    <span class="n">delta_T</span> <span class="o">=</span> <span class="n">final_temperature</span> <span class="o">-</span> <span class="n">initial_temperature</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">mass</span> <span class="o">*</span> <span class="n">heat_capacity</span> <span class="o">*</span> <span class="n">delta_T</span>
+    <span class="k">return</span> <span class="n">q</span><span class="p">,</span> <span class="n">delta_T</span>
+<span class="n">q</span><span class="p">,</span> <span class="n">delta_T</span> <span class="o">=</span> <span class="n">heat_absorbed</span><span class="p">(</span><span class="mf">100.0</span><span class="p">,</span> <span class="mf">4.18</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">27.5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Temperature change: </span><span class="si">{</span><span class="n">delta_T</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> °C&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Heat absorbed: </span><span class="si">{</span><span class="n">q</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2"> J&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.18</p>
+<p>Create a function <code class="docutils literal notranslate"><span class="pre">valid_concentration</span></code> that returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if a concentration is greater than 0 and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. Use it in a new pH function that performs the calculation only for valid concentrations. What should the function return when the value is invalid?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested solution</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">valid_concentration</span><span class="p">(</span><span class="n">concentration</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">concentration</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">pH</span><span class="p">(</span><span class="n">hydronium</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">valid_concentration</span><span class="p">(</span><span class="n">hydronium</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">hydronium</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pH</span><span class="p">(</span><span class="mf">1.0E-5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pH</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">None</span></code> is a natural return value when no numerical result can be produced. In a larger program, it may instead be appropriate to raise a clear exception such as <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+</div>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/fundamental_programming"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="quiz4.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quiz 4: Loops</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="quiz5.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Quiz 5: Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#return-and-print"><code class="docutils literal notranslate"><span class="pre">return</span></code> and <code class="docutils literal notranslate"><span class="pre">print</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-with-several-parameters">Functions with several parameters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-with-several-return-values">Functions with several return values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#local-and-global-variables">Local and global variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#default-parameter-values">Default parameter values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

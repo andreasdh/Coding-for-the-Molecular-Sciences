@@ -1,0 +1,805 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Numerical differentiation &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/numerical_methods/numerical_differentiation';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Numerical integration" href="numerical_integration.html" />
+    <link rel="prev" title="Equations and root finding" href="equations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="equations.html">Equations and root finding</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/numerical_methods/numerical_differentiation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Numerical differentiation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-derivative">The derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-analysis-a-smaller-step-is-not-always-better">Error analysis: a smaller step is not always better</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-approximations">Other approximations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself">Try it yourself</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-differentiation-of-experimental-data">Numerical differentiation of experimental data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-between-neighbouring-measurements">Differences between neighbouring measurements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-gradient-a-practical-method"><code class="docutils literal notranslate"><span class="pre">np.gradient</span></code>: a practical method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-summary">Short summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="numerical-differentiation">
+<h1>Numerical differentiation<a class="headerlink" href="#numerical-differentiation" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this chapter, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>explain the difference between analytical and numerical differentiation</p></li>
+<li><p>implement forward, backward and central differences</p></li>
+<li><p>investigate how step size and round-off error affect the result</p></li>
+<li><p>differentiate experimental data and interpret what the numerical derivative means chemically</p></li>
+</ol>
+</div>
+<section id="the-derivative">
+<h2>The derivative<a class="headerlink" href="#the-derivative" title="Permalink to this heading">#</a></h2>
+<p>Differentiation is about change. You may know the derivative as <span class="math notranslate nohighlight">\(f'(x)\)</span>. In science, Leibniz notation is also common,</p>
+<div class="math notranslate nohighlight">
+\[\frac{df}{dx},\]</div>
+<p>which means “the change in <span class="math notranslate nohighlight">\(f\)</span> with respect to <span class="math notranslate nohighlight">\(x\)</span>”. The two notations describe the same quantity when <span class="math notranslate nohighlight">\(f\)</span> is a function of <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f'(x)=\frac{df}{dx}.\]</div>
+<p>In chemistry, this notation is useful because the variables have a physical meaning. For example,</p>
+<div class="math notranslate nohighlight">
+\[\frac{dc}{dt}\]</div>
+<p>describes how a concentration changes with time, whereas</p>
+<div class="math notranslate nohighlight">
+\[\frac{d\mathrm{pH}}{dV}\]</div>
+<p>describes how pH changes as volume is added during a titration.</p>
+<p>The derivative is defined as the limit</p>
+<div class="math notranslate nohighlight">
+\[f'(x)=\lim_{\Delta x\rightarrow0}\frac{f(x+\Delta x)-f(x)}{\Delta x}.\]</div>
+<p>On a computer, we cannot use an infinitely small <span class="math notranslate nohighlight">\(\Delta x\)</span>. We therefore replace the limit with a small, finite step size <span class="math notranslate nohighlight">\(h\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f'(x)\approx\frac{f(x+h)-f(x)}{h}.\]</div>
+<p>This is called the <strong>forward difference</strong>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise along the way</p>
+<p>Calculate <span class="math notranslate nohighlight">\(f'(1)\)</span> numerically for <span class="math notranslate nohighlight">\(f(x)=2x+2\)</span> using <span class="math notranslate nohighlight">\(h=10^{-8}\)</span>. What do you expect from analytical differentiation?</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">1E-8</span>
+<span class="n">fder</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Numerical:&quot;</span><span class="p">,</span> <span class="n">fder</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Analytical:&quot;</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is the simplest implementation: we calculate the derivative at <strong>one particular point</strong>. Numerical differentiation does not automatically produce a new symbolic function in the way that differentiation by hand does. It gives values of the derivative at the points we choose.</p>
+<p>Once the principle is clear, we can wrap it in a Python function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">derivative_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1E-8</span><span class="p">):</span>
+    <span class="n">dy</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dy</span><span class="o">/</span><span class="n">h</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we want to draw the derivative as a curve, we simply evaluate the derivative at many x values.</p>
+</section>
+<section id="error-analysis-a-smaller-step-is-not-always-better">
+<h2>Error analysis: a smaller step is not always better<a class="headerlink" href="#error-analysis-a-smaller-step-is-not-always-better" title="Permalink to this heading">#</a></h2>
+<p>It is tempting to think that <span class="math notranslate nohighlight">\(h\)</span> should be as small as possible. However, two error mechanisms compete:</p>
+<ul class="simple">
+<li><p><strong>Approximation error</strong> generally decreases as <span class="math notranslate nohighlight">\(h\)</span> becomes smaller.</p></li>
+<li><p><strong>Floating-point round-off error</strong> can become important when we subtract two nearly equal numbers and divide by a very small number.</p></li>
+</ul>
+<p>There is therefore no single universally optimal value of <span class="math notranslate nohighlight">\(h\)</span>. It depends on the function, the numerical scale and the finite-difference method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">5</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f_derivative_analytical</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">h_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">exact</span> <span class="o">=</span> <span class="n">f_derivative_analytical</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">h_values</span><span class="p">:</span>
+    <span class="n">numerical</span> <span class="o">=</span> <span class="n">derivative_forward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">numerical</span> <span class="o">-</span> <span class="n">exact</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">h_values</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;h&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absolute error&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="other-approximations">
+<h2>Other approximations<a class="headerlink" href="#other-approximations" title="Permalink to this heading">#</a></h2>
+<p>The forward difference uses the points <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(x+h\)</span>. But this is not the only possible choice. We can just as well use the point <strong>behind</strong> <span class="math notranslate nohighlight">\(x\)</span>. This gives the backward difference:</p>
+<div class="math notranslate nohighlight">
+\[\frac{df}{dx}\approx\frac{f(x)-f(x-h)}{h}.\]</div>
+<p>The backward difference is not introduced because it is necessarily better than the forward difference. Rather, it shows that the same derivative can be approximated by choosing data points in different ways.</p>
+<p>Once we have one approximation that looks forward and one that looks backward, a natural idea appears: why not use information from <strong>both sides</strong> of the point? This gives the central difference:</p>
+<div class="math notranslate nohighlight">
+\[\frac{df}{dx}\approx\frac{f(x+h)-f(x-h)}{2h}.\]</div>
+<p>Here, the point <span class="math notranslate nohighlight">\(x\)</span> lies halfway between the two points used to calculate the slope. For the same step size, this usually gives a better approximation than the forward or backward difference.</p>
+<a class="reference internal image-reference" href="../../_images/numerical_differentiation.png"><img alt="../../_images/numerical_differentiation.png" class="align-center" src="../../_images/numerical_differentiation.png" style="width: 500px;" /></a>
+<p>The figure illustrates the geometrical difference between the approximations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">derivative_backward</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1E-8</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="n">h</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">derivative_central</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">1E-5</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">)</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">h</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">h</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Forward:&quot;</span><span class="p">,</span> <span class="n">derivative_forward</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mf">1E-5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Backward:&quot;</span><span class="p">,</span> <span class="n">derivative_backward</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mf">1E-5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Central:&quot;</span><span class="p">,</span> <span class="n">derivative_central</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mf">1E-5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Analytical:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise along the way</p>
+<p>Perform an error analysis of the three approximations for several values of <span class="math notranslate nohighlight">\(h\)</span>. Use <span class="math notranslate nohighlight">\(f(x)=\sin x\)</span> and compare with <span class="math notranslate nohighlight">\(f'(x)=\cos x\)</span>.</p>
+</div>
+<section id="try-it-yourself">
+<h3>Try it yourself<a class="headerlink" href="#try-it-yourself" title="Permalink to this heading">#</a></h3>
+<p>Compare the three difference methods for different step sizes.</p>
+<iframe src="../../basthon/?from=examples/numerical_differentiation_methods.py" width="100%" height="620" frameborder="0" title="Try it yourself: numerical differentiation" loading="lazy" allowfullscreen></iframe>
+</section>
+</section>
+<section id="numerical-differentiation-of-experimental-data">
+<h2>Numerical differentiation of experimental data<a class="headerlink" href="#numerical-differentiation-of-experimental-data" title="Permalink to this heading">#</a></h2>
+<p>For experimental data, we do not have a function <span class="math notranslate nohighlight">\(f(x)\)</span> that we can evaluate wherever we want. The measurement points determine the distances between the <span class="math notranslate nohighlight">\(x\)</span> values.</p>
+<p>This makes numerical differentiation very useful, but also more vulnerable: <strong>differentiation often amplifies measurement noise</strong>, because small differences between neighbouring points are divided by a small interval.</p>
+<p>We use a titration dataset as an example. The measured volumes are not perfectly evenly spaced, which is common for real experimental data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/titration_data.csv&quot;</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">volume</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;volume&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;pH&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">pH</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Added volume (mL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;pH&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="differences-between-neighbouring-measurements">
+<h3>Differences between neighbouring measurements<a class="headerlink" href="#differences-between-neighbouring-measurements" title="Permalink to this heading">#</a></h3>
+<p>For two neighbouring measurements,</p>
+<div class="math notranslate nohighlight">
+\[\frac{\Delta y}{\Delta x}
+=\frac{y_{i+1}-y_i}{x_{i+1}-x_i},\]</div>
+<p>is the <strong>average slope over the interval</strong> from <span class="math notranslate nohighlight">\(x_i\)</span> to <span class="math notranslate nohighlight">\(x_{i+1}\)</span>. The most natural place to assign this value is therefore the middle of the interval:</p>
+<div class="math notranslate nohighlight">
+\[x_{\mathrm{mid}}=\frac{x_i+x_{i+1}}{2}.\]</div>
+<p>Note that this is the <strong>average of the two <span class="math notranslate nohighlight">\(x\)</span> values</strong>, not half the difference <span class="math notranslate nohighlight">\((x_{i+1}-x_i)/2\)</span>.</p>
+<p>If we instead place the difference at <span class="math notranslate nohighlight">\(x_i\)</span>, the numerical derivative is shifted to the left relative to the interval it actually describes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dpH</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">pH</span><span class="p">)</span>
+<span class="n">dV</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">volume</span><span class="p">)</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">dpH</span> <span class="o">/</span> <span class="n">dV</span>
+<span class="n">volume_mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">volume</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">volume</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">i_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The largest interval slope occurs around </span><span class="si">{</span><span class="n">volume_mid</span><span class="p">[</span><span class="n">i_max</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mL.&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">volume_mid</span><span class="p">,</span> <span class="n">slope</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Added volume, interval midpoint (mL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$\Delta\mathrm</span><span class="si">{pH}</span><span class="s2">/\Delta V$ (mL$^{-1}$)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For these data, the largest slope lies between 33.52 and 33.56 mL. The midpoint is therefore <strong>33.54 mL</strong>. This is a better estimate of the position of that interval slope than using 33.52 mL directly.</p>
+<p>This does not mean that the true equivalence point is known to one hundredth of a millilitre. Measurement frequency, measurement uncertainty and the chosen differentiation method limit the precision.</p>
+</section>
+<section id="np-gradient-a-practical-method">
+<h3><code class="docutils literal notranslate"><span class="pre">np.gradient</span></code>: a practical method<a class="headerlink" href="#np-gradient-a-practical-method" title="Permalink to this heading">#</a></h3>
+<p>Once we understand the finite differences ourselves, NumPy can do the calculation for us. <code class="docutils literal notranslate"><span class="pre">np.gradient(y,</span> <span class="pre">x)</span></code> uses central differences at interior points and one-sided differences at the endpoints. It can also handle unevenly spaced <span class="math notranslate nohighlight">\(x\)</span> values, as in the titration data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gradient</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">pH</span><span class="p">,</span> <span class="n">volume</span><span class="p">)</span>
+<span class="n">i_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">gradient</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The maximum from np.gradient occurs at </span><span class="si">{</span><span class="n">volume</span><span class="p">[</span><span class="n">i_max</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mL.&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">volume</span><span class="p">,</span> <span class="n">gradient</span><span class="p">,</span> <span class="s2">&quot;o-&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Added volume (mL)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$d\mathrm</span><span class="si">{pH}</span><span class="s2">/dV$ (mL$^{-1}$)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="short-summary">
+<h2>Short summary<a class="headerlink" href="#short-summary" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Numerical differentiation approximates a derivative from finite differences.</p></li>
+<li><p>Forward and backward differences use points on one side; the central difference uses points on both sides.</p></li>
+<li><p>A smaller step reduces approximation error only until floating-point round-off becomes important.</p></li>
+<li><p>For interval differences in experimental data, the derivative belongs naturally at the interval midpoint.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.gradient</span></code> is a practical tool once we understand the principle.</p></li>
+<li><p>Differentiation can amplify experimental noise.</p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 1 – numerical and analytical</p>
+<p>Calculate <span class="math notranslate nohighlight">\(f'(1)\)</span> numerically and check by analytical differentiation for:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(x)=x^2-4x+5\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)=e^x\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)=\sqrt{\ln x}\)</span></p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2 – error as a function of step size</p>
+<p>Compare the forward and central differences for <span class="math notranslate nohighlight">\(f(x)=\sin x\)</span> at <span class="math notranslate nohighlight">\(x=1\)</span>. Make a log-log plot of the absolute error for <span class="math notranslate nohighlight">\(h\)</span> from <span class="math notranslate nohighlight">\(10^{-1}\)</span> to <span class="math notranslate nohighlight">\(10^{-15}\)</span>. Comment on the shapes of the curves.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3 – reaction rate from concentration data</p>
+<p>You have measured the concentration of A in a reaction:</p>
+<p><code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">[0,</span> <span class="pre">10,</span> <span class="pre">20,</span> <span class="pre">30,</span> <span class="pre">40,</span> <span class="pre">50]</span></code> s</p>
+<p><code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">[1.00,</span> <span class="pre">0.82,</span> <span class="pre">0.68,</span> <span class="pre">0.56,</span> <span class="pre">0.47,</span> <span class="pre">0.40]</span></code> mol/L</p>
+<p>Calculate <span class="math notranslate nohighlight">\(\Delta c/\Delta t\)</span> between each pair of measurements and plot the reaction rate <span class="math notranslate nohighlight">\(-\Delta c/\Delta t\)</span> against the midpoints of the time intervals.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4 – titration</p>
+<p>Use the titration data from this chapter.</p>
+<ol class="arabic simple">
+<li><p>Find the equivalence point with <code class="docutils literal notranslate"><span class="pre">np.diff</span></code>.</p></li>
+<li><p>Explain why the <span class="math notranslate nohighlight">\(x\)</span> values of the derivative should be <span class="math notranslate nohighlight">\((x_i+x_{i+1})/2\)</span>.</p></li>
+<li><p>Find the maximum with <code class="docutils literal notranslate"><span class="pre">np.gradient</span></code>.</p></li>
+<li><p>Compare the estimates and comment on how many digits it is reasonable to report.</p></li>
+</ol>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5 – potential energy</p>
+<p>A simplified potential energy is <span class="math notranslate nohighlight">\(U(r)=r^{-12}-2r^{-6}\)</span>. Use the central difference to find approximately where <span class="math notranslate nohighlight">\(dU/dr=0\)</span>. Check the result by plotting <span class="math notranslate nohighlight">\(U(r)\)</span>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 6 – unevenly spaced data</p>
+<p>Create a small dataset with unevenly spaced time points and a known function. Compare a calculation that incorrectly assumes a constant <span class="math notranslate nohighlight">\(\Delta t\)</span> with <code class="docutils literal notranslate"><span class="pre">np.gradient(y,</span> <span class="pre">t)</span></code>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 7 – measurement noise</p>
+<p>Create synthetic data from <span class="math notranslate nohighlight">\(c(t)=e^{-0.1t}\)</span> and add a small amount of random noise. Differentiate both the noise-free and noisy data numerically. What happens to the noise?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 8 – choose a representation</p>
+<p>Explain in your own words the difference between <span class="math notranslate nohighlight">\(f'(x)\)</span>, <span class="math notranslate nohighlight">\(df/dx\)</span>, <span class="math notranslate nohighlight">\(\Delta y/\Delta x\)</span>, and a numerical approximation to <span class="math notranslate nohighlight">\(df/dx\)</span>.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/numerical_methods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="equations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Equations and root finding</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="numerical_integration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Numerical integration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-derivative">The derivative</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-analysis-a-smaller-step-is-not-always-better">Error analysis: a smaller step is not always better</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-approximations">Other approximations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself">Try it yourself</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-differentiation-of-experimental-data">Numerical differentiation of experimental data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differences-between-neighbouring-measurements">Differences between neighbouring measurements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#np-gradient-a-practical-method"><code class="docutils literal notranslate"><span class="pre">np.gradient</span></code>: a practical method</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-summary">Short summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

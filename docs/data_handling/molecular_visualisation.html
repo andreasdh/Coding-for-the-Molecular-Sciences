@@ -1,0 +1,922 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Molecular visualisation &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/data_handling/molecular_visualisation';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Visualising chemical data" href="visualising_chemical_data.html" />
+    <link rel="prev" title="Chemical libraries" href="chemical_libraries.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/equations.html">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/data_handling/molecular_visualisation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Molecular visualisation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-molecular-structures-come-from">Where do molecular structures come from?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-molecules-with-rdkit">Small molecules with RDKit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-a-structural-formula">Draw a structural formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#several-molecules-in-one-figure">Several molecules in one figure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlight-a-structural-pattern">Highlight a structural pattern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-possible-3d-conformer">Generate a possible 3D conformer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proteins-with-nglview">Proteins with nglview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-parts-of-a-structure">Select parts of a structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-surfaces">Molecular surfaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-representation">Change representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-images">Static images</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-simulations">Visualising simulations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#division-of-labour-between-the-libraries">Division of labour between the libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="molecular-visualisation">
+<h1>Molecular visualisation<a class="headerlink" href="#molecular-visualisation" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this topic, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>draw one or more small molecules as structural formulae with RDKit</p></li>
+<li><p>highlight selected atoms or structural patterns in a molecular drawing</p></li>
+<li><p>generate a possible three-dimensional conformer from a SMILES string and explain the limitations of the model</p></li>
+<li><p>display proteins with <code class="docutils literal notranslate"><span class="pre">nglview</span></code> and select specific parts of a structure</p></li>
+<li><p>add molecular surfaces and explain what the surface represents</p></li>
+<li><p>visualise a molecular-dynamics trajectory as an animation</p></li>
+<li><p>choose a representation that fits the chemical question</p></li>
+</ol>
+</div>
+<p>So far, we have mainly represented molecules using text and numbers: SMILES strings, molecular formulae and calculated properties. Visualisation gives us a different kind of information. We can inspect connectivity, molecular shape, functional groups, enzyme active sites and molecular motion.</p>
+<p>A visualisation is a <strong>model</strong>. It emphasises some properties and hides others. A 2D structural formula shows bonding and functional groups clearly but says little about three-dimensional shape. A 3D representation shows shape but can make bond order and some structural details harder to see.</p>
+<p>In this chapter the libraries have different roles:</p>
+<ul class="simple">
+<li><p>RDKit is used for small molecules: SMILES, 2D drawings, substructure patterns and generation of 3D conformers.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nglview</span></code> is used for interactive 3D visualisation of molecules, proteins and simulations.</p></li>
+</ul>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<p>Run the following cell once. <code class="docutils literal notranslate"><span class="pre">nglview</span></code> is a <strong>widget</strong>: the interactive figure is connected to a running Python kernel rather than being an ordinary static image. In VS Code, the widget should appear directly below the code cell.</p>
+<p>Older tutorials sometimes contain extra commands for enabling <code class="docutils literal notranslate"><span class="pre">nglview</span></code> as a notebook extension. These are usually unnecessary in current Jupyter environments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>nglview<span class="w"> </span>rdkit<span class="w"> </span>mdtraj
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="where-do-molecular-structures-come-from">
+<h2>Where do molecular structures come from?<a class="headerlink" href="#where-do-molecular-structures-come-from" title="Permalink to this heading">#</a></h2>
+<p>Small and large molecules are commonly represented in different ways.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Representation</p></th>
+<th class="head"><p>Typical use</p></th>
+<th class="head"><p>What it stores</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SMILES</p></td>
+<td><p>small molecules</p></td>
+<td><p>molecular graph encoded as text</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mol/SDF files</p></td>
+<td><p>small molecules</p></td>
+<td><p>atoms, bonds and optionally coordinates</p></td>
+</tr>
+<tr class="row-even"><td><p>PDB/mmCIF</p></td>
+<td><p>proteins and other macromolecular structures</p></td>
+<td><p>atom identities, residues and measured/modelled coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p>trajectory files</p></td>
+<td><p>molecular dynamics</p></td>
+<td><p>coordinates for many successive frames</p></td>
+</tr>
+</tbody>
+</table>
+<p>A coordinate file is not an unfiltered picture of reality. Protein structures may come from X-ray crystallography, NMR, cryo-EM or prediction, and each method has assumptions and uncertainties. Similarly, a generated conformer is a plausible model, not proof that the molecule adopts exactly that geometry in solution.</p>
+</section>
+<section id="small-molecules-with-rdkit">
+<h2>Small molecules with RDKit<a class="headerlink" href="#small-molecules-with-rdkit" title="Permalink to this heading">#</a></h2>
+<section id="draw-a-structural-formula">
+<h3>Draw a structural formula<a class="headerlink" href="#draw-a-structural-formula" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmiles</span></code> reads a SMILES string and constructs a molecular graph containing atoms, bonds and bond orders.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+
+<span class="n">ethanol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">)</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">ethanol</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">250</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/686faa1dc10c7fd6219e4a4629be122bc287a67223df8d3cda9d003a5d0f2786.png" src="../../_images/686faa1dc10c7fd6219e4a4629be122bc287a67223df8d3cda9d003a5d0f2786.png" />
+</div>
+</div>
+<p>This is a <strong>2D representation</strong>. The positions of the atoms on the page are chosen to make the molecular graph readable; the drawing is not a projection of one experimentally observed 3D conformation.</p>
+</section>
+<section id="several-molecules-in-one-figure">
+<h3>Several molecules in one figure<a class="headerlink" href="#several-molecules-in-one-figure" title="Permalink to this heading">#</a></h3>
+<p>When we want to compare structures, <code class="docutils literal notranslate"><span class="pre">Draw.MolsToGridImage</span></code> is convenient.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smiles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;ethanol&quot;</span><span class="p">:</span> <span class="s2">&quot;CCO&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;acetone&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)C&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;benzene&quot;</span><span class="p">:</span> <span class="s2">&quot;c1ccccc1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aspirin&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)OC1=CC=CC=C1C(=O)O&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
+<span class="n">molecules</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="n">name</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">molecules</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legends</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">280</span><span class="p">,</span> <span class="mi">220</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/9b083e72008412bf197e4a845d7c33e45de1ddd7dd71a009f4fe6bd13b201e2a.png" src="../../_images/9b083e72008412bf197e4a845d7c33e45de1ddd7dd71a009f4fe6bd13b201e2a.png" />
+</div>
+</div>
+</section>
+<section id="highlight-a-structural-pattern">
+<h3>Highlight a structural pattern<a class="headerlink" href="#highlight-a-structural-pattern" title="Permalink to this heading">#</a></h3>
+<p>RDKit can highlight atoms that match a SMARTS pattern. Here we highlight the carboxylic-acid group in aspirin.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aspirin</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="s2">&quot;aspirin&quot;</span><span class="p">])</span>
+<span class="n">carboxylic_acid</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="s2">&quot;C(=O)[OH]&quot;</span><span class="p">)</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">aspirin</span><span class="o">.</span><span class="n">GetSubstructMatch</span><span class="p">(</span><span class="n">carboxylic_acid</span><span class="p">)</span>
+
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">aspirin</span><span class="p">,</span> <span class="n">highlightAtoms</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">match</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/278f0cdbecaa625356f7f4b81beb0a27eb1f829cee0f910d65b726238d1f5028.png" src="../../_images/278f0cdbecaa625356f7f4b81beb0a27eb1f829cee0f910d65b726238d1f5028.png" />
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Check your understanding</p>
+<p>Change the SMARTS pattern so that you highlight the ester group in aspirin instead. Which atoms belong to both visual motifs, if any?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested approach</p>
+<p>An ester can be represented with a pattern such as <code class="docutils literal notranslate"><span class="pre">C(=O)O[#6]</span></code>. Construct it with <code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmarts</span></code>, obtain the match with <code class="docutils literal notranslate"><span class="pre">GetSubstructMatch</span></code>, and pass the atom indices to <code class="docutils literal notranslate"><span class="pre">highlightAtoms</span></code>. Remember that a SMARTS pattern encodes a definition chosen by us; the program is not independently deciding what counts as an ester.</p>
+</div>
+</section>
+<section id="generate-a-possible-3d-conformer">
+<h3>Generate a possible 3D conformer<a class="headerlink" href="#generate-a-possible-3d-conformer" title="Permalink to this heading">#</a></h3>
+<p>A SMILES string describes connectivity. RDKit can generate 3D coordinates by embedding the molecular graph and then optimise the geometry using a molecular-mechanics force field.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AllChem</span>
+
+<span class="n">ethanol_3d</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">))</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">EmbedMolecule</span><span class="p">(</span><span class="n">ethanol_3d</span><span class="p">,</span> <span class="n">randomSeed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">MMFFOptimizeMolecule</span><span class="p">(</span><span class="n">ethanol_3d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can pass the RDKit molecule to <code class="docutils literal notranslate"><span class="pre">nglview</span></code> for interactive viewing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nglview</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nv</span>
+
+<span class="n">ethanol_view</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">show_rdkit</span><span class="p">(</span><span class="n">ethanol_3d</span><span class="p">)</span>
+<span class="n">ethanol_view</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "581da00405bf4dccb153c5426189daa1", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="admonition-important-limitation admonition">
+<p class="admonition-title">Important limitation</p>
+<p>A generated conformer is one plausible low-energy geometry according to the embedding and force-field procedure. Flexible molecules can have many conformers, and solvent, temperature and intermolecular interactions can alter their populations. A single 3D picture should therefore not be described as <em>the</em> structure of a flexible molecule in solution.</p>
+</div>
+</section>
+</section>
+<section id="proteins-with-nglview">
+<h2>Proteins with nglview<a class="headerlink" href="#proteins-with-nglview" title="Permalink to this heading">#</a></h2>
+<p>For macromolecules we will use structures from the Protein Data Bank (PDB). <code class="docutils literal notranslate"><span class="pre">nv.show_pdbid</span></code> downloads and displays a structure by its PDB identifier. The following examples use pepsin (PDB <code class="docutils literal notranslate"><span class="pre">1PSN</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nglview</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nv</span>
+
+<span class="n">pepsin</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">show_pdbid</span><span class="p">(</span><span class="s2">&quot;1PSN&quot;</span><span class="p">)</span>
+<span class="n">pepsin</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "d00b5a9190a54e2d8d2b8bc131e65b7d", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>The default representation is useful for exploring a structure, but a chemically informative figure usually requires a deliberate choice of representation and selection.</p>
+<section id="select-parts-of-a-structure">
+<h3>Select parts of a structure<a class="headerlink" href="#select-parts-of-a-structure" title="Permalink to this heading">#</a></h3>
+<p>We can create a cleaner ribbon representation of the protein.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pepsin_cartoon</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">show_pdbid</span><span class="p">(</span><span class="s2">&quot;1PSN&quot;</span><span class="p">,</span> <span class="n">default_representation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pepsin_cartoon</span><span class="o">.</span><span class="n">add_cartoon</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
+<span class="n">pepsin_cartoon</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+<span class="n">pepsin_cartoon</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7d15bcb246784a8187588c07abd52331", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>A ribbon/cartoon representation emphasises secondary structure and the overall fold. It does <strong>not</strong> show every atom. That is often an advantage when the question concerns protein architecture.</p>
+<p>We can also display selected residues explicitly. Here we show tryptophan side chains as a licorice representation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pepsin_trp</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">show_pdbid</span><span class="p">(</span><span class="s2">&quot;1PSN&quot;</span><span class="p">,</span> <span class="n">default_representation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pepsin_trp</span><span class="o">.</span><span class="n">add_cartoon</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
+<span class="n">pepsin_trp</span><span class="o">.</span><span class="n">add_licorice</span><span class="p">(</span><span class="s2">&quot;TRP&quot;</span><span class="p">)</span>
+<span class="n">pepsin_trp</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="s2">&quot;TRP&quot;</span><span class="p">)</span>
+<span class="n">pepsin_trp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "21dc6e16bed3405e9d774197e2c72521", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Hovering over atoms or residues can help identify names and residue numbers while exploring a structure.</p>
+</section>
+<section id="molecular-surfaces">
+<h3>Molecular surfaces<a class="headerlink" href="#molecular-surfaces" title="Permalink to this heading">#</a></h3>
+<p>A surface representation can help us think about accessibility and overall shape.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pepsin_surface</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">show_pdbid</span><span class="p">(</span><span class="s2">&quot;1PSN&quot;</span><span class="p">,</span> <span class="n">default_representation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pepsin_surface</span><span class="o">.</span><span class="n">add_cartoon</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
+<span class="n">pepsin_surface</span><span class="o">.</span><span class="n">add_surface</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="s2">&quot;protein&quot;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.30</span><span class="p">)</span>
+<span class="n">pepsin_surface</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "55670b6d58164bf5a2e6937c4d9d9f79", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>The surface is a calculated representation based on atomic positions and radii. It is useful for visualising shape and pockets, but it is not an experimental photograph of a hard molecular boundary. Molecules have electron-density distributions, thermal motion and solvent interactions rather than rigid macroscopic surfaces.</p>
+<p>We can apply a surface only to selected residues.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pepsin_glycine</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">show_pdbid</span><span class="p">(</span><span class="s2">&quot;1PSN&quot;</span><span class="p">)</span>
+<span class="n">pepsin_glycine</span><span class="o">.</span><span class="n">add_surface</span><span class="p">(</span><span class="n">selection</span><span class="o">=</span><span class="s2">&quot;GLY&quot;</span><span class="p">,</span> <span class="n">opacity</span><span class="o">=</span><span class="mf">0.40</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;tomato&quot;</span><span class="p">)</span>
+<span class="n">pepsin_glycine</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "a92842d03d2945f680314c2bef8abd33", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+<section id="change-representation">
+<h3>Change representation<a class="headerlink" href="#change-representation" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">default_representation=False</span></code> removes the automatically chosen representation so that we can build the figure ourselves. For example, a ball-and-stick model displays individual atoms and bonds more explicitly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pepsin_ball_and_stick</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">show_pdbid</span><span class="p">(</span><span class="s2">&quot;1PSN&quot;</span><span class="p">,</span> <span class="n">default_representation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pepsin_ball_and_stick</span><span class="o">.</span><span class="n">add_representation</span><span class="p">(</span><span class="s2">&quot;ball+stick&quot;</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
+<span class="n">pepsin_ball_and_stick</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "fbb9261c55b843f78cc50e4dbd6e3bde", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>For an entire protein, ball-and-stick can become visually crowded. This illustrates an important principle: <strong>more detail is not automatically more information</strong>. The best representation depends on the question.</p>
+</section>
+<section id="static-images">
+<h3>Static images<a class="headerlink" href="#static-images" title="Permalink to this heading">#</a></h3>
+<p>Interactive widgets are excellent for exploration, but reports and presentations often need a static image. <code class="docutils literal notranslate"><span class="pre">nglview</span></code> can render the current view.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pepsin_trp</span><span class="o">.</span><span class="n">render_image</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "acf879709c9549c2886f02222467b924", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>The rendered image can also be saved. In some Jupyter environments this operation may depend on browser permissions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pepsin_trp</span><span class="o">.</span><span class="n">download_image</span><span class="p">(</span><span class="s2">&quot;pepsin.png&quot;</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># Higher factor -&gt; higher resolution</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="visualising-simulations">
+<h2>Visualising simulations<a class="headerlink" href="#visualising-simulations" title="Permalink to this heading">#</a></h2>
+<p>So far we have looked at single structures. In a <strong>molecular-dynamics (MD) simulation</strong>, atomic motion is calculated over many small time steps. MD is not required background for the programming chapters, but the example shows why molecular data often consist of more than one structure.</p>
+<p>The result is stored as a <strong>trajectory</strong>: a sequence of coordinate frames representing the system at different times. Trajectories can be used to investigate flexibility, conformational changes and relative motion.</p>
+<p>Here we do not run the simulation itself. We read and visualise an existing demonstration trajectory supplied with <code class="docutils literal notranslate"><span class="pre">nglview</span></code>. The <code class="docutils literal notranslate"><span class="pre">mdtraj</span></code> library reads the trajectory format.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nglview</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mdtraj</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">md</span>
+
+<span class="n">trajectory</span> <span class="o">=</span> <span class="n">md</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">nv</span><span class="o">.</span><span class="n">datafiles</span><span class="o">.</span><span class="n">TRR</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="n">nv</span><span class="o">.</span><span class="n">datafiles</span><span class="o">.</span><span class="n">PDB</span><span class="p">)</span>
+<span class="n">animation</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">show_mdtraj</span><span class="p">(</span><span class="n">trajectory</span><span class="p">,</span> <span class="n">default_representation</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">add_representation</span><span class="p">(</span><span class="s2">&quot;cartoon&quot;</span><span class="p">,</span> <span class="n">selection</span><span class="o">=</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">width</span> <span class="o">=</span> <span class="s2">&quot;600px&quot;</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">height</span> <span class="o">=</span> <span class="s2">&quot;450px&quot;</span>
+<span class="n">animation</span><span class="o">.</span><span class="n">center</span><span class="p">()</span>
+
+<span class="n">animation</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "b9cdf02e2d7f4c98beea53d51b3cbba7", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<p>Use the play button below the widget to animate the frames. The slider lets you inspect individual frames.</p>
+<p>Another common trajectory-analysis library is <code class="docutils literal notranslate"><span class="pre">MDAnalysis</span></code>. A comparable workflow looks like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">MDAnalysis</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mda</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">MDAnalysis.tests.datafiles</span><span class="w"> </span><span class="kn">import</span> <span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span>
+
+<span class="n">universe</span> <span class="o">=</span> <span class="n">mda</span><span class="o">.</span><span class="n">Universe</span><span class="p">(</span><span class="n">PSF</span><span class="p">,</span> <span class="n">DCD</span><span class="p">)</span>
+<span class="n">protein</span> <span class="o">=</span> <span class="n">universe</span><span class="o">.</span><span class="n">select_atoms</span><span class="p">(</span><span class="s2">&quot;protein&quot;</span><span class="p">)</span>
+<span class="n">animation</span> <span class="o">=</span> <span class="n">nv</span><span class="o">.</span><span class="n">show_mdanalysis</span><span class="p">(</span><span class="n">protein</span><span class="p">)</span>
+<span class="n">animation</span>
+</pre></div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Demonstration data are a separate package</p>
+<p><code class="docutils literal notranslate"><span class="pre">MDAnalysis.tests.datafiles</span></code> is not included in the core <code class="docutils literal notranslate"><span class="pre">MDAnalysis</span></code> package. The demonstration files are distributed in <code class="docutils literal notranslate"><span class="pre">MDAnalysisTests</span></code>, which must be installed separately. This is a common source of confusing import errors.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Check your understanding: Look at the motion</p>
+<ol class="arabic simple">
+<li><p>Which parts of the structure move most, and which appear comparatively rigid? What might explain the difference?</p></li>
+<li><p>Add a surface and watch the animation again. Does the surface make the relevant motion easier or harder to see?</p></li>
+<li><p>How many frames are present? Use <code class="docutils literal notranslate"><span class="pre">len(trajectory)</span></code>. If frames were stored every 10 ps, what total time would the trajectory cover?</p></li>
+<li><p>Compare that time with a catalytic cycle that may take microseconds to milliseconds or longer. What practical limitation does this illustrate for molecular-dynamics simulations?</p></li>
+</ol>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested discussion</p>
+<p>Flexible loops and termini often show larger motions than tightly packed secondary-structure elements, although the exact pattern depends on the trajectory. Adding a surface may reveal changes in overall shape but can hide internal motion. A simulation can only sample processes that occur within the time and configuration space it actually explores; a short trajectory cannot by itself demonstrate a much slower event.</p>
+</div>
+</section>
+<section id="division-of-labour-between-the-libraries">
+<h2>Division of labour between the libraries<a class="headerlink" href="#division-of-labour-between-the-libraries" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Library</p></th>
+<th class="head"><p>Main role in this chapter</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>RDKit</p></td>
+<td><p>read SMILES, draw 2D structures, identify structural patterns, generate small-molecule conformers</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">nglview</span></code></p></td>
+<td><p>interactive 3D display of RDKit molecules, PDB structures and trajectories</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mdtraj</span></code></p></td>
+<td><p>read and process molecular-dynamics trajectory files</p></td>
+</tr>
+</tbody>
+</table>
+<p>A useful workflow is:</p>
+<ol class="arabic simple">
+<li><p><strong>Represent or read the structure.</strong> Use RDKit, a PDB structure or a trajectory reader.</p></li>
+<li><p><strong>Decide what you want to show.</strong> Bonds, a functional group, a ligand, a surface or motion?</p></li>
+<li><p><strong>Choose a representation that answers the chemical question.</strong></p></li>
+<li><p><strong>Ask what the figure does not show.</strong> A structural image does not automatically show energy, charge distribution, kinetics or the populations of conformations in solution.</p></li>
+</ol>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 1 — structural formulae with RDKit</p>
+<p>Choose three molecules that illustrate different bonding: one containing only single bonds, one with a double bond and one aromatic molecule. Draw them in the same grid with <code class="docutils literal notranslate"><span class="pre">Draw.MolsToGridImage</span></code>, add names using <code class="docutils literal notranslate"><span class="pre">legends</span></code>, highlight one functional group with a SMARTS pattern, and explain what the 2D drawings reveal and conceal.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2 — an enzyme and its ligand</p>
+<p>Choose a PDB structure of an enzyme solved with a substrate, substrate analogue or inhibitor. Lysozyme with a bound carbohydrate (<code class="docutils literal notranslate"><span class="pre">1HEW</span></code>) is a useful starting point. Display the protein as a cartoon and the ligand as ball-and-stick or licorice. Centre the view on the ligand and identify residues close to it. What chemical question does your representation help answer?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3 — surface versus cartoon</p>
+<p>Display the same protein as (a) cartoon, (b) surface and (c) cartoon plus a semi-transparent surface. For each representation, write one question it helps answer and one important feature it hides.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4 — generated conformers</p>
+<p>Generate a 3D conformer for butane or another flexible molecule with RDKit. Repeat the embedding with several random seeds. Do you always obtain the same geometry? Explain why a single generated conformer should not be called the experimentally observed molecular structure.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5 — trajectory visualisation</p>
+<p>Load the demonstration trajectory with <code class="docutils literal notranslate"><span class="pre">mdtraj</span></code> and <code class="docutils literal notranslate"><span class="pre">nglview</span></code>. Compare a cartoon representation with a surface representation while the trajectory is playing. Which representation makes local flexibility easiest to see? Which makes changes in overall shape easiest to see?</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/data_handling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="chemical_libraries.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Chemical libraries</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="visualising_chemical_data.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Visualising chemical data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-do-molecular-structures-come-from">Where do molecular structures come from?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-molecules-with-rdkit">Small molecules with RDKit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-a-structural-formula">Draw a structural formula</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#several-molecules-in-one-figure">Several molecules in one figure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#highlight-a-structural-pattern">Highlight a structural pattern</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-a-possible-3d-conformer">Generate a possible 3D conformer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proteins-with-nglview">Proteins with nglview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-parts-of-a-structure">Select parts of a structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#molecular-surfaces">Molecular surfaces</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#change-representation">Change representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#static-images">Static images</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualising-simulations">Visualising simulations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#division-of-labour-between-the-libraries">Division of labour between the libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

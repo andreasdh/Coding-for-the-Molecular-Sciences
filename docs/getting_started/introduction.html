@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction: Programming as a Tool in Chemistry &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/getting_started/introduction';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using an Editor: Visual Studio Code" href="vscode.html" />
+    <link rel="prev" title="Coding for the Molecular Sciences" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/equations.html">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/getting_started/introduction.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction: Programming as a Tool in Chemistry</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-programming">Why programming?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tool-for-thinking">A tool for thinking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-chemical-phenomenon-to-program">From chemical phenomenon to program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulations-experiments-on-a-computer">Simulations – experiments on a computer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-measurement-to-knowledge-data-handling">From measurement to knowledge – data handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computers-require-explicit-assumptions">Computers require explicit assumptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-can-write-code-but-who-does-the-scientific-thinking">AI can write code – but who does the scientific thinking?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-a-chemist-need-to-know-about-programming">What does a chemist need to know about programming?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-program-from-concentration-to-ph">A first program – from concentration to pH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-already-know-a-little-programming">If you already know a little programming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-programming-as-a-tool-in-chemistry">
+<h1>Introduction: Programming as a Tool in Chemistry<a class="headerlink" href="#introduction-programming-as-a-tool-in-chemistry" title="Permalink to this heading">#</a></h1>
+<p>Chemistry is an experimental science. We observe, measure, compare, and try to explain why substances behave as they do. Traditionally, the laboratory has been the main arena for this work. There we can mix substances, change the temperature, measure pH, or investigate how quickly a reaction proceeds.</p>
+<p>But not all chemical phenomena can be observed directly. We cannot see how electrons are distributed in a molecule, follow every individual collision between molecules, or wait a few million years for a slow geochemical process to finish. Experiments can also produce such large amounts of data that we need help finding patterns in them. In these situations, the computer can serve as a laboratory, a visualisation tool, and a computational aid.</p>
+<p>Programming gives us a language for telling the computer what to do. In chemistry, however, the main goal is not to create computer programs. The goal is to use programs to ask better questions, investigate chemical relationships, and understand what models and experimental data are telling us.</p>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this chapter, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>explain how programming can be used to explore and understand chemical phenomena</p></li>
+<li><p>explain the relationship between chemical models, simulations, and program code</p></li>
+<li><p>describe how data handling can be used to identify patterns in experimental data</p></li>
+<li><p>discuss some opportunities and limitations of using artificial intelligence as a programming tool</p></li>
+<li><p>read, run, and modify a simple program that performs a chemical calculation</p></li>
+</ol>
+</div>
+<section id="why-programming">
+<h2>Why programming?<a class="headerlink" href="#why-programming" title="Permalink to this heading">#</a></h2>
+<p>A computer is very good at performing simple operations quickly and repeatedly. It can process thousands of measurements, repeat the same calculation for many different temperatures, or calculate how the concentrations of several substances change in small time steps. This is useful because many chemical problems consist precisely of many simple processes acting together.</p>
+<p>Consider, for example, a spectrometer that measures how much light a solution absorbs at several hundred wavelengths. A single measurement is not very difficult to handle, but if we have measurements from many solutions, the amount of information quickly becomes substantial. With a program, we can read all the data, remove or deal with missing values, visualise the spectra, and compare them.</p>
+<p>Or consider a chemical reaction. A rate law describes how quickly the concentration is changing at this moment. If we want to find the concentration one minute from now, we need to investigate how all the small changes accumulate over time. The computer can divide the reaction into many small time steps and update the concentrations at each step.</p>
+<p>The computer does not, however, make chemical judgements on its own. It does not know whether the model is reasonable, whether the units are correct, or whether the result makes chemical sense. We have to decide that.</p>
+<div class="admonition-programming-in-chemistry admonition">
+<p class="admonition-title">Programming in chemistry</p>
+<p>Programming in chemistry means using code to represent, explore, analyse, and visualise chemical phenomena and data.</p>
+</div>
+</section>
+<section id="a-tool-for-thinking">
+<h2>A tool for thinking<a class="headerlink" href="#a-tool-for-thinking" title="Permalink to this heading">#</a></h2>
+<p>Programming is often used to make calculations that we already know how to perform more efficient. That is useful, but programming can also influence how we think about a problem.</p>
+<p>In mathematics, we often describe a relationship with a finished function or equation. Program code, by contrast, must contain a recipe for what should happen, step by step. We therefore have to make our reasoning explicit. If, for example, we want to simulate a chemical reaction, a very simple algorithm might look like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>set the initial concentrations
+
+repeat many times:
+    calculate the reaction rate
+    calculate how much the concentrations change
+    update the concentrations
+</pre></div>
+</div>
+<p>Here we see the chemical process in a different way than in a finished mathematical expression. The new concentration is the old concentration plus a small change. The new concentration is then used to calculate what happens in the next time step. In this way, the chemical system develops in the program in roughly the same way as we imagine the reaction developing over time.</p>
+<p>This does not mean that code always gives better understanding than mathematics. Mathematical expressions, program code, graphs, and molecular models show different aspects of the same phenomenon. The strength lies in being able to move between them and see how they are connected.</p>
+</section>
+<section id="from-chemical-phenomenon-to-program">
+<h2>From chemical phenomenon to program<a class="headerlink" href="#from-chemical-phenomenon-to-program" title="Permalink to this heading">#</a></h2>
+<p>Before we can simulate a chemical system, we need to describe the system with a model. A model is a simplified representation of reality. It includes some properties and leaves out others.</p>
+<p>When we create a program to explore chemistry, we often go through the following process:</p>
+<ol class="arabic simple">
+<li><p><strong>We formulate a question.</strong> How does the reaction rate change with temperature? Why does a protein fold in a particular way?</p></li>
+<li><p><strong>We define the system.</strong> Which particles, compounds, or variables are relevant?</p></li>
+<li><p><strong>We choose or create a model.</strong> The model might, for example, be a rate law, an approximation of the forces between atoms, or a statistical model for experimental data.</p></li>
+<li><p><strong>We translate the model into an algorithm and program code.</strong> The assumptions and operations must then be expressed in a form the computer can follow.</p></li>
+<li><p><strong>We examine the result.</strong> We may obtain numbers, tables, graphs, molecular structures, or an animation of the system.</p></li>
+<li><p><strong>We evaluate and improve the model.</strong> Does the result agree with chemical theory and experimental data? What happens if we change a parameter?</p></li>
+</ol>
+<p>The process therefore does not stop when the program runs without error messages. A program can work perfectly well while still being based on a poor model. The output of the program must therefore be used as a starting point for further chemical thinking.</p>
+<div class="admonition-model admonition">
+<p class="admonition-title">Model</p>
+<p>A model is a simplified representation of a phenomenon or system. A model is based on assumptions and therefore always has a particular range of validity and certain limitations.</p>
+</div>
+</section>
+<section id="simulations-experiments-on-a-computer">
+<h2>Simulations – experiments on a computer<a class="headerlink" href="#simulations-experiments-on-a-computer" title="Permalink to this heading">#</a></h2>
+<p>A simulation is a program that calculates how a model behaves under specified conditions. We can, for example, simulate how molecules move, how a drug binds to a protein, or how the concentration of ozone in the atmosphere changes over time.</p>
+<p>Simulations make it possible to perform numerical experiments. We can change the temperature, the initial concentration, or the strength of an interaction and investigate what happens. If the result is surprising, we can modify the model or examine the system more closely. The computer often gives us rapid feedback, and this movement between questions, results, and new questions can drive the investigation forward.</p>
+<p>It is also possible to investigate systems that are too small, large, fast, slow, expensive, or dangerous for an ordinary laboratory. A simulation can show us a microscopic level that we cannot otherwise observe directly, such as the motion of molecules or the distribution of electrons in a chemical compound.</p>
+<p>A simulation is not, however, a direct window onto reality. It shows how the <strong>model</strong> behaves. If important interactions are missing from the model, they will also be missing from the simulation. Simulations should therefore be compared with chemical theory, experimental results, and other models. They do not necessarily replace laboratory experiments, but they can complement them by making processes visible, suggesting explanations, and providing a basis for new experiments.</p>
+<div class="admonition-simulation admonition">
+<p class="admonition-title">Simulation</p>
+<p>A simulation is a calculation of how a model behaves. The simulation can be used as a numerical experiment in which we change conditions and investigate the consequences.</p>
+</div>
+</section>
+<section id="from-measurement-to-knowledge-data-handling">
+<h2>From measurement to knowledge – data handling<a class="headerlink" href="#from-measurement-to-knowledge-data-handling" title="Permalink to this heading">#</a></h2>
+<p>Experimental data do not explain themselves. Before we can draw a conclusion, we often need to organise, clean, visualise, and analyse the measurements. This may involve:</p>
+<ul class="simple">
+<li><p>reading data from instruments and data files</p></li>
+<li><p>identifying missing or unreasonable values</p></li>
+<li><p>calculating means, standard deviations, and other statistical quantities</p></li>
+<li><p>visualising data with graphs</p></li>
+<li><p>fitting models to measured data points</p></li>
+<li><p>comparing results from several experiments</p></li>
+</ul>
+<p>Programming makes it possible to carry out the same operations systematically and reproducibly. If the analysis is written as code, we can see which choices were made and run the same analysis again. This is particularly important when the data set is large or the analysis consists of many steps.</p>
+<p>Data handling is not merely about finding a function that fits the data points. We must also ask what the variables represent, how uncertain the measurements are, and whether the model has a chemical justification. An excellent mathematical fit is not necessarily a good chemical explanation.</p>
+<div class="admonition-data-handling admonition">
+<p class="admonition-title">Data handling</p>
+<p>Data handling means organising, processing, visualising, and analysing data so that we can investigate patterns and draw well-founded conclusions.</p>
+</div>
+</section>
+<section id="computers-require-explicit-assumptions">
+<h2>Computers require explicit assumptions<a class="headerlink" href="#computers-require-explicit-assumptions" title="Permalink to this heading">#</a></h2>
+<p>When we calculate by hand, we can skip intermediate steps because we understand what we mean. A computer, by contrast, needs precise instructions. Every variable must have a value, every operation must occur in the correct order, and every special case must be handled.</p>
+<p>This can feel cumbersome, but it is also a strength. When we translate a chemical problem into code, we are forced to state what the quantities mean and how they are related. We often discover ambiguities in our own understanding when we try to explain the problem to the computer.</p>
+<p>Error messages and unexpected results are therefore not merely obstacles. They can be clues. Perhaps we have misspelled a variable name, but perhaps we have also forgotten an important chemical process or used a model outside its range of validity. Debugging a program means investigating both the code and the scientific reasoning behind it.</p>
+</section>
+<section id="ai-can-write-code-but-who-does-the-scientific-thinking">
+<h2>AI can write code – but who does the scientific thinking?<a class="headerlink" href="#ai-can-write-code-but-who-does-the-scientific-thinking" title="Permalink to this heading">#</a></h2>
+<p>Generative artificial intelligence (AI) can now create, explain, and correct program code. This lowers the threshold for using programming in chemistry. A chemist does not necessarily need to remember all the syntax or build every program from scratch. AI can, for example, help us read a data file, create a plot, or locate an error in a loop. This can leave us more time for the chemical problem we actually want to investigate.</p>
+<p>This does not mean that understanding programming has become unnecessary. AI can generate code that looks convincing but uses incorrect units, an unsuitable model, or a function that does not do what the AI claims. It can also propose a very complicated solution to a simple problem. If we do not understand what the program is doing, it becomes difficult to decide whether the result is correct.</p>
+<p>The most productive use of AI therefore occurs when we retain control of the problem-solving process ourselves. We should formulate the chemical question, define the system, and evaluate which assumptions are reasonable. AI can then act as a dynamic programming assistant that offers suggestions, explains code, and helps us move forward when we get stuck.</p>
+<div class="admonition-think-first-ask-second-and-then-think-again admonition">
+<p class="admonition-title">Think first, ask second – and then think again</p>
+<p>When you use AI as a programming assistant, you can work like this:</p>
+<ol class="arabic simple">
+<li><p>First explain to yourself what the problem is and what the program should do.</p></li>
+<li><p>Give the AI relevant chemical context, units, and clear constraints.</p></li>
+<li><p>Consider asking for small parts of the program or an explanation rather than necessarily requesting a complete solution.</p></li>
+<li><p>Read and test the code. Change values and investigate whether the result behaves as expected.</p></li>
+<li><p>Evaluate the result using your chemical knowledge. You, not the AI, are responsible for the scientific conclusion.</p></li>
+</ol>
+</div>
+</section>
+<section id="what-does-a-chemist-need-to-know-about-programming">
+<h2>What does a chemist need to know about programming?<a class="headerlink" href="#what-does-a-chemist-need-to-know-about-programming" title="Permalink to this heading">#</a></h2>
+<p>You do not need to become a software developer to benefit from programming in chemistry. But you should be able to:</p>
+<ul class="simple">
+<li><p>read simple code and explain what the most important lines do</p></li>
+<li><p>break a problem into smaller steps</p></li>
+<li><p>recognise variables, conditionals, loops, functions, and data collections</p></li>
+<li><p>run and modify existing programs</p></li>
+<li><p>test whether the code produces reasonable results</p></li>
+<li><p>interpret graphs, numbers, and other results in a chemical context</p></li>
+<li><p>evaluate the assumptions and limitations of a model</p></li>
+<li><p>use documentation, fellow students or colleagues, and AI for help without giving up control of the reasoning</p></li>
+</ul>
+<p>The goal is therefore not to memorise as many commands as possible. The goal is to be able to use program code as part of chemical problem solving. The rest of these pages will give you the tools you need to get started.</p>
+</section>
+<section id="a-first-program-from-concentration-to-ph">
+<h2>A first program – from concentration to pH<a class="headerlink" href="#a-first-program-from-concentration-to-ph" title="Permalink to this heading">#</a></h2>
+<p>Let us begin with a small program that calculates pH from the concentration of hydronium ions, <span class="math notranslate nohighlight">\(\mathrm{H_3O^+}\)</span>. The relationship is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{pH}=-\log_{10}\left[\mathrm{H_3O^+}\right]
+\]</div>
+<p>Here we use the common approximation in which pH is calculated directly from concentration. Strictly speaking, pH is defined in terms of hydronium-ion activity. The difference becomes more important in more concentrated solutions, but we will ignore it in this first example.</p>
+<p>Before you run the program below, try reading it as a recipe:</p>
+<ol class="arabic simple">
+<li><p>The program imports a mathematical function for calculating logarithms.</p></li>
+<li><p>The concentration of hydronium ions is stored in a variable.</p></li>
+<li><p>The program uses the model above to calculate pH.</p></li>
+<li><p>The result is printed.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">log10</span>
+
+<span class="n">h3o_concentration</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># mol/L</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">log10</span><span class="p">(</span><span class="n">h3o_concentration</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;pH =&quot;</span><span class="p">,</span> <span class="n">pH</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pH = 3.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The program gives pH = 3.0. But the interesting point is not only that the program finds the answer. We can use the program to investigate the relationship between concentration and pH.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise</p>
+<ol class="arabic simple">
+<li><p>What do you think happens to the pH if the concentration of <span class="math notranslate nohighlight">\(\mathrm{H_3O^+}\)</span> becomes ten times smaller?</p></li>
+<li><p>Change <code class="docutils literal notranslate"><span class="pre">h3o_concentration</span></code> to <code class="docutils literal notranslate"><span class="pre">0.0001</span></code> mol/L and run the program again. Did you get the result you expected?</p></li>
+<li><p>Try several concentrations. What pattern do you see?</p></li>
+<li><p>Modify the program so that it calculates the concentration of <span class="math notranslate nohighlight">\(\mathrm{H_3O^+}\)</span> from a given pH. You can start from the relationship <span class="math notranslate nohighlight">\(\left[\mathrm{H_3O^+}\right]=10^{-\mathrm{pH}}\)</span>.</p></li>
+</ol>
+</div>
+<p>You can also try the program in the online editor below. Run the program using the button in the upper left, change values, and see what happens.</p>
+<iframe src="../../basthon/?from=examples/ph_intro.py" width="100%" height="600" frameborder="0" title="Interactive Python editor for pH calculation" loading="lazy" allowfullscreen></iframe><section id="if-you-already-know-a-little-programming">
+<h3>If you already know a little programming<a class="headerlink" href="#if-you-already-know-a-little-programming" title="Permalink to this heading">#</a></h3>
+<p>Try extending the program above so that it:</p>
+<ol class="arabic simple">
+<li><p>determines whether a solution is acidic, basic, or neutral from its pH.</p></li>
+<li><p>calculates pH for several concentrations using a loop. Can you also visualise the relationship?</p></li>
+</ol>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>Programming can be used to automate calculations, but its most important role in chemistry is broader than that. With code, we can make models explicit, simulate systems that we cannot observe directly, and find patterns in large amounts of experimental data. Programming also gives us new representations of chemical phenomena and can therefore help us see connections between mathematics, the microscopic level, and what we observe in the laboratory.</p>
+<p>AI makes it easier to create and understand code, including for scientists whose main interest is chemistry. But scientific responsibility cannot be handed over to either the computer or the AI. We still have to ask the questions, choose and evaluate the models, and decide whether the results make chemical sense.</p>
+<p>In the next chapters, we will look more closely at the basic building blocks of programming. Along the way, we will continually use them to investigate mathematical and chemical relationships.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/getting_started"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Coding for the Molecular Sciences</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="vscode.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using an Editor: Visual Studio Code</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-programming">Why programming?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tool-for-thinking">A tool for thinking</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-chemical-phenomenon-to-program">From chemical phenomenon to program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulations-experiments-on-a-computer">Simulations – experiments on a computer</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-measurement-to-knowledge-data-handling">From measurement to knowledge – data handling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computers-require-explicit-assumptions">Computers require explicit assumptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-can-write-code-but-who-does-the-scientific-thinking">AI can write code – but who does the scientific thinking?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-does-a-chemist-need-to-know-about-programming">What does a chemist need to know about programming?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-program-from-concentration-to-ph">A first program – from concentration to pH</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#if-you-already-know-a-little-programming">If you already know a little programming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

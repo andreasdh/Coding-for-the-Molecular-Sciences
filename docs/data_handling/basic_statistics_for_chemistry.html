@@ -1,0 +1,1154 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Descriptive statistics: measurements, variation and uncertainty &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/data_handling/basic_statistics_for_chemistry';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Calibration and statistical inference" href="calibration_and_statistical_inference.html" />
+    <link rel="prev" title="Reading and cleaning chemical data" href="reading_and_cleaning_chemical_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/equations.html">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/data_handling/basic_statistics_for_chemistry.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Descriptive statistics: measurements, variation and uncertainty</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-have-we-measured">What have we measured?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-are-the-measurements">Where are the measurements?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#median">Median</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles-positions-in-a-distribution">Percentiles: positions in a distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-do-the-data-vary">How much do the data vary?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#range">Range</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interquartile-range">Interquartile range</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation">Standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-standard-deviation">Relative standard deviation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-should-we-use-when">What should we use when?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-spread-to-uncertainty-in-the-mean">From spread to uncertainty in the mean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-mean">Confidence interval for the mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-95">Why 95%?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-standard-error-to-an-interval">From the standard error to an interval</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-interval">Interpreting the interval</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-and-rounding">Reporting and rounding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-makes-a-confidence-interval-narrower-or-wider">What makes a confidence interval narrower or wider?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-can-we-use-this-interval">When can we use this interval?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-bars-with-standard-deviation">Error bars with standard deviation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-with-pandas">Statistics with Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-summary">Short summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="descriptive-statistics-measurements-variation-and-uncertainty">
+<h1>Descriptive statistics: measurements, variation and uncertainty<a class="headerlink" href="#descriptive-statistics-measurements-variation-and-uncertainty" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this topic, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>explain why repeated chemical measurements vary</p></li>
+<li><p>choose between the mean and median in simple chemical situations</p></li>
+<li><p>explain what percentiles and the interquartile range tell us</p></li>
+<li><p>use standard deviation and relative standard deviation to describe precision</p></li>
+<li><p>distinguish between standard deviation, standard error and a confidence interval</p></li>
+<li><p>calculate and interpret a 95% confidence interval for a mean</p></li>
+</ol>
+</div>
+<p>Repeated chemical measurements almost never give exactly the same result. Suppose we measure the iron concentration of the same solution five times:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measurements_mg_L</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.12</span><span class="p">,</span> <span class="mf">5.08</span><span class="p">,</span> <span class="mf">5.15</span><span class="p">,</span> <span class="mf">5.10</span><span class="p">,</span> <span class="mf">5.13</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The differences are small, but real. They may arise from instrument noise, small differences in volume or temperature, and variation in sample preparation. Statistics helps us describe that variation and assess what the measurements collectively tell us.</p>
+<p>We will repeatedly return to two questions:</p>
+<ol class="arabic simple">
+<li><p><strong>Where are the measurements centred?</strong> We can describe this using the mean or median.</p></li>
+<li><p><strong>How much do they vary?</strong> We can describe this using the standard deviation or interquartile range.</p></li>
+</ol>
+<p>The most useful quantities depend on how the data were generated.</p>
+<section id="what-have-we-measured">
+<h2>What have we measured?<a class="headerlink" href="#what-have-we-measured" title="Permalink to this heading">#</a></h2>
+<p>Two common situations in chemistry are worth distinguishing:</p>
+<ul class="simple">
+<li><p><strong>Repeated measurements of the same sample.</strong> Mean and standard deviation are often natural summaries when the variation is reasonably symmetric.</p></li>
+<li><p><strong>Measurements from many different samples.</strong> Concentrations in environmental, clinical or geological samples may be strongly skewed. Median and interquartile range may then describe the distribution more clearly.</p></li>
+</ul>
+<p>These are useful starting points rather than automatic rules. Always inspect the data and consider the sampling process.</p>
+</section>
+<section id="where-are-the-measurements">
+<h2>Where are the measurements?<a class="headerlink" href="#where-are-the-measurements" title="Permalink to this heading">#</a></h2>
+<section id="mean">
+<h3>Mean<a class="headerlink" href="#mean" title="Permalink to this heading">#</a></h3>
+<div class="admonition-mean admonition">
+<p class="admonition-title">Mean</p>
+<p>The arithmetic mean is the sum of the observations divided by the number of observations.</p>
+</div>
+<div class="math notranslate nohighlight">
+\[
+\bar{x}=\frac{x_1+x_2+\cdots+x_n}{n}.
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean: 5.116 mg/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>The mean is 5.116 mg/L. It uses information from every observation, which is useful for repeated measurements of one homogeneous sample. The same property also makes it sensitive to unusually high or low values. A single pipetting error can shift the mean noticeably.</p>
+</section>
+<section id="median">
+<h3>Median<a class="headerlink" href="#median" title="Permalink to this heading">#</a></h3>
+<div class="admonition-median admonition">
+<p class="admonition-title">Median</p>
+<p>The median is the middle value after the observations have been sorted. If the number of observations is even, the median is the mean of the two middle values.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Median: </span><span class="si">{</span><span class="n">median</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Median: 5.120 mg/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>The median is less affected by extreme values. It is therefore often useful for skewed distributions or datasets containing a few very high or low observations.</p>
+<p>For example, nitrate concentrations measured in many streams may be low in most locations but much higher close to a few agricultural areas. The median may then describe a typical stream more meaningfully than the mean.</p>
+<div class="tip admonition">
+<p class="admonition-title">Check your understanding</p>
+<p>Compare these datasets:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">measurements_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.02</span><span class="p">,</span> <span class="mf">10.05</span><span class="p">,</span> <span class="mf">9.98</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">10.04</span><span class="p">])</span>
+<span class="n">measurements_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">10.02</span><span class="p">,</span> <span class="mf">10.05</span><span class="p">,</span> <span class="mf">9.98</span><span class="p">,</span> <span class="mf">10.01</span><span class="p">,</span> <span class="mf">10.42</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">measurements</span> <span class="ow">in</span> <span class="p">[</span><span class="n">measurements_1</span><span class="p">,</span> <span class="n">measurements_2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">measurements</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Median:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">measurements</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Which summary changes most when the final value changes?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested answer</p>
+<p>The mean changes most because every value enters directly into its calculation. The median remains 10.02 in both datasets. This demonstrates robustness, but it does <strong>not</strong> show that 10.42 should automatically be deleted. The reason for the unusual observation must be investigated.</p>
+</div>
+</section>
+</section>
+<section id="percentiles-positions-in-a-distribution">
+<h2>Percentiles: positions in a distribution<a class="headerlink" href="#percentiles-positions-in-a-distribution" title="Permalink to this heading">#</a></h2>
+<div class="admonition-percentile admonition">
+<p class="admonition-title">Percentile</p>
+<p>A percentile is a boundary in an ordered dataset. The 25th percentile, for example, is a value at or below which approximately 25% of the observations lie.</p>
+</div>
+<ul class="simple">
+<li><p>The 25th percentile is also called the first quartile, <span class="math notranslate nohighlight">\(Q_1\)</span>.</p></li>
+<li><p>The 50th percentile is the median.</p></li>
+<li><p>The 75th percentile is the third quartile, <span class="math notranslate nohighlight">\(Q_3\)</span>.</p></li>
+</ul>
+<p>A percentile is <strong>not</strong> a percentage of the largest value. It describes a position within the distribution. Consider nitrate concentrations from twelve streams:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nitrate_mg_L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="mf">0.42</span><span class="p">,</span> <span class="mf">0.47</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.58</span><span class="p">,</span> <span class="mf">0.61</span><span class="p">,</span>
+    <span class="mf">0.65</span><span class="p">,</span> <span class="mf">0.72</span><span class="p">,</span> <span class="mf">0.85</span><span class="p">,</span> <span class="mf">1.10</span><span class="p">,</span> <span class="mf">1.35</span><span class="p">,</span> <span class="mf">2.80</span><span class="p">,</span>
+<span class="p">])</span>
+
+<span class="n">q1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">,</span> <span class="mi">25</span><span class="p">)</span>
+<span class="n">median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">q3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">,</span> <span class="mi">75</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;25th percentile: </span><span class="si">{</span><span class="n">q1</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Median: </span><span class="si">{</span><span class="n">median</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;75th percentile: </span><span class="si">{</span><span class="n">q3</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25th percentile: 0.54 mg/L
+Median: 0.63 mg/L
+75th percentile: 0.91 mg/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>With a small dataset, a percentile does not always coincide with one measured value. Software may interpolate between observations. Several interpolation conventions exist, so programs can give slightly different numbers for small samples even though the interpretation of the percentile is unchanged.</p>
+<div class="admonition-chemical-use-of-percentiles admonition">
+<p class="admonition-title">Chemical use of percentiles</p>
+<p>Percentiles are useful when describing concentrations across many heterogeneous samples. A 95th percentile for a contaminant, for example, describes a high level exceeded by only about 5% of the observations.</p>
+</div>
+</section>
+<section id="how-much-do-the-data-vary">
+<h2>How much do the data vary?<a class="headerlink" href="#how-much-do-the-data-vary" title="Permalink to this heading">#</a></h2>
+<section id="range">
+<h3>Range<a class="headerlink" href="#range" title="Permalink to this heading">#</a></h3>
+<div class="admonition-range admonition">
+<p class="admonition-title">Range</p>
+<p>The range is the difference between the largest and smallest observation.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Range: </span><span class="si">{</span><span class="n">data_range</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Range: 2.38 mg/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>The range is simple, but it depends on only two observations. One extreme value can therefore dominate it. It is useful for a quick overview but rarely as the only description of spread.</p>
+</section>
+<section id="interquartile-range">
+<h3>Interquartile range<a class="headerlink" href="#interquartile-range" title="Permalink to this heading">#</a></h3>
+<p>The interval from <span class="math notranslate nohighlight">\(Q_1\)</span> to <span class="math notranslate nohighlight">\(Q_3\)</span> contains the middle 50% of the observations.</p>
+<div class="admonition-interquartile-range-iqr admonition">
+<p class="admonition-title">Interquartile range (IQR)</p>
+<p>The interquartile range is</p>
+<div class="math notranslate nohighlight">
+\[IQR=Q_3-Q_1.\]</div>
+<p>It describes the spread of the middle 50% of the data and is less sensitive to extreme observations than the range or standard deviation.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;IQR: </span><span class="si">{</span><span class="n">iqr</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>IQR: 0.37 mg/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>For strongly skewed environmental concentrations, reporting <strong>median + IQR</strong> is often informative because both quantities are relatively robust to a few unusually high values.</p>
+<p>A box plot visualises the median, quartiles and potential outliers according to a plotting rule:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">nitrate_mg_L</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Nitrate concentration (mg/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/2d48c021245d07d6bf501cf4081b829f4b209c2d76a14b8ac47c699670b82788.png" src="../../_images/2d48c021245d07d6bf501cf4081b829f4b209c2d76a14b8ac47c699670b82788.png" />
+</div>
+</div>
+<p>In the conventional Tukey box plot, the whiskers extend to observations within <span class="math notranslate nohighlight">\(1.5\,IQR\)</span> of the quartiles; observations beyond them are drawn separately. These are <strong>potential outliers</strong>, not automatically erroneous measurements. A chemical or experimental reason is needed before excluding a value.</p>
+</section>
+<section id="standard-deviation">
+<h3>Standard deviation<a class="headerlink" href="#standard-deviation" title="Permalink to this heading">#</a></h3>
+<div class="admonition-sample-standard-deviation admonition">
+<p class="admonition-title">Sample standard deviation</p>
+<p>The sample standard deviation describes the typical spread of observations around their mean:</p>
+<div class="math notranslate nohighlight">
+\[
+s=\sqrt{\frac{\sum_{i=1}^{n}(x_i-\bar{x})^2}{n-1}}.
+\]</div>
+</div>
+<p>For experimental replicates we normally use the <strong>sample</strong> standard deviation, with <span class="math notranslate nohighlight">\(n-1\)</span> in the denominator. In NumPy that corresponds to <code class="docutils literal notranslate"><span class="pre">ddof=1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">measurements</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">measurements_mg_L</span><span class="p">)</span>
+<span class="n">standard_deviation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">measurements</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Standard deviation: </span><span class="si">{</span><span class="n">standard_deviation</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard deviation: 0.027 mg/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>The standard deviation has the <strong>same unit as the measurement</strong>. A smaller standard deviation means the replicate values lie closer to their mean and therefore indicates better repeatability under the conditions used.</p>
+<p>Standard deviation is sensitive to large deviations because the differences from the mean are squared. That is useful when the data genuinely follow an approximately symmetric measurement distribution, but less robust for strongly skewed heterogeneous datasets.</p>
+</section>
+<section id="relative-standard-deviation">
+<h3>Relative standard deviation<a class="headerlink" href="#relative-standard-deviation" title="Permalink to this heading">#</a></h3>
+<p>When the magnitude of measurements differs substantially, it can be useful to express the spread relative to the mean.</p>
+<div class="admonition-relative-standard-deviation-rsd admonition">
+<p class="admonition-title">Relative standard deviation (RSD)</p>
+<div class="math notranslate nohighlight">
+\[
+RSD=\frac{s}{\bar{x}}\times100\%.
+\]</div>
+<p>RSD is often used to express analytical precision as a percentage.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>
+<span class="n">rsd</span> <span class="o">=</span> <span class="n">standard_deviation</span> <span class="o">/</span> <span class="n">mean</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RSD: </span><span class="si">{</span><span class="n">rsd</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>RSD: 0.53%
+</pre></div>
+</div>
+</div>
+</div>
+<p>RSD is poorly behaved when the mean is close to zero: a small absolute variation can then produce a very large percentage.</p>
+</section>
+</section>
+<section id="what-should-we-use-when">
+<h2>What should we use when?<a class="headerlink" href="#what-should-we-use-when" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Situation</p></th>
+<th class="head"><p>Useful summaries</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Repeated measurements of one homogeneous sample, roughly symmetric</p></td>
+<td><p>mean + SD</p></td>
+<td><p>repeated titrations or instrumental replicates</p></td>
+</tr>
+<tr class="row-odd"><td><p>Many heterogeneous samples, skewed distribution</p></td>
+<td><p>median + IQR</p></td>
+<td><p>contaminant concentrations across many sites</p></td>
+</tr>
+<tr class="row-even"><td><p>Comparing precision at different signal levels</p></td>
+<td><p>RSD, with care</p></td>
+<td><p>replicate measurements at several concentrations</p></td>
+</tr>
+<tr class="row-odd"><td><p>Quick overview of extremes</p></td>
+<td><p>range</p></td>
+<td><p>screening a small batch of measurements</p></td>
+</tr>
+</tbody>
+</table>
+<p>These are not automatic rules. Always inspect the raw data and how the samples were collected.</p>
+</section>
+<section id="from-spread-to-uncertainty-in-the-mean">
+<h2>From spread to uncertainty in the mean<a class="headerlink" href="#from-spread-to-uncertainty-in-the-mean" title="Permalink to this heading">#</a></h2>
+<p>So far we have described the observations we actually measured. Often we also want to use those observations to estimate an unknown mean.</p>
+<p>This distinction is fundamental:</p>
+<ul class="simple">
+<li><p><strong>Standard deviation (SD)</strong> describes the spread of individual measurements.</p></li>
+<li><p><strong>Standard error (SE)</strong> describes how precisely the sample mean estimates the underlying mean.</p></li>
+</ul>
+<div class="admonition-standard-error-of-the-mean admonition">
+<p class="admonition-title">Standard error of the mean</p>
+<p>For <span class="math notranslate nohighlight">\(n\)</span> independent measurements with sample standard deviation <span class="math notranslate nohighlight">\(s\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+SE=\frac{s}{\sqrt{n}}.
+\]</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>
+<span class="n">standard_error</span> <span class="o">=</span> <span class="n">standard_deviation</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Standard error: </span><span class="si">{</span><span class="n">standard_error</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Standard error: 0.012 mg/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>Why does <span class="math notranslate nohighlight">\(\sqrt{n}\)</span> appear? Imagine repeating the entire experiment many times. Each experiment produces a slightly different sample mean. Means calculated from more independent observations fluctuate less than means calculated from only a few observations. Under the usual assumptions, the standard deviation of those hypothetical sample means is <span class="math notranslate nohighlight">\(s/\sqrt{n}\)</span>.</p>
+<p>The SE therefore becomes smaller as we collect more independent measurements. The SD need not become smaller: individual measurements can remain just as variable even though their mean is estimated more precisely.</p>
+</section>
+<section id="confidence-interval-for-the-mean">
+<h2>Confidence interval for the mean<a class="headerlink" href="#confidence-interval-for-the-mean" title="Permalink to this heading">#</a></h2>
+<p>The mean 5.116 mg/L is our best single estimate from these five measurements. But if we prepared five new samples and repeated the measurements, the new mean would probably be a little different. A confidence interval expresses the uncertainty of the <strong>estimated mean</strong>, not the spread of individual measurements.</p>
+<div class="admonition-confidence-interval admonition">
+<p class="admonition-title">95% confidence interval</p>
+<p>A 95% confidence interval is produced by a procedure designed so that, under its assumptions, approximately 95% of intervals calculated from many repeated experiments would contain the true population mean.</p>
+</div>
+<p>This wording matters. For one interval already calculated from our data, the true mean is fixed; it is not correct in the frequentist interpretation to say that there is a 95% probability that this particular interval contains it. The 95% describes the long-run performance of the <strong>method</strong> used to construct the interval.</p>
+<section id="why-95">
+<h3>Why 95%?<a class="headerlink" href="#why-95" title="Permalink to this heading">#</a></h3>
+<p>90%, 95% and 99% are common choices. A higher confidence level gives a procedure with greater long-run coverage, but the interval becomes wider. There is therefore a trade-off between confidence level and precision.</p>
+<p>95% is a convention, not a law of nature. It is commonly used because it provides a useful compromise in many scientific contexts.</p>
+</section>
+<section id="from-the-standard-error-to-an-interval">
+<h3>From the standard error to an interval<a class="headerlink" href="#from-the-standard-error-to-an-interval" title="Permalink to this heading">#</a></h3>
+<p>If the population standard deviation were known and the sampling distribution were normal, we could use a normal-distribution multiplier. In small chemical datasets, however, we usually estimate the standard deviation from the same measurements. That introduces extra uncertainty.</p>
+<p>We therefore use <strong>Student’s t-distribution</strong>, which has heavier tails than the normal distribution. The required multiplier is called a <strong>t critical value</strong>.</p>
+<p>For a two-sided 95% interval:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x}\pm t_{0.975,\,n-1}\frac{s}{\sqrt{n}}.
+\]</div>
+<p>The degrees of freedom are</p>
+<div class="math notranslate nohighlight">
+\[
+df=n-1.
+\]</div>
+<p>With few measurements, the t critical value is larger. As <span class="math notranslate nohighlight">\(n\)</span> grows, the t-distribution approaches the normal distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+
+<span class="n">measurements</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">5.12</span><span class="p">,</span> <span class="mf">5.08</span><span class="p">,</span> <span class="mf">5.15</span><span class="p">,</span> <span class="mf">5.10</span><span class="p">,</span> <span class="mf">5.13</span><span class="p">])</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">measurements</span><span class="p">)</span>
+<span class="n">standard_deviation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">measurements</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">standard_error</span> <span class="o">=</span> <span class="n">standard_deviation</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+
+<span class="n">degrees_of_freedom</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">t_critical</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mf">0.975</span><span class="p">,</span> <span class="n">degrees_of_freedom</span><span class="p">)</span>
+<span class="n">margin_of_error</span> <span class="o">=</span> <span class="n">t_critical</span> <span class="o">*</span> <span class="n">standard_error</span>
+
+<span class="n">lower</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">-</span> <span class="n">margin_of_error</span>
+<span class="n">upper</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">margin_of_error</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean: </span><span class="si">{</span><span class="n">mean</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;95% CI: </span><span class="si">{</span><span class="n">lower</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">upper</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> mg/L&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean: 5.116 mg/L
+95% CI: 5.082 to 5.150 mg/L
+</pre></div>
+</div>
+</div>
+</div>
+<p>The calculation can be remembered as a chain:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{measurements}\rightarrow s\rightarrow SE\rightarrow t\cdot SE\rightarrow\text{confidence interval}.
+\]</div>
+<p>The interactive example below lets you change the measurements and see how the interval responds.</p>
+<iframe src="../../basthon/?from=examples/statistics_confidence_interval.py" width="100%" height="700" frameborder="0" title="Interactive Python editor for a confidence interval" loading="lazy" allowfullscreen></iframe></section>
+<section id="interpreting-the-interval">
+<h3>Interpreting the interval<a class="headerlink" href="#interpreting-the-interval" title="Permalink to this heading">#</a></h3>
+<p>Imagine repeating the <strong>whole experiment</strong> very many times. Each time we make five new independent measurements and calculate a new 95% confidence interval by exactly the same procedure. The intervals would differ because the measurements differ. In the long run, about 95% of those intervals would contain the true mean if the assumptions are satisfied.</p>
+<p>For our one experiment we can report the interval as a range of values compatible with the data and model at the chosen confidence level. It gives much more information than reporting only the point estimate.</p>
+</section>
+</section>
+<section id="reporting-and-rounding">
+<h2>Reporting and rounding<a class="headerlink" href="#reporting-and-rounding" title="Permalink to this heading">#</a></h2>
+<p>Python calculates many more digits than are scientifically meaningful. Distinguish <strong>calculation precision</strong> from <strong>reporting precision</strong>.</p>
+<p>A useful practice is to round the uncertainty to one or two significant figures and round the mean to the same decimal place. For example, depending on the convention used, the result could be reported in a compact form such as</p>
+<div class="math notranslate nohighlight">
+\[5.116\;\text{mg/L}\quad(95\%\;CI:\;5.082\text{–}5.150\;\text{mg/L}).\]</div>
+<p>Avoid rounding intermediate values aggressively; round when reporting the final result.</p>
+<section id="what-makes-a-confidence-interval-narrower-or-wider">
+<h3>What makes a confidence interval narrower or wider?<a class="headerlink" href="#what-makes-a-confidence-interval-narrower-or-wider" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Larger SD → wider interval.</strong> More variable measurements make the mean less precisely determined.</p></li>
+<li><p><strong>More independent measurements → narrower interval</strong>, because <span class="math notranslate nohighlight">\(SE=s/\sqrt{n}\)</span>.</p></li>
+<li><p><strong>Higher confidence level → wider interval</strong>, because a larger critical value is needed.</p></li>
+<li><p><strong>Fewer measurements → larger t multiplier</strong>, because the estimated SD is less certain.</p></li>
+</ul>
+<p>Collecting more measurements helps only if they provide genuinely new information. Re-reading the same sample under conditions that share the same systematic error does not make that systematic error disappear.</p>
+</section>
+<section id="when-can-we-use-this-interval">
+<h3>When can we use this interval?<a class="headerlink" href="#when-can-we-use-this-interval" title="Permalink to this heading">#</a></h3>
+<p>The simple t-based interval assumes that the observations are independent and that the underlying measurement distribution is reasonably compatible with normality. With very small <span class="math notranslate nohighlight">\(n\)</span>, strong skewness or outliers are difficult to assess, so experimental knowledge is particularly important.</p>
+<p>The interval also addresses <strong>random variation of the mean under the model</strong>. It does not automatically include systematic errors such as an incorrectly calibrated pipette, a biased analytical method or a wrong standard concentration. A narrow confidence interval can therefore coexist with an inaccurate result.</p>
+</section>
+<section id="error-bars-with-standard-deviation">
+<h3>Error bars with standard deviation<a class="headerlink" href="#error-bars-with-standard-deviation" title="Permalink to this heading">#</a></h3>
+<p>If the purpose of error bars is to show the <strong>spread among replicate measurements</strong>, use standard deviation rather than standard error. Suppose we have three replicates for five concentrations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">concentration_uM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">absorbance_replicates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">0.171</span><span class="p">,</span> <span class="mf">0.169</span><span class="p">,</span> <span class="mf">0.172</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.329</span><span class="p">,</span> <span class="mf">0.331</span><span class="p">,</span> <span class="mf">0.328</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.489</span><span class="p">,</span> <span class="mf">0.491</span><span class="p">,</span> <span class="mf">0.487</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.648</span><span class="p">,</span> <span class="mf">0.652</span><span class="p">,</span> <span class="mf">0.650</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.807</span><span class="p">,</span> <span class="mf">0.812</span><span class="p">,</span> <span class="mf">0.809</span><span class="p">],</span>
+<span class="p">])</span>
+
+<span class="n">mean_absorbance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">absorbance_replicates</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sd_absorbance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">absorbance_replicates</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">concentration_uM</span><span class="p">,</span> <span class="n">mean_absorbance</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">sd_absorbance</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Concentration (µmol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d10b8788a39b59080fb22a479f1fe9b2962ec463aae352d724a5c22c7f97ea17.png" src="../../_images/d10b8788a39b59080fb22a479f1fe9b2962ec463aae352d724a5c22c7f97ea17.png" />
+</div>
+</div>
+<p>Here <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> tells NumPy to calculate across the columns of each row: the three replicate values belong to one concentration. The error bars show <strong>SD</strong>, so they describe replicate spread. If the scientific question instead concerned uncertainty in the estimated mean, SE or a confidence interval might be more appropriate. Always state what the error bars represent.</p>
+</section>
+</section>
+<section id="statistics-with-pandas">
+<h2>Statistics with Pandas<a class="headerlink" href="#statistics-with-pandas" title="Permalink to this heading">#</a></h2>
+<p>NumPy is convenient for one or a few measurement series. For a larger structured dataset with many rows and named variables, a Pandas DataFrame is often easier to work with. Pandas provides <code class="docutils literal notranslate"><span class="pre">.mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">.median()</span></code>, <code class="docutils literal notranslate"><span class="pre">.std()</span></code>, <code class="docutils literal notranslate"><span class="pre">.quantile()</span></code> and <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>.</p>
+<p>The following synthetic dataset represents 200 samples with measurements of three metals.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">&quot;iron_mg_L&quot;</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+    <span class="s2">&quot;copper_mg_L&quot;</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">0.80</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+    <span class="s2">&quot;zinc_mg_L&quot;</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mf">1.50</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   iron_mg_L  copper_mg_L  zinc_mg_L
+0   5.024377     0.816879   1.482039
+1   4.916801     0.870374   1.519678
+2   5.060036     0.804529   1.582053
+3   5.075245     0.832197   1.460626
+4   4.843917     0.697491   1.552117
+        iron_mg_L  copper_mg_L   zinc_mg_L
+count  200.000000   200.000000  200.000000
+mean     4.997564     0.801004    1.493188
+std      0.070555     0.050975    0.101651
+min      4.829436     0.671667    1.203547
+25%      4.947474     0.765184    1.421875
+50%      4.995852     0.803022    1.492161
+75%      5.042802     0.831957    1.556259
+max      5.233109     0.945253    1.759767
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Means:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sample standard deviations:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Medians:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Interquartile ranges:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">data</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Means:
+iron_mg_L      4.997564
+copper_mg_L    0.801004
+zinc_mg_L      1.493188
+dtype: float64
+
+Sample standard deviations:
+iron_mg_L      0.070555
+copper_mg_L    0.050975
+zinc_mg_L      0.101651
+dtype: float64
+
+Medians:
+iron_mg_L      4.995852
+copper_mg_L    0.803022
+zinc_mg_L      1.492161
+dtype: float64
+
+Interquartile ranges:
+iron_mg_L      0.095327
+copper_mg_L    0.066772
+zinc_mg_L      0.134385
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pandas calculates these statistics <strong>column by column</strong>. Each column here represents one measured variable, so we obtain one mean, standard deviation and median for each metal.</p>
+<p>This differs from the two-dimensional NumPy replicate example, where we explicitly used <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> because replicates were arranged across each row. In a tidy DataFrame, <strong>each row is normally one observation and each column one variable</strong>, and Pandas methods operate down columns by default.</p>
+<p>Pandas does not replace the statistical concepts. It is simply a convenient way to apply them to larger, labelled datasets.</p>
+</section>
+<section id="short-summary">
+<h2>Short summary<a class="headerlink" href="#short-summary" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Mean and SD are often useful for repeated measurements of the same sample.</p></li>
+<li><p>Median and IQR are more robust and are often useful for skewed distributions across heterogeneous samples.</p></li>
+<li><p>SD describes the spread of individual observations.</p></li>
+<li><p>SE describes the precision of a sample mean and decreases approximately as <span class="math notranslate nohighlight">\(1/\sqrt{n}\)</span>.</p></li>
+<li><p>A t-based confidence interval combines the estimated mean, SE and a critical t value.</p></li>
+<li><p>A 95% confidence interval refers to the long-run coverage of the interval procedure, not a 95% probability assigned to one fixed interval after it has been calculated.</p></li>
+<li><p>Statistical summaries must always be interpreted together with the raw data and experimental design.</p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3.1 — percentiles</p>
+<p>Use the nitrate dataset from the chapter. Calculate the 10th, 25th, 50th, 75th and 90th percentiles. Explain in words what the 90th percentile means.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3.2 — mean or median?</p>
+<p>Create a copy of the nitrate dataset in which the largest value is changed from 2.80 to 8.00 mg/L. Compare mean, median, SD and IQR before and after the change. Which quantities are most robust?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3.3 — SD and RSD</p>
+<p>Two methods give replicate results of approximately 0.50 mg/L and 50 mg/L, respectively. Construct example datasets with the same RSD but different absolute SDs. Explain why both absolute and relative precision can matter.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3.4 — standard error</p>
+<p>For the iron measurements, calculate the SE for <span class="math notranslate nohighlight">\(n=5\)</span>. Then imagine the same SD with <span class="math notranslate nohighlight">\(n=20\)</span>. By what factor does the SE change? Why does increasing <span class="math notranslate nohighlight">\(n\)</span> not necessarily improve accuracy?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3.5 — confidence interval</p>
+<p>Calculate 90%, 95% and 99% confidence intervals for the iron mean. Compare their widths and explain the trade-off.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3.6 — interpretation</p>
+<p>Evaluate the statement: “There is a 95% probability that the true concentration lies inside the 95% confidence interval we just calculated.” Rewrite it using a correct frequentist interpretation.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3.7 — error bars</p>
+<p>Use the replicate UV–Vis data to plot mean absorbance with SD error bars. Then calculate SE error bars. Explain why the two figures answer different questions.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3.8 — Pandas</p>
+<p>Extend the 200-row DataFrame with a fourth synthetic analyte. Use <code class="docutils literal notranslate"><span class="pre">describe</span></code>, <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">median</span></code>, <code class="docutils literal notranslate"><span class="pre">std</span></code> and <code class="docutils literal notranslate"><span class="pre">quantile</span></code> to summarise it. Introduce a few unusually high values and compare which summaries change most.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/data_handling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="reading_and_cleaning_chemical_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Reading and cleaning chemical data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="calibration_and_statistical_inference.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Calibration and statistical inference</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-have-we-measured">What have we measured?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-are-the-measurements">Where are the measurements?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean">Mean</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#median">Median</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#percentiles-positions-in-a-distribution">Percentiles: positions in a distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-much-do-the-data-vary">How much do the data vary?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#range">Range</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interquartile-range">Interquartile range</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-deviation">Standard deviation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-standard-deviation">Relative standard deviation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-should-we-use-when">What should we use when?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-spread-to-uncertainty-in-the-mean">From spread to uncertainty in the mean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confidence-interval-for-the-mean">Confidence interval for the mean</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-95">Why 95%?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-standard-error-to-an-interval">From the standard error to an interval</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpreting-the-interval">Interpreting the interval</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reporting-and-rounding">Reporting and rounding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-makes-a-confidence-interval-narrower-or-wider">What makes a confidence interval narrower or wider?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#when-can-we-use-this-interval">When can we use this interval?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-bars-with-standard-deviation">Error bars with standard deviation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#statistics-with-pandas">Statistics with Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-summary">Short summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

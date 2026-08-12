@@ -1,0 +1,256 @@
+[
+  {
+    "question": "Which values are printed?",
+    "code": "for i in range(5, 1, -1):\n    print(i)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "1 2 3 4", "correct": false, "feedback": "Incorrect. `range` takes start, stop, and step, and the step is negative here."},
+      {"answer": "4 3 2 1", "correct": false, "feedback": "Incorrect. The start value is included, while the stop value is excluded."},
+      {"answer": "5 4 3 2", "correct": true, "feedback": "Correct. The range runs backwards from 5 down to, but not including, 1."},
+      {"answer": "2 3 4 5", "correct": false, "feedback": "Incorrect. A step of -1 makes the values decrease."},
+      {"answer": "1 2 3 4 5", "correct": false, "feedback": "Incorrect. The values decrease, and the stop value is excluded."},
+      {"answer": "5 4 3 2 1", "correct": false, "feedback": "Incorrect. The stop value, 1, is not included."}
+    ]
+  },
+  {
+    "question": "What does this program do?",
+    "code": "a = 1\nwhile a < 11:\n    a += 2\n    print(a)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "It prints all odd integers from 3 through 11.", "correct": true, "feedback": "Correct. `a` is increased before it is printed, so 1 is never printed and the final output is 11."},
+      {"answer": "It prints all odd integers from 1 through 11.", "correct": false, "feedback": "Incorrect. `a` is increased before the print statement, so the first output is 3."},
+      {"answer": "It prints all odd integers from 1 up to, but not including, 11.", "correct": false, "feedback": "Incorrect. Check both the first and final values that are actually printed."},
+      {"answer": "It prints all odd integers from 3 up to, but not including, 11.", "correct": false, "feedback": "Incorrect. When `a` is 9 at the condition check, the loop runs once more and prints 11."}
+    ]
+  },
+  {
+    "question": "What can replace ??? so that the program does not print `b` indefinitely?",
+    "code": "i = 0\nb = 2\nwhile i < 10:\n    print(b)\n    ???",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "i = i + 1", "correct": true, "feedback": "Correct. `i` increases on every iteration and the loop stops after ten printed values."},
+      {"answer": "b = b + 1", "correct": false, "feedback": "Incorrect. The continuation condition depends on `i`, not on `b`."},
+      {"answer": "stop()", "correct": false, "feedback": "Incorrect. Python has no `stop()` function for this purpose. `break` can terminate a loop."},
+      {"answer": "i = 10", "correct": true, "feedback": "Correct, although this makes the loop stop after only one printed value."},
+      {"answer": "b = 10", "correct": false, "feedback": "Incorrect. The condition tests `i`."},
+      {"answer": "stop_while()", "correct": false, "feedback": "Incorrect. Python has no `stop_while()` function."}
+    ]
+  },
+  {
+    "question": "What is the main difference between a `for` loop and a `while` loop?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "We usually do not know in advance how many times a `for` loop will run; it continues until a condition is met. A `while` loop runs a specified number of times.", "correct": false, "feedback": "Incorrect. This is the reverse of the usual distinction."},
+      {"answer": "We often do not know in advance how many times a `while` loop will run; it continues while a condition is true. A `for` loop is commonly used to iterate over a specified sequence or number of values.", "correct": true, "feedback": "Correct. `while` is condition-controlled, while `for` is commonly used as a counting or collection loop."},
+      {"answer": "They always do exactly the same thing and differ only in syntax.", "correct": false, "feedback": "Incorrect. Many tasks can be written either way, but the structures express different kinds of repetition."},
+      {"answer": "A `for` loop checks a condition on every step, whereas a `while` loop does not.", "correct": false, "feedback": "Incorrect. A `while` loop explicitly checks its condition before every iteration."}
+    ]
+  },
+  {
+    "question": "Which program prints 1, 2, 3, 4, 5, and 6, one number per line?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "index = 0\nwhile index < 6:\n    print(index)\n    index = index + 1", "correct": false, "feedback": "Incorrect. Check the first number that is printed."},
+      {"answer": "index = 0\nwhile index < 6:\n    index = index + 1\n    print(index)", "correct": true, "feedback": "Correct. `index` is increased before it is printed, giving 1 through 6."},
+      {"answer": "index = 1\nwhile index < 6:\n    print(index)\n    index = index + 1", "correct": false, "feedback": "Incorrect. Check the final number that is printed."},
+      {"answer": "index = 0\nwhile index <= 6:\n    index = index + 1\n    print(index)", "correct": false, "feedback": "Incorrect. This also prints 7."}
+    ]
+  },
+  {
+    "question": "What is the output from this program?",
+    "code": "i = 0\ntotal = 0\nwhile total < 0:\n    i = i - 1\n    total = total - i\n    print(i, total)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "It produces an infinite loop.", "correct": false, "feedback": "Incorrect. Is the loop condition true even once?"},
+      {"answer": "-1 1", "correct": false, "feedback": "Incorrect. The loop never begins."},
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. The syntax is valid."},
+      {"answer": "No output", "correct": true, "feedback": "Correct. `total` begins at 0, and 0 is not less than 0."}
+    ]
+  },
+  {
+    "question": "Which number or numbers are printed?",
+    "code": "number = 5\nwhile number > 2:\n    number = number - 1\n    print(number)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "4", "correct": false, "feedback": "Incorrect. The print statement is inside the loop, so it runs more than once."},
+      {"answer": "2", "correct": false, "feedback": "Incorrect. More than one value is printed."},
+      {"answer": "4 3 2", "correct": true, "feedback": "Correct. The loop runs three times and prints after each decrement."},
+      {"answer": "4 3", "correct": false, "feedback": "Incorrect. When the value is 3, the condition is still true and one more iteration runs."},
+      {"answer": "3", "correct": false, "feedback": "Incorrect. The print statement is inside the loop."}
+    ]
+  },
+  {
+    "question": "Which number or numbers are printed?",
+    "code": "number = 5\nwhile number > 2:\n    number = number - 1\nprint(number)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "4", "correct": false, "feedback": "Incorrect. Only the final value is printed."},
+      {"answer": "2", "correct": true, "feedback": "Correct. The print statement is outside the loop, so only the final value is printed."},
+      {"answer": "4 3 2", "correct": false, "feedback": "Incorrect. The print statement is outside the loop and runs once."},
+      {"answer": "4 3", "correct": false, "feedback": "Incorrect. The print statement is outside the loop and runs once."},
+      {"answer": "3", "correct": false, "feedback": "Incorrect. The loop continues until `number` is no longer greater than 2."}
+    ]
+  },
+  {
+    "question": "What is the output from the following program?",
+    "code": "total = 0\nnumber = 2\nfor i in range(3):\n    total = total + number\n    number = number + 3\nprint(total)",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 15, "correct": true, "feedback": "Correct. The values 2, 5, and 8 are added."},
+      {"type": "value", "value": 11, "correct": false, "feedback": "Incorrect. 11 is the final value of `number`, not the accumulated total."},
+      {"type": "value", "value": 7, "correct": false, "feedback": "Incorrect. The loop runs once more."},
+      {"type": "value", "value": 2, "correct": false, "feedback": "Incorrect. `total` changes during the loop."},
+      {"type": "value", "value": 3, "correct": false, "feedback": "Incorrect. `number`, not `i`, is added to `total`."},
+      {"type": "default", "feedback": "Incorrect. Write down the values of `total` and `number` after every iteration."}
+    ]
+  },
+  {
+    "question": "Which pair of values gives the output 6, 9, 12, 15?",
+    "code": "number = ___\nwhile number <= ___:\n    print(number * 3)\n    number = number + 1",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "2 and 5", "correct": true, "feedback": "Correct. `number` runs from 2 through 5, so the printed triple values are 6, 9, 12, and 15."},
+      {"answer": "2 and 6", "correct": false, "feedback": "Incorrect. This would also print 18."},
+      {"answer": "1 and 5", "correct": false, "feedback": "Incorrect. This would begin with 3."},
+      {"answer": "1 and 6", "correct": false, "feedback": "Incorrect. This would include both 3 and 18."},
+      {"answer": "None of these pairs", "correct": false, "feedback": "Incorrect. One pair gives exactly the requested output."}
+    ]
+  },
+  {
+    "question": "What is printed when this program runs?",
+    "code": "cell_culture = 150\nwhile cell_culture <= 300:\n    cell_culture = cell_culture * 2\nprint(cell_culture)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "300", "correct": false, "feedback": "Incorrect. The condition uses `<=`, so the loop also runs when the culture is exactly 300."},
+      {"answer": "600", "correct": true, "feedback": "Correct. 150 → 300 → 600, after which the condition is false."},
+      {"answer": "150 300 600", "correct": false, "feedback": "Incorrect. The print statement is outside the loop."},
+      {"answer": "300 600", "correct": false, "feedback": "Incorrect. The print statement is outside the loop."},
+      {"answer": "150", "correct": false, "feedback": "Incorrect. The value is doubled inside the loop."}
+    ]
+  },
+  {
+    "question": "What does this program do?",
+    "code": "total = 0\nfor number in range(10):\n    total = total + (number + 1)\nprint(total)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "It sums all integers from 1 through 10.", "correct": true, "feedback": "Correct. `range(10)` gives 0 through 9, and 1 is added to each value before accumulation."},
+      {"answer": "It sums all integers from 1 through 9.", "correct": false, "feedback": "Incorrect. `range(10)` contains ten values, each shifted by 1."},
+      {"answer": "It sums all integers from 0 through 10.", "correct": false, "feedback": "Incorrect. Zero is never added because the program accumulates `number + 1`."},
+      {"answer": "It sums all integers from 1 through 11.", "correct": false, "feedback": "Incorrect. The largest value in `range(10)` is 9."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "for n in range(1, 10):\n    print(\"n\")",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "1 2 3 4 5 6 7 8 9", "correct": false, "feedback": "Incorrect. `\"n\"` is a string, not the variable `n`."},
+      {"answer": "1 2 3 4 5 6 7 8 9 10", "correct": false, "feedback": "Incorrect. Notice both the quotation marks and the excluded stop value in `range`."},
+      {"answer": "0 1 2 3 4 5 6 7 8 9", "correct": false, "feedback": "Incorrect. `range(1, 10)` begins at 1, but in any case the program prints a string."},
+      {"answer": "n n n n n n n n n", "correct": true, "feedback": "Correct. The quoted `\"n\"` is a string, so the value of the variable is not printed."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "for n in range(1, 10):\n    print(str(n))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "1 2 3 4 5 6 7 8 9", "correct": true, "feedback": "Correct. `str(n)` converts each numerical value of `n` to text before printing."},
+      {"answer": "1 2 3 4 5 6 7 8 9 10", "correct": false, "feedback": "Incorrect. The stop value is excluded."},
+      {"answer": "0 1 2 3 4 5 6 7 8 9", "correct": false, "feedback": "Incorrect. `range(1, 10)` starts at 1."},
+      {"answer": "n n n n n n n n n", "correct": false, "feedback": "Incorrect. `str(n)` converts the value of `n`; it does not create the letter n."}
+    ]
+  },
+  {
+    "question": "What can go in the blank to produce 1 of 5, 2 of 5, 3 of 5, 4 of 5, and 5 of 5?",
+    "code": "for n in range(5):\n    print(____________)",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "n + 1, of 5", "correct": false, "feedback": "Incorrect. `of 5` must be quoted if it is text."},
+      {"answer": "n + 1 of 5", "correct": false, "feedback": "Incorrect. This is not valid Python."},
+      {"answer": "n + 1, \"of\", 5", "correct": true, "feedback": "Correct. `print` can take several comma-separated arguments."},
+      {"answer": "n + 1, \"of 5\"", "correct": true, "feedback": "Correct. A number and a string can be separate arguments to `print`."},
+      {"answer": "n + 1 + \" of 5\"", "correct": false, "feedback": "Incorrect. An integer and a string cannot be concatenated directly with `+`."},
+      {"answer": "str(n + 1) + \" of 5\"", "correct": true, "feedback": "Correct. Both operands are strings after the conversion."}
+    ]
+  },
+  {
+    "question": "What is the sum of all values printed by this program?",
+    "code": "number_list = [1, 4, -1, 0, 8, 1]\nfor number in number_list:\n    if number < 0:\n        print(number)\n    else:\n        print(number * -1)",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": -15, "correct": true, "feedback": "Correct. The printed values are -1, -4, -1, 0, -8, and -1."},
+      {"type": "value", "value": 15, "correct": false, "feedback": "Incorrect. Check the signs."},
+      {"type": "value", "value": -13, "correct": false, "feedback": "Incorrect. The original -1 is printed unchanged, not converted to +1."},
+      {"type": "default", "feedback": "Incorrect. Write down every value that is actually printed and then add them."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "a = 0\nfor i in range(4):\n    for j in range(2, 5, 2):\n        a += i + j\nprint(a)",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 36, "correct": true, "feedback": "Correct. The inner loop uses `j = 2` and `j = 4`, so each outer iteration adds `2*i + 6`."},
+      {"type": "value", "value": 18, "correct": false, "feedback": "Incorrect. The inner loop runs twice for every value of `i`."},
+      {"type": "default", "feedback": "Incorrect. First determine the values generated by `range(2, 5, 2)`."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "for atom in \"H2O\":\n    print(atom)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "H, 2, and O on separate lines", "correct": true, "feedback": "Correct. Iterating over a string visits one character at a time."},
+      {"answer": "H2O on one line", "correct": false, "feedback": "Incorrect. The loop runs once for every character."},
+      {"answer": "atom, atom, atom", "correct": false, "feedback": "Incorrect. `atom` is the variable holding the current character and is not quoted in the print statement."},
+      {"answer": "An error, because strings cannot be iterated over", "correct": false, "feedback": "Incorrect. Strings are iterable in Python."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "for i in range(6):\n    if i == 3:\n        break\n    print(i)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "0 1 2", "correct": true, "feedback": "Correct. `break` terminates the entire loop immediately, before 3 is printed."},
+      {"answer": "0 1 2 4 5", "correct": false, "feedback": "Incorrect. `continue` skips one iteration; `break` terminates the loop."},
+      {"answer": "0 1 2 3", "correct": false, "feedback": "Incorrect. `break` runs before the print statement on that iteration."},
+      {"answer": "0 1 2 3 4 5", "correct": false, "feedback": "Incorrect. `break` stops the loop."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "for i in range(6):\n    if i % 2 == 0:\n        continue\n    print(i)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "1 3 5", "correct": true, "feedback": "Correct. `continue` moves directly to the next iteration, so even values are never printed."},
+      {"answer": "0 2 4", "correct": false, "feedback": "Incorrect. These are exactly the values that are skipped."},
+      {"answer": "0", "correct": false, "feedback": "Incorrect. `continue` does not terminate the loop."},
+      {"answer": "0 1 2 3 4 5", "correct": false, "feedback": "Incorrect. Every even-numbered iteration skips the print statement."}
+    ]
+  },
+  {
+    "question": "A sample contains 400 mg of a radioactive isotope. How many half-lives pass before this program stops?",
+    "code": "mass = 400\nnumber_of_halvings = 0\nwhile mass > 50:\n    mass = mass / 2\n    number_of_halvings = number_of_halvings + 1\nprint(number_of_halvings)",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 3, "correct": true, "feedback": "Correct. 400 → 200 → 100 → 50, and the condition is then false."},
+      {"type": "value", "value": 4, "correct": false, "feedback": "Incorrect. When the mass is exactly 50, it is no longer greater than 50."},
+      {"type": "default", "feedback": "Incorrect. Write down the mass after each iteration and stop once it is no longer above 50."}
+    ]
+  },
+  {
+    "question": "Given `masses = [12.011, 1.008, 15.999]`, which loops print every value in the list?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "for mass in masses:\n    print(mass)", "correct": true, "feedback": "Correct. `mass` takes each list value in turn."},
+      {"answer": "for i in range(len(masses)):\n    print(masses[i])", "correct": true, "feedback": "Correct. This loops over the valid indices and retrieves the corresponding values."},
+      {"answer": "for mass in masses:\n    print(masses[mass])", "correct": false, "feedback": "Incorrect. `mass` is already a value, not an index, and floating-point numbers cannot be list indices."},
+      {"answer": "for i in range(len(masses)):\n    print(i)", "correct": false, "feedback": "Incorrect. This prints the indices 0, 1, and 2."},
+      {"answer": "for i in masses:\n    print(masses)", "correct": false, "feedback": "Incorrect. This prints the entire list three times."}
+    ]
+  }
+]

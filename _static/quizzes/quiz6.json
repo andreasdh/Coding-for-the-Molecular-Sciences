@@ -1,0 +1,157 @@
+[
+  {
+    "question": "What is the output?",
+    "code": "print(np.array([1, 2, 3]) + np.array([1, 2, 3]))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. This is valid NumPy syntax."},
+      {"answer": "12", "correct": false, "feedback": "Incorrect. The values are not all summed into one number."},
+      {"answer": "[1, 2, 3, 1, 2, 3]", "correct": false, "feedback": "Incorrect. Array addition does not behave like list concatenation."},
+      {"answer": "[2 4 6]", "correct": true, "feedback": "Correct. Arrays are added element by element."}
+    ]
+  },
+  {
+    "question": "What happens when these two lines are evaluated?",
+    "code": "a = [1, 2, 3] + 4\nb = np.array([1, 2, 3]) + 4",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "a = [1, 2, 3, 4] and b = [1, 2, 3, 4]", "correct": false, "feedback": "Incorrect for both. A list can be concatenated only with another list, while a scalar is added element-wise to an array."},
+      {"answer": "a = [1, 2, 3, 4] and b = [5 6 7]", "correct": false, "feedback": "The result for b is right, but adding an integer directly to a list raises an error."},
+      {"answer": "a = [5, 6, 7] and b = [5 6 7]", "correct": false, "feedback": "Incorrect for a. Ordinary lists do not perform element-wise scalar addition."},
+      {"answer": "The first line raises an error; the second gives b = [5 6 7]", "correct": true, "feedback": "Correct. A scalar cannot be added directly to a Python list, while NumPy broadcasts the scalar across the array."}
+    ]
+  },
+  {
+    "question": "What is the output?",
+    "code": "a = np.arange(3, 11, 2)\nprint(a[2:]**2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[49 81 121]", "correct": false, "feedback": "Incorrect. `arange` includes the start but excludes the stop value; 11 is not included."},
+      {"answer": "[49, 81]", "correct": false, "feedback": "The numerical values are right, but NumPy arrays are normally displayed without commas."},
+      {"answer": "[49 81]", "correct": true, "feedback": "Correct. `a` is [3 5 7 9], and `a[2:]` is [7 9]."},
+      {"answer": "[25 49 81]", "correct": false, "feedback": "Incorrect. `a[2:]` begins at index 2, and indexing starts at 0."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "a = np.linspace(2, 6, 5)\nb = a + 2.0\nprint(np.sum(b))",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 30, "correct": true, "feedback": "Correct. `a` is [2, 3, 4, 5, 6], so `b` is [4, 5, 6, 7, 8]."},
+      {"type": "value", "value": 20, "correct": false, "feedback": "Incorrect. 2.0 is added to every element."},
+      {"type": "default", "feedback": "Incorrect. Remember that `linspace` includes both endpoints and returns five evenly spaced values here."}
+    ]
+  },
+  {
+    "question": "Which lines produce [3 5 7 9] or [3. 5. 7. 9.]?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "print(np.linspace(3, 10, 2))", "correct": false, "feedback": "Incorrect. The final parameter of `linspace` is the number of values, not the step size."},
+      {"answer": "print(np.linspace(3, 9, 4))", "correct": true, "feedback": "Correct. Four equally spaced values from 3 through 9 are 3, 5, 7, and 9."},
+      {"answer": "print(np.arange(3, 9, 2))", "correct": false, "feedback": "Incorrect. `arange` excludes the stop value, so 9 is missing."},
+      {"answer": "print(np.arange(3, 10, 2))", "correct": true, "feedback": "Correct. Starting at 3 with step 2 gives 3, 5, 7, and 9 before reaching 10."},
+      {"answer": "print(np.linspace(3, 10, 4))", "correct": false, "feedback": "Incorrect. The values would be distributed all the way to 10."},
+      {"answer": "print(np.arange(3, 9))", "correct": false, "feedback": "Incorrect. The default step is 1, and 9 is excluded."}
+    ]
+  },
+  {
+    "question": "Which expression prints 190.2?",
+    "code": "elements = {\"hydrogen\": 1.008, \"sulfur\": 32.07, \"copper\": 63.55, \"osmium\": 190.2, \"iodine\": 126.9}",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "print(elements[3])", "correct": false, "feedback": "Incorrect. Dictionaries are accessed by key rather than by positional index."},
+      {"answer": "print(elements[osmium])", "correct": false, "feedback": "Incorrect. Without quotation marks, `osmium` is interpreted as a variable name."},
+      {"answer": "print(elements[\"osmium\"])", "correct": true, "feedback": "Correct. The key is the string `\"osmium\"`."},
+      {"answer": "print(elements(\"osmium\"))", "correct": false, "feedback": "Incorrect. Dictionary lookup uses square brackets, not parentheses."}
+    ]
+  },
+  {
+    "question": "What belongs on the blank line so that the program prints `hydrogen is gas`, `sulfur is solid`, and `mercury is liquid`?",
+    "code": "state = {\"hydrogen\": \"gas\", \"sulfur\": \"solid\", \"mercury\": \"liquid\"}\nfor element in state:\n    _______",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "print(element, \"is\", state[element])", "correct": true, "feedback": "Correct. Iterating over a dictionary gives its keys, and the associated value is retrieved using square brackets."},
+      {"answer": "print(state[element], \"is\", element)", "correct": false, "feedback": "Incorrect. This reverses the intended order."},
+      {"answer": "print(element, \"is\", state.key(element))", "correct": false, "feedback": "Incorrect. Dictionaries do not have a `key()` lookup method like this."},
+      {"answer": "print(state[element], \"is\", state.value(element))", "correct": false, "feedback": "Incorrect. `value()` is not a dictionary method for lookup, and the order is also reversed."}
+    ]
+  },
+  {
+    "question": "Which expression prints all atomic masses in the dictionary?",
+    "code": "elements = {\"hydrogen\": 1.008, \"sulfur\": 32.07, \"copper\": 63.55, \"osmium\": 190.2, \"iodine\": 126.9}",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "print(elements.keys())", "correct": false, "feedback": "Incorrect. `keys()` gives the element names."},
+      {"answer": "print(elements.values())", "correct": true, "feedback": "Correct. `values()` gives the dictionary values."},
+      {"answer": "print(keys(elements))", "correct": false, "feedback": "Incorrect. This is not the usual dictionary syntax."},
+      {"answer": "print(values(elements))", "correct": false, "feedback": "Incorrect. Use the dictionary method `elements.values()`."}
+    ]
+  },
+  {
+    "question": "What is the output?",
+    "code": "values_list = [1, 2, 3]\nvalues_array = np.array([1, 2, 3])\nprint(values_list * 2)\nprint(values_array * 2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[1, 2, 3, 1, 2, 3] and [2 4 6]", "correct": true, "feedback": "Correct. Multiplying a list by an integer repeats it; multiplying a NumPy array by a scalar multiplies each element."},
+      {"answer": "[2, 4, 6] and [2 4 6]", "correct": false, "feedback": "Incorrect. List multiplication does not operate element by element."},
+      {"answer": "[1, 2, 3, 1, 2, 3] and [1 2 3 1 2 3]", "correct": false, "feedback": "Incorrect. Array multiplication is numerical and element-wise."},
+      {"answer": "The first print statement raises an error", "correct": false, "feedback": "Incorrect. A list can be multiplied by an integer."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "a = np.arange(0, 10, 2)\nprint(a.sum())",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 20, "correct": true, "feedback": "Correct. `a` is [0 2 4 6 8]."},
+      {"type": "value", "value": 30, "correct": false, "feedback": "Incorrect. The stop value 10 is not included."},
+      {"type": "default", "feedback": "Incorrect. Write down the values produced by `np.arange(0, 10, 2)` and add them."}
+    ]
+  },
+  {
+    "question": "What happens to the dictionary?",
+    "code": "masses = {\"hydrogen\": 1.008, \"carbon\": 12.011}\nmasses[\"nitrogen\"] = 14.007",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "A new key–value pair is added, so the dictionary contains three pairs.", "correct": true, "feedback": "Correct. Assignment to a key that does not yet exist adds a new pair."},
+      {"answer": "An error occurs because the key does not already exist.", "correct": false, "feedback": "Incorrect. Looking up an unknown key causes an error, but assigning to a new key is allowed."},
+      {"answer": "The value for carbon is overwritten.", "correct": false, "feedback": "Incorrect. Only the key named in the assignment is affected."},
+      {"answer": "Nothing happens because dictionaries cannot be changed.", "correct": false, "feedback": "Incorrect. Dictionaries are mutable."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "masses = {\"hydrogen\": 1.008, \"carbon\": 12.011}\nfor name, mass in masses.items():\n    print(name, mass)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Each element name and its mass are printed, one pair per line.", "correct": true, "feedback": "Correct. `items()` provides the key and value together on each iteration."},
+      {"answer": "Only the names are printed.", "correct": false, "feedback": "Incorrect. `keys()` would give only the names."},
+      {"answer": "Only the masses are printed.", "correct": false, "feedback": "Incorrect. `values()` would give only the values."},
+      {"answer": "An error occurs because a loop can have only one variable.", "correct": false, "feedback": "Incorrect. Python can unpack the two values supplied by each item."}
+    ]
+  },
+  {
+    "question": "Which expressions create a NumPy array containing five zeros?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "np.zeros(5)", "correct": true, "feedback": "Correct."},
+      {"answer": "0 * np.ones(5)", "correct": true, "feedback": "Correct, although it is an indirect way to do it."},
+      {"answer": "[0] * 5", "correct": false, "feedback": "Incorrect. This creates a Python list, not a NumPy array."},
+      {"answer": "np.zeros(5, 1)", "correct": false, "feedback": "Incorrect. For a two-dimensional shape, pass a tuple such as `np.zeros((5, 1))`."},
+      {"answer": "np.linspace(0, 0, 5)", "correct": true, "feedback": "Correct. Five equally spaced values from 0 to 0 are all zero."}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "concentrations = np.array([0.10, 0.25, 0.40, 0.55])\nprint(concentrations[concentrations > 0.3])",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "[0.4  0.55]", "correct": true, "feedback": "Correct. A Boolean condition can be used to select the array elements for which the condition is true."},
+      {"answer": "[False False True True]", "correct": false, "feedback": "That Boolean array is produced by the condition itself, but when it is used as an index, the matching numerical values are returned."},
+      {"answer": "[2 3]", "correct": false, "feedback": "Incorrect. Boolean indexing returns the selected values, not their indices."},
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. Boolean indexing is valid NumPy syntax."}
+    ]
+  }
+]

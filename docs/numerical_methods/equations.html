@@ -1,0 +1,893 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Equations and root finding &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/numerical_methods/equations';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Numerical differentiation" href="numerical_differentiation.html" />
+    <link rel="prev" title="Calibration and statistical inference" href="../data_handling/calibration_and_statistical_inference.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/numerical_methods/equations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Equations and root finding</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equations-as-root-finding-problems">Equations as root-finding problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-chemical-example-ph-of-a-weak-acid">A chemical example: pH of a weak acid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-graph-to-algorithm">From graph to algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bisection-method">The bisection method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-exact-equality-to-a-tolerance">From exact equality to a tolerance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself">Try it yourself</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">Newton’s method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-made-solvers-in-scipy">Ready-made solvers in SciPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-method-should-we-choose">Which method should we choose?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-summary">Short summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="equations-and-root-finding">
+<h1>Equations and root finding<a class="headerlink" href="#equations-and-root-finding" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this chapter, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>explain what a root-finding problem is and formulate equations as <span class="math notranslate nohighlight">\(f(x)=0\)</span></p></li>
+<li><p>explain the theoretical basis of the bisection method and Newton’s method</p></li>
+<li><p>implement the methods using simple Python code</p></li>
+<li><p>use a tolerance to control a numerical calculation</p></li>
+<li><p>discuss strengths, weaknesses and convergence of the methods</p></li>
+<li><p>use ready-made root solvers in SciPy for chemical problems</p></li>
+</ol>
+</div>
+<section id="equations-as-root-finding-problems">
+<h2>Equations as root-finding problems<a class="headerlink" href="#equations-as-root-finding-problems" title="Permalink to this heading">#</a></h2>
+<p>Solving an equation and finding a root are really the same problem written in two different ways. If we have</p>
+<div class="math notranslate nohighlight">
+\[g(x)=h(x),\]</div>
+<p>we can move everything to one side:</p>
+<div class="math notranslate nohighlight">
+\[f(x)=g(x)-h(x)=0.\]</div>
+<p>A <strong>root</strong> is a value of <span class="math notranslate nohighlight">\(x\)</span> for which the function value is zero. Solving <span class="math notranslate nohighlight">\(g(x)=h(x)\)</span> therefore means finding the value of <span class="math notranslate nohighlight">\(x\)</span> that makes <span class="math notranslate nohighlight">\(f(x)=0\)</span>. This is what we mean when we say that we <strong>formulate the equation as a root-finding problem</strong>.</p>
+<p>For quadratic equations we know a dedicated formula. For more complicated equations there is not always a practical analytical expression for the solution. Numerical methods are more general: instead, they approach the solution step by step.</p>
+</section>
+<section id="a-chemical-example-ph-of-a-weak-acid">
+<h2>A chemical example: pH of a weak acid<a class="headerlink" href="#a-chemical-example-ph-of-a-weak-acid" title="Permalink to this heading">#</a></h2>
+<p>We use a 0.010 M solution of acetic acid as an example. For a monoprotic weak acid, we can combine the mass balance for the protonated and deprotonated forms, <span class="math notranslate nohighlight">\(C=[\mathrm{HA}]+[\mathrm{A^-}]\)</span>, with the acid dissociation constant to write</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{A^-}]=C\frac{K_a}{[\mathrm{H_3O^+}]+K_a}.\]</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Where does the expression for <span class="math notranslate nohighlight">\([\mathrm{A^-}]\)</span> come from?</p>
+<p><span class="math notranslate nohighlight">\(C\)</span> is the total analytical concentration. The acid does not disappear; it is distributed between two forms:</p>
+<div class="math notranslate nohighlight">
+\[C=[\mathrm{HA}]+[\mathrm{A^-}].\]</div>
+<p>This is the mass balance. Note that <span class="math notranslate nohighlight">\(C\neq[\mathrm{HA}]\)</span> unless almost none of the acid has dissociated.</p>
+<p>The acid dissociation constant gives <span class="math notranslate nohighlight">\([\mathrm{HA}]=\dfrac{[\mathrm{H_3O^+}][\mathrm{A^-}]}{K_a}\)</span>. Substituting this into the mass balance and factoring out <span class="math notranslate nohighlight">\([\mathrm{A^-}]\)</span> gives</p>
+<div class="math notranslate nohighlight">
+\[C=[\mathrm{A^-}]\left(\frac{[\mathrm{H_3O^+}]}{K_a}+1\right)=[\mathrm{A^-}]\,\frac{[\mathrm{H_3O^+}]+K_a}{K_a},\]</div>
+<p>which gives the expression above when solved for <span class="math notranslate nohighlight">\([\mathrm{A^-}]\)</span>. The fraction is the proportion of the acid present in the deprotonated form at a given pH. At <span class="math notranslate nohighlight">\(\mathrm{pH}=\mathrm{p}K_a\)</span>, it is <span class="math notranslate nohighlight">\(1/2\)</span>.</p>
+</div>
+<p>The charge balance is</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{H_3O^+}]=[\mathrm{A^-}]+[\mathrm{OH^-}],\]</div>
+<p>and the ion product of water gives</p>
+<div class="math notranslate nohighlight">
+\[[\mathrm{OH^-}]=\frac{K_w}{[\mathrm{H_3O^+}]}.\]</div>
+<p>If we set <span class="math notranslate nohighlight">\(h=[\mathrm{H_3O^+}]\)</span>, the whole problem can be collected in one function:</p>
+<div class="math notranslate nohighlight">
+\[f(h)=h-C\frac{K_a}{h+K_a}-\frac{K_w}{h}.\]</div>
+<p>The pH is found when the charge balance is satisfied, that is, when <span class="math notranslate nohighlight">\(f(h)=0\)</span>. In other words, we do not have to isolate <span class="math notranslate nohighlight">\(h\)</span> algebraically. It is enough to evaluate <span class="math notranslate nohighlight">\(f(h)\)</span> and search for its root.</p>
+<p>Before solving an equation numerically, it is often useful to <strong>visualise the function</strong>. A graph can show us approximately where the root is, whether several roots exist, and which starting values might be sensible:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="mf">0.010</span>
+<span class="n">Ka</span> <span class="o">=</span> <span class="mf">1.75e-5</span>
+<span class="n">Kw</span> <span class="o">=</span> <span class="mf">1.0e-14</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">charge_balance</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="n">A_minus</span> <span class="o">=</span> <span class="n">C</span> <span class="o">*</span> <span class="n">Ka</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="n">Ka</span><span class="p">)</span>
+    <span class="n">OH</span> <span class="o">=</span> <span class="n">Kw</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="k">return</span> <span class="n">h</span> <span class="o">-</span> <span class="n">A_minus</span> <span class="o">-</span> <span class="n">OH</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogx</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">charge_balance</span><span class="p">(</span><span class="n">h</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$[\mathrm{H_3O^+}]$ (mol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Charge balance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="from-graph-to-algorithm">
+<h2>From graph to algorithm<a class="headerlink" href="#from-graph-to-algorithm" title="Permalink to this heading">#</a></h2>
+<p>To locate the root more precisely, we need an algorithm. A very simple idea is to start at a value <span class="math notranslate nohighlight">\(x\)</span> and move along the graph with a fixed step size <span class="math notranslate nohighlight">\(dx\)</span>. At each step, we compare the signs of <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(f(x+dx)\)</span>. If the sign changes, a root must lie between the points as long as the function is continuous.</p>
+<p>This approach is intuitive, but not very efficient. If <span class="math notranslate nohighlight">\(dx\)</span> is large, the answer is coarse. If <span class="math notranslate nohighlight">\(dx\)</span> is small, we must examine many points. The idea of a <strong>sign change</strong> is nevertheless important because it leads directly to a more robust and efficient method: the <em>bisection method</em>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="n">x_end</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">dx</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">x_end</span> <span class="ow">and</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>
+
+<span class="n">root</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">dx</span><span class="p">))</span><span class="o">/</span><span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A first estimate is x =&quot;</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-bisection-method">
+<h2>The bisection method<a class="headerlink" href="#the-bisection-method" title="Permalink to this heading">#</a></h2>
+<p>Instead of moving through the whole interval with equally sized steps, we can be smarter. We start with an interval <span class="math notranslate nohighlight">\([a,b]\)</span> where <span class="math notranslate nohighlight">\(f(a)\)</span> and <span class="math notranslate nohighlight">\(f(b)\)</span> have opposite signs. We then divide the interval in two and <strong>discard the half that cannot contain the root</strong>.</p>
+<p>We begin with the simplest possible code. Here we deliberately choose a function with a root that the algorithm can hit exactly, so that the idea is easy to follow.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="k">while</span> <span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">m</span>
+    <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">m</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The root is x =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Study the code line by line. Each iteration makes the interval half as wide. This is why the method is called the <strong>bisection method</strong>.</p>
+<p>More generally, the method works as follows:</p>
+<ol class="arabic simple">
+<li><p>Choose an interval <span class="math notranslate nohighlight">\([a,b]\)</span> where <span class="math notranslate nohighlight">\(f(a)\)</span> and <span class="math notranslate nohighlight">\(f(b)\)</span> have opposite signs.</p></li>
+<li><p>Find the midpoint</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[m=\frac{a+b}{2}.\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Determine which half, <span class="math notranslate nohighlight">\([a,m]\)</span> or <span class="math notranslate nohighlight">\([m,b]\)</span>, still contains a sign change.</p></li>
+<li><p>Keep that half and repeat.</p></li>
+</ol>
+<p>The point is not that we know the root beforehand, but that we always know <strong>which half it must lie in</strong>.</p>
+<section id="from-exact-equality-to-a-tolerance">
+<h3>From exact equality to a tolerance<a class="headerlink" href="#from-exact-equality-to-a-tolerance" title="Permalink to this heading">#</a></h3>
+<p>In real numerical problems, we should not wait for <code class="docutils literal notranslate"><span class="pre">f(m)</span> <span class="pre">==</span> <span class="pre">0</span></code>. Floating-point arithmetic and complicated functions mean that we may never hit zero exactly. Instead, we decide how close to zero is good enough. This is called a <strong>tolerance</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1E-8</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">m</span>
+    <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">m</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The root is x =&quot;</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;f(x) =&quot;</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we understand the algorithm as a concrete loop, it is natural to wrap it in a function so that we can use it on many problems without rewriting the code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1E-10</span><span class="p">,</span> <span class="n">max_iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">max_iterations</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">m</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">max_iterations</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The maximum number of iterations has been reached.&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">m</span><span class="p">,</span> <span class="n">i</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now use the same function for our pH problem:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">h_root</span><span class="p">,</span> <span class="n">iterations</span> <span class="o">=</span> <span class="n">bisection</span><span class="p">(</span><span class="n">charge_balance</span><span class="p">,</span> <span class="mf">1e-7</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">)</span>
+<span class="n">pH</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">h_root</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[H3O+] = </span><span class="si">{</span><span class="n">h_root</span><span class="si">:</span><span class="s2">.6e</span><span class="si">}</span><span class="s2"> mol/L&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pH = </span><span class="si">{</span><span class="n">pH</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Iterations:&quot;</span><span class="p">,</span> <span class="n">iterations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="try-it-yourself">
+<h3>Try it yourself<a class="headerlink" href="#try-it-yourself" title="Permalink to this heading">#</a></h3>
+<p>Complete the bisection method in the editor and use it to find the pH of the weak acid.</p>
+<iframe src="../../basthon/?from=examples/equations_bisection.py" width="100%" height="600" frameborder="0" title="Try it yourself: the bisection method" loading="lazy" allowfullscreen></iframe>
+</section>
+</section>
+<section id="newton-s-method">
+<h2>Newton’s method<a class="headerlink" href="#newton-s-method" title="Permalink to this heading">#</a></h2>
+<p>The bisection method makes use of the fact that a root lies <strong>between</strong> two points. Newton’s method uses a different idea: the tangent at one point can be used to predict where the root lies.</p>
+<ol class="arabic simple">
+<li><p>Choose a starting guess <span class="math notranslate nohighlight">\(x_0\)</span>.</p></li>
+<li><p>Draw, or imagine, the tangent at <span class="math notranslate nohighlight">\((x_0,f(x_0))\)</span>.</p></li>
+<li><p>Find where the tangent crosses the x-axis. This becomes the next guess, <span class="math notranslate nohighlight">\(x_1\)</span>.</p></li>
+<li><p>Repeat the process from the new point.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/newton_method.png"><img alt="../../_images/newton_method.png" class="align-center" src="../../_images/newton_method.png" style="width: 500px;" /></a>
+<p>The figure shows why the method can approach a root much faster than bisection.</p>
+<p>Let us derive the formula. The tangent through <span class="math notranslate nohighlight">\((x_n,f(x_n))\)</span> has slope <span class="math notranslate nohighlight">\(f'(x_n)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[y=f(x_n)+f'(x_n)(x-x_n).\]</div>
+<p>We want the root of the tangent, so we set <span class="math notranslate nohighlight">\(y=0\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[0=f(x_n)+f'(x_n)(x-x_n).\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\(x\)</span> gives the next estimate:</p>
+<div class="math notranslate nohighlight">
+\[x_{n+1}=x_n-\frac{f(x_n)}{f'(x_n)}.\]</div>
+<p>Again, we start with the simplest possible implementation before making a general function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x</span> <span class="o">-</span> <span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f_derivative</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">tolerance</span> <span class="o">=</span> <span class="mf">1E-8</span>
+
+<span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tolerance</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">f_derivative</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The root is x =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once the algorithm is clear as a simple loop, we can wrap it in a function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">newton_method</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">f_derivative</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1E-10</span><span class="p">):</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">tol</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">f_derivative</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Newton’s method needs only one starting guess and often converges quickly. The disadvantage is that we need the derivative, and an unfortunate starting guess can lead us to the wrong root or prevent the method from converging. At this stage, it is more important to <strong>understand the limitation</strong> than to build extensive error handling into the first implementation.</p>
+<p>Later, when we use ready-made library functions, we get more robustness and information about whether the method actually converged.</p>
+<div class="tip admonition">
+<p class="admonition-title">Exercise along the way</p>
+<p>Try several different starting values for a function with more than one root. Do all starting guesses lead to the same root? What does this tell you about the difference between bisection and Newton’s method?</p>
+</div>
+</section>
+<section id="ready-made-solvers-in-scipy">
+<h2>Ready-made solvers in SciPy<a class="headerlink" href="#ready-made-solvers-in-scipy" title="Permalink to this heading">#</a></h2>
+<p>Once we understand the principle, it is common to use tested algorithms from numerical libraries. <code class="docutils literal notranslate"><span class="pre">scipy.optimize.root_scalar</span></code> provides several methods for one-dimensional root-finding problems.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root_scalar</span>
+
+<span class="n">bisect_result</span> <span class="o">=</span> <span class="n">root_scalar</span><span class="p">(</span><span class="n">charge_balance</span><span class="p">,</span> <span class="n">bracket</span><span class="o">=</span><span class="p">[</span><span class="mf">1e-7</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;bisect&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">d_charge_balance</span><span class="p">(</span><span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">C</span><span class="o">*</span><span class="n">Ka</span><span class="o">/</span><span class="p">(</span><span class="n">h</span> <span class="o">+</span> <span class="n">Ka</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Kw</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">newton_result</span> <span class="o">=</span> <span class="n">root_scalar</span><span class="p">(</span>
+    <span class="n">charge_balance</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">4e-4</span><span class="p">,</span> <span class="n">fprime</span><span class="o">=</span><span class="n">d_charge_balance</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;newton&quot;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Bisection:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  converged:&quot;</span><span class="p">,</span> <span class="n">bisect_result</span><span class="o">.</span><span class="n">converged</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  iterations:&quot;</span><span class="p">,</span> <span class="n">bisect_result</span><span class="o">.</span><span class="n">iterations</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  pH:&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">bisect_result</span><span class="o">.</span><span class="n">root</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Newton:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  converged:&quot;</span><span class="p">,</span> <span class="n">newton_result</span><span class="o">.</span><span class="n">converged</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  iterations:&quot;</span><span class="p">,</span> <span class="n">newton_result</span><span class="o">.</span><span class="n">iterations</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  pH:&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">newton_result</span><span class="o">.</span><span class="n">root</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="which-method-should-we-choose">
+<h2>Which method should we choose?<a class="headerlink" href="#which-method-should-we-choose" title="Permalink to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Situation</p></th>
+<th class="head"><p>A natural choice</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>We know an interval containing a sign change</p></td>
+<td><p>Bisection or another bracketed method</p></td>
+</tr>
+<tr class="row-odd"><td><p>We have a good starting value and know the derivative</p></td>
+<td><p>Newton</p></td>
+</tr>
+<tr class="row-even"><td><p>We want a robust ready-made solver</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">root_scalar</span></code> with an appropriate method</p></td>
+</tr>
+<tr class="row-odd"><td><p>There may be several roots</p></td>
+<td><p>Plot or scan the interval first</p></td>
+</tr>
+</tbody>
+</table>
+<p>The important point is not only to obtain a number, but to check that the number actually solves the chemical problem.</p>
+<div class="important admonition">
+<p class="admonition-title">Numerical workflow</p>
+<ol class="arabic simple">
+<li><p>Formulate the chemistry as <span class="math notranslate nohighlight">\(f(x)=0\)</span>.</p></li>
+<li><p>Inspect the function and choose a sensible search interval.</p></li>
+<li><p>Choose a method, tolerance and, if needed, a starting guess.</p></li>
+<li><p>Check that the method converged.</p></li>
+<li><p>Substitute the solution back into the model and assess whether it is chemically reasonable.</p></li>
+</ol>
+</div>
+</section>
+<section id="short-summary">
+<h2>Short summary<a class="headerlink" href="#short-summary" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Equations can be formulated as root-finding problems.</p></li>
+<li><p>The bisection method is robust when we have a sign change.</p></li>
+<li><p>Newton’s method can be fast, but is more sensitive to the starting guess and derivative.</p></li>
+<li><p>A tolerance and a maximum number of iterations make the calculation controllable.</p></li>
+<li><p>SciPy provides ready-made solvers, but we should still understand the problem we give them.</p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 1 – pH of a weak acid</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">bisection</span></code> to find the pH of 0.0250 M acetic acid with <span class="math notranslate nohighlight">\(K_a=1.75\cdot10^{-5}\)</span>. Compare with the approximation <span class="math notranslate nohighlight">\([\mathrm{H_3O^+}]\approx\sqrt{K_aC}\)</span>. How large is the difference?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2 – choose a method</p>
+<p>You need to solve three problems:</p>
+<ol class="arabic simple">
+<li><p>A function has a known sign change between 2 and 3, but its derivative is difficult to calculate.</p></li>
+<li><p>You know a good starting value and both <span class="math notranslate nohighlight">\(f(x)\)</span> and <span class="math notranslate nohighlight">\(f'(x)\)</span> are easy to calculate.</p></li>
+<li><p>You suspect that the function has three roots in the interval <span class="math notranslate nohighlight">\([-5,5]\)</span>.</p></li>
+</ol>
+<p>Choose an approach for each case and justify your choices.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3 – several roots</p>
+<p>Find all solutions of <span class="math notranslate nohighlight">\(x^5=5x^3+3\)</span>. First plot the root function. Then use the bisection method or <code class="docutils literal notranslate"><span class="pre">root_scalar</span></code> on suitable subintervals.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4 – Newton and the starting guess</p>
+<p>Investigate <span class="math notranslate nohighlight">\(f(x)=x^3-2x+2\)</span> with Newton’s method. Test at least five different starting values. Explain why the same method can succeed from one starting value and fail from another.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5 – chemical equilibrium</p>
+<p>For the reaction <span class="math notranslate nohighlight">\(\mathrm{A \rightleftharpoons B}\)</span>, we start with 1.00 M A and 0 M B. At equilibrium, <span class="math notranslate nohighlight">\([B]=x\)</span> and <span class="math notranslate nohighlight">\([A]=1-x\)</span>. Let <span class="math notranslate nohighlight">\(K=3.5\)</span> and formulate <span class="math notranslate nohighlight">\(K=[B]/[A]\)</span> as a root-finding problem. Find <span class="math notranslate nohighlight">\(x\)</span> numerically and check the solution analytically.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 6 – temperature at which a process changes spontaneity</p>
+<p>Assume that <span class="math notranslate nohighlight">\(\Delta H=45.0\)</span> kJ/mol and <span class="math notranslate nohighlight">\(\Delta S=125\)</span> J/(mol K) are constant over a temperature interval. Formulate <span class="math notranslate nohighlight">\(\Delta G(T)=\Delta H-T\Delta S=0\)</span> as a root-finding problem and find the temperature. This equation is easy to solve analytically, so use that result to check the numerical method.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/numerical_methods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../data_handling/calibration_and_statistical_inference.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Calibration and statistical inference</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="numerical_differentiation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Numerical differentiation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equations-as-root-finding-problems">Equations as root-finding problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-chemical-example-ph-of-a-weak-acid">A chemical example: pH of a weak acid</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-graph-to-algorithm">From graph to algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bisection-method">The bisection method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-exact-equality-to-a-tolerance">From exact equality to a tolerance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself">Try it yourself</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton-s-method">Newton’s method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ready-made-solvers-in-scipy">Ready-made solvers in SciPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#which-method-should-we-choose">Which method should we choose?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-summary">Short summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

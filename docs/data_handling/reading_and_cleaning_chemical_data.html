@@ -1,0 +1,1825 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Reading and cleaning chemical data &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/data_handling/reading_and_cleaning_chemical_data';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Descriptive statistics: measurements, variation and uncertainty" href="basic_statistics_for_chemistry.html" />
+    <link rel="prev" title="Visualising chemical data" href="visualising_chemical_data.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/equations.html">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/data_handling/reading_and_cleaning_chemical_data.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reading and cleaning chemical data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-files">Data files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-data-with-pandas">Reading data with Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-the-dataset">Inspecting the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preserve-the-raw-data">Preserve the raw data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicates">Duplicates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-data">Sorting data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-and-summarising-data">Grouping and summarising data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-columns">Creating new columns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-text-categories">Cleaning text categories</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-dataframe-to-figure">From DataFrame to figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-reproducible-workflow">A reproducible workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reading-and-cleaning-chemical-data">
+<h1>Reading and cleaning chemical data<a class="headerlink" href="#reading-and-cleaning-chemical-data" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this topic, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>explain how data are organised in a CSV file</p></li>
+<li><p>read data files with Pandas</p></li>
+<li><p>inspect columns, data types and missing values</p></li>
+<li><p>filter, sort and group chemical data</p></li>
+<li><p>create new columns without overwriting the raw measurements</p></li>
+<li><p>document and justify decisions made during data cleaning</p></li>
+</ol>
+</div>
+<p>Data are everywhere, but data are not automatically knowledge. Before drawing a chemical conclusion, we need to know what the measurements represent, which units were used, and whether the dataset contains missing, duplicated or invalid values.</p>
+<p>In this chapter we follow a small UV–Vis experiment. The dataset contains blanks, calibration standards and replicate measurements of an unknown sample. In the next chapters we will use the standards to build a calibration model and estimate the unknown concentration. First we need to read and inspect the raw data.</p>
+<section id="data-files">
+<h2>Data files<a class="headerlink" href="#data-files" title="Permalink to this heading">#</a></h2>
+<p>We often store and exchange measurements as plain text because the format is robust and can be read by many programs. Word documents are not plain-text data files because they also contain information about fonts, colours and formatting. <code class="docutils literal notranslate"><span class="pre">.txt</span></code> and <code class="docutils literal notranslate"><span class="pre">.csv</span></code> are common plain-text formats.</p>
+<div class="admonition-data-file admonition">
+<p class="admonition-title">Data file</p>
+<p>A data file stores observations in a consistent structure so that they can be read and processed by a program. In a tabular data file, each row is usually one observation and the columns describe variables.</p>
+</div>
+<p>CSV stands for <em>comma-separated values</em>. Each line normally represents one observation, with values separated by commas:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>sample_id,sample_type,concentration_uM,replicate,absorbance
+blank_1,blank,0,1,0.010
+blank_2,blank,0,2,0.011
+std_2_1,standard,2,1,0.171
+std_2_2,standard,2,2,0.169
+</pre></div>
+</div>
+<p>The first row contains column names. The following rows each describe one measurement. This is often called a <em>tidy</em> or <em>long</em> data layout: one observation per row, one variable per column, and one value per cell.</p>
+<div class="admonition-units-in-data admonition">
+<p class="admonition-title">Units in data</p>
+<p>Units should be explicit, but the measurements themselves should normally remain numeric. Here the unit is encoded in the column name <code class="docutils literal notranslate"><span class="pre">concentration_uM</span></code>. An alternative is to keep units in metadata. A value such as <code class="docutils literal notranslate"><span class="pre">&quot;2</span> <span class="pre">µmol/L&quot;</span></code> becomes text and is more difficult to calculate with.</p>
+</div>
+</section>
+<section id="reading-data-with-pandas">
+<h2>Reading data with Pandas<a class="headerlink" href="#reading-data-with-pandas" title="Permalink to this heading">#</a></h2>
+<p>Pandas is widely used for tabular data. <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> reads a CSV file into a <strong>DataFrame</strong>.</p>
+<div class="admonition-dataframe admonition">
+<p class="admonition-title">DataFrame</p>
+<p>A DataFrame is a two-dimensional data structure with named columns and indexed rows. It resembles a table, but its columns can be selected, calculated with and transformed directly in Python.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/uvvis_raw.csv&quot;</span><span class="p">)</span>
+<span class="n">raw_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sample_id</th>
+      <th>sample_type</th>
+      <th>concentration_uM</th>
+      <th>replicate</th>
+      <th>absorbance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>blank_1</td>
+      <td>blank</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0.010</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>blank_2</td>
+      <td>blank</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0.011</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>std_2_1</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>0.171</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>std_2_2</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>0.169</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>std_2_3</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>0.172</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>std_4_1</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>std_4_2</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>std_4_3</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>std_6_1</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>0.489</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>std_6_2</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>0.491</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>std_6_3</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>std_8_1</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>1</td>
+      <td>0.648</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>std_8_2</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>2</td>
+      <td>0.652</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>std_8_3</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>3</td>
+      <td>0.650</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>std_10_1</td>
+      <td>standard</td>
+      <td>10.0</td>
+      <td>1</td>
+      <td>0.807</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>std_10_2</td>
+      <td>standard</td>
+      <td>10.0</td>
+      <td>2</td>
+      <td>0.812</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>std_10_3</td>
+      <td>standard</td>
+      <td>10.0</td>
+      <td>3</td>
+      <td>0.809</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>unknown_1</td>
+      <td>unknown</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0.603</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>unknown_2</td>
+      <td>unknown</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>0.606</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>unknown_3</td>
+      <td>unknown</td>
+      <td>NaN</td>
+      <td>3</td>
+      <td>0.604</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The path <code class="docutils literal notranslate"><span class="pre">data/uvvis_raw.csv</span></code> means that the file is stored in a subfolder named <code class="docutils literal notranslate"><span class="pre">data</span></code> relative to this notebook. If the file is elsewhere, the path needs to be changed.</p>
+<p>Notice that we omit the print statement in Jupyter Notebooks - the formatting will be nicer without it. Although, remember that only the last statement in a cell will be printed.</p>
+<p>Some exported files use semicolons as separators and commas as decimal marks. We can describe that explicitly instead of editing the file by hand:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/example_semicolon.csv&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">decimal</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sample_id</th>
+      <th>concentration_mg_L</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>sample_1</td>
+      <td>1.25</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>sample_2</td>
+      <td>1.31</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sample_3</td>
+      <td>1.28</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Explicitly describing the file format makes the analysis more reproducible than manually replacing characters without recording what was changed.</p>
+</section>
+<section id="inspecting-the-dataset">
+<h2>Inspecting the dataset<a class="headerlink" href="#inspecting-the-dataset" title="Permalink to this heading">#</a></h2>
+<p>Before analysing a file, inspect what Python actually read.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/uvvis_raw.csv&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  sample_id sample_type  concentration_uM  replicate  absorbance
+0   blank_1       blank               0.0          1       0.010
+1   blank_2       blank               0.0          2       0.011
+2   std_2_1    standard               2.0          1       0.171
+3   std_2_2    standard               2.0          2       0.169
+4   std_2_3    standard               2.0          3       0.172
+    sample_id sample_type  concentration_uM  replicate  absorbance
+15   std_10_2    standard              10.0          2       0.812
+16   std_10_3    standard              10.0          3       0.809
+17  unknown_1     unknown               NaN          1       0.603
+18  unknown_2     unknown               NaN          2       0.606
+19  unknown_3     unknown               NaN          3       0.604
+(20, 5)
+Index([&#39;sample_id&#39;, &#39;sample_type&#39;, &#39;concentration_uM&#39;, &#39;replicate&#39;,
+       &#39;absorbance&#39;],
+      dtype=&#39;str&#39;)
+sample_id               str
+sample_type             str
+concentration_uM    float64
+replicate             int64
+absorbance          float64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">head()</span></code> shows the first five rows.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tail()</span></code> shows the last five.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">shape</span></code> gives the number of rows and columns.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">columns</span></code> lists the column names.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dtypes</span></code> shows the data type Pandas assigned to each column.</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">info()</span></code> combines much of this information:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw_data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.DataFrame&#39;&gt;
+RangeIndex: 20 entries, 0 to 19
+Data columns (total 5 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   sample_id         20 non-null     str    
+ 1   sample_type       20 non-null     str    
+ 2   concentration_uM  17 non-null     float64
+ 3   replicate         20 non-null     int64  
+ 4   absorbance        19 non-null     float64
+dtypes: float64(2), int64(1), str(2)
+memory usage: 932.0 bytes
+</pre></div>
+</div>
+</div>
+</div>
+<p>Text columns are commonly stored as <code class="docutils literal notranslate"><span class="pre">object</span></code> or <code class="docutils literal notranslate"><span class="pre">string</span></code>, integers as <code class="docutils literal notranslate"><span class="pre">int64</span></code>, and decimal numbers as <code class="docutils literal notranslate"><span class="pre">float64</span></code>. A column that should be numeric but appears as <code class="docutils literal notranslate"><span class="pre">object</span></code> may contain text, an unexpected decimal separator or other symbols that cannot be interpreted as numbers.</p>
+<p>You can inspect a small UV–Vis dataset in the browser below. The data are included directly in the program so that the example works without uploading a file.</p>
+<iframe src="../../basthon/?from=examples/pandas_uvvis_inspect.py" width="100%" height="660" frameborder="0" title="Interactive Python editor for inspecting UV-Vis data with Pandas" loading="lazy" allowfullscreen></iframe>
+<div class="tip admonition">
+<p class="admonition-title">Check your understanding</p>
+<ol class="arabic simple">
+<li><p>How many rows and columns are present?</p></li>
+<li><p>Which columns contain text and which contain numbers?</p></li>
+<li><p>Why are the concentration values missing for the unknown sample?</p></li>
+<li><p>Where is the other missing value?</p></li>
+</ol>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested answer</p>
+<p>The concentration is missing for the unknown sample because that is the quantity we intend to determine later; this is not necessarily an error. The missing absorbance for one calibration replicate, however, represents a failed or absent measurement and should be investigated before analysis.</p>
+</div>
+</div>
+</section>
+<section id="preserve-the-raw-data">
+<h2>Preserve the raw data<a class="headerlink" href="#preserve-the-raw-data" title="Permalink to this heading">#</a></h2>
+<p>Raw measurements should normally not be overwritten. If values are changed directly in <code class="docutils literal notranslate"><span class="pre">raw_data</span></code>, it becomes harder to reconstruct what the instrument actually recorded. Make a working copy instead:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A simple workflow is therefore:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">raw_data</span></code> contains data exactly as read from the file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">clean_data</span></code> contains documented processing steps.</p></li>
+<li><p>Analysis is performed on the processed copy.</p></li>
+</ol>
+<p>In a larger project the original raw-data file should also be protected from accidental editing or kept separately. The code then becomes a traceable description of how the raw data were transformed.</p>
+</section>
+<section id="missing-values">
+<h2>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this heading">#</a></h2>
+<p>Pandas often represents a missing numeric value as <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (<em>not a number</em>). Count missing values column by column with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw_data</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_id           0
+sample_type         0
+concentration_uM    3
+replicate           0
+absorbance          1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>To inspect the row with a missing absorbance:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_absorbance</span> <span class="o">=</span> <span class="n">raw_data</span><span class="p">[</span><span class="n">raw_data</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()]</span>
+<span class="n">missing_absorbance</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sample_id</th>
+      <th>sample_type</th>
+      <th>concentration_uM</th>
+      <th>replicate</th>
+      <th>absorbance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>std_6_3</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>There is no universally correct automatic response to a missing value. Depending on the experiment, we might:</p>
+<ul class="simple">
+<li><p>inspect the instrument file or laboratory notes</p></li>
+<li><p>repeat the measurement</p></li>
+<li><p>retain the row and mark the value as missing</p></li>
+<li><p>omit the row from one particular analysis</p></li>
+<li><p>estimate the value only when there is a defensible scientific and statistical reason</p></li>
+</ul>
+<p>In this teaching dataset, the instrument log states that measurement <code class="docutils literal notranslate"><span class="pre">std_6_3</span></code> failed because the cuvette was incorrectly positioned. We therefore omit that row from analyses that require an absorbance value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">clean_data</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">subset</span></code> is important. <code class="docutils literal notranslate"><span class="pre">dropna()</span></code> without arguments would also remove the unknown samples because their concentrations are intentionally missing.</p>
+<div class="admonition-important admonition">
+<p class="admonition-title">Important</p>
+<p>A missing value is not the same as a measured value of zero. Zero may be a valid experimental result. <code class="docutils literal notranslate"><span class="pre">NaN</span></code> means the value is unavailable.</p>
+</div>
+</section>
+<section id="duplicates">
+<h2>Duplicates<a class="headerlink" href="#duplicates" title="Permalink to this heading">#</a></h2>
+<p>A row may accidentally have been stored twice. We can check for exact duplicates with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">duplicates</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span>
+<span class="n">raw_data</span><span class="p">[</span><span class="n">duplicates</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sample_id</th>
+      <th>sample_type</th>
+      <th>concentration_uM</th>
+      <th>replicate</th>
+      <th>absorbance</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>An identical row is not automatically an error. Two genuine replicate measurements can sometimes have exactly the same numerical result. Removing a duplicate should therefore be based on how the data were generated, not only on identical values.</p>
+<p>If an accidental duplicated export row has been documented, we can remove it with <code class="docutils literal notranslate"><span class="pre">drop_duplicates()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_data</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filtering-data">
+<h2>Filtering data<a class="headerlink" href="#filtering-data" title="Permalink to this heading">#</a></h2>
+<p>Logical conditions select rows. Here we extract only the calibration standards:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standards</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;standard&quot;</span><span class="p">]</span>
+<span class="n">standards</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sample_id</th>
+      <th>sample_type</th>
+      <th>concentration_uM</th>
+      <th>replicate</th>
+      <th>absorbance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>std_2_1</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>0.171</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>std_2_2</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>0.169</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>std_2_3</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>0.172</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>std_4_1</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>std_4_2</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>std_4_3</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>std_6_1</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>0.489</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>std_6_2</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>0.491</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>std_6_3</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>std_8_1</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>1</td>
+      <td>0.648</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>std_8_2</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>2</td>
+      <td>0.652</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>std_8_3</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>3</td>
+      <td>0.650</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>std_10_1</td>
+      <td>standard</td>
+      <td>10.0</td>
+      <td>1</td>
+      <td>0.807</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>std_10_2</td>
+      <td>standard</td>
+      <td>10.0</td>
+      <td>2</td>
+      <td>0.812</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>std_10_3</td>
+      <td>standard</td>
+      <td>10.0</td>
+      <td>3</td>
+      <td>0.809</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Several conditions can be combined. Parentheses around each condition are important when using Pandas with <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">|</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mid_range</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span>
+    <span class="p">(</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;standard&quot;</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">4</span><span class="p">)</span>
+    <span class="o">&amp;</span> <span class="p">(</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">8</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">mid_range</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sample_id</th>
+      <th>sample_type</th>
+      <th>concentration_uM</th>
+      <th>replicate</th>
+      <th>absorbance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>std_4_1</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>std_4_2</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>std_4_3</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>std_6_1</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>0.489</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>std_6_2</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>0.491</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>std_6_3</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>std_8_1</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>1</td>
+      <td>0.648</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>std_8_2</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>2</td>
+      <td>0.652</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>std_8_3</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>3</td>
+      <td>0.650</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Filtering is not the same as deleting. We are creating a view or a new DataFrame for a particular scientific question while the full raw dataset remains available.</p>
+</section>
+<section id="sorting-data">
+<h2>Sorting data<a class="headerlink" href="#sorting-data" title="Permalink to this heading">#</a></h2>
+<p>Rows can be sorted by one or more columns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_standards</span> <span class="o">=</span> <span class="n">standards</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">,</span> <span class="s2">&quot;replicate&quot;</span><span class="p">])</span>
+<span class="n">sorted_standards</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sample_id</th>
+      <th>sample_type</th>
+      <th>concentration_uM</th>
+      <th>replicate</th>
+      <th>absorbance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>std_2_1</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>0.171</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>std_2_2</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>0.169</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>std_2_3</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>0.172</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>std_4_1</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>1</td>
+      <td>0.329</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>std_4_2</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>2</td>
+      <td>0.331</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>std_4_3</td>
+      <td>standard</td>
+      <td>4.0</td>
+      <td>3</td>
+      <td>0.328</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>std_6_1</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>1</td>
+      <td>0.489</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>std_6_2</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>2</td>
+      <td>0.491</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>std_6_3</td>
+      <td>standard</td>
+      <td>6.0</td>
+      <td>3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>std_8_1</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>1</td>
+      <td>0.648</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>std_8_2</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>2</td>
+      <td>0.652</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>std_8_3</td>
+      <td>standard</td>
+      <td>8.0</td>
+      <td>3</td>
+      <td>0.650</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>std_10_1</td>
+      <td>standard</td>
+      <td>10.0</td>
+      <td>1</td>
+      <td>0.807</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>std_10_2</td>
+      <td>standard</td>
+      <td>10.0</td>
+      <td>2</td>
+      <td>0.812</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>std_10_3</td>
+      <td>standard</td>
+      <td>10.0</td>
+      <td>3</td>
+      <td>0.809</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Sorting does not change the chemical meaning of the observations, but it can make unexpected values easier to notice and makes it easier to verify that replicates are associated with the correct concentration.</p>
+</section>
+<section id="grouping-and-summarising-data">
+<h2>Grouping and summarising data<a class="headerlink" href="#grouping-and-summarising-data" title="Permalink to this heading">#</a></h2>
+<p>The calibration standards were measured in replicates. We can group by concentration and calculate the number of measurements, mean and sample standard deviation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">standards</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">)[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">])</span>
+<span class="p">)</span>
+<span class="n">summary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+    </tr>
+    <tr>
+      <th>concentration_uM</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2.0</th>
+      <td>3</td>
+      <td>0.170667</td>
+      <td>0.001528</td>
+    </tr>
+    <tr>
+      <th>4.0</th>
+      <td>3</td>
+      <td>0.329333</td>
+      <td>0.001528</td>
+    </tr>
+    <tr>
+      <th>6.0</th>
+      <td>2</td>
+      <td>0.490000</td>
+      <td>0.001414</td>
+    </tr>
+    <tr>
+      <th>8.0</th>
+      <td>3</td>
+      <td>0.650000</td>
+      <td>0.002000</td>
+    </tr>
+    <tr>
+      <th>10.0</th>
+      <td>3</td>
+      <td>0.809333</td>
+      <td>0.002517</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Grouping is powerful because one operation is applied consistently to every concentration. But a summary table is not a replacement for the raw measurements: a mean and standard deviation can hide unusual replicates or missing data.</p>
+<p>You can clean and group a small embedded dataset in the editor below.</p>
+<iframe src="../../basthon/?from=examples/pandas_uvvis_clean.py" width="100%" height="700" frameborder="0" title="Interactive Python editor for cleaning and grouping UV-Vis data" loading="lazy" allowfullscreen></iframe></section>
+<section id="creating-new-columns">
+<h2>Creating new columns<a class="headerlink" href="#creating-new-columns" title="Permalink to this heading">#</a></h2>
+<p>Some processing steps produce new quantities that should be stored without erasing the original measurements. For example, we can correct absorbance for the mean blank signal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">blank_mean</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;blank&quot;</span><span class="p">,</span> <span class="s2">&quot;absorbance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;blank_corrected_absorbance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">blank_mean</span>
+<span class="n">clean_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sample_id</th>
+      <th>sample_type</th>
+      <th>concentration_uM</th>
+      <th>replicate</th>
+      <th>absorbance</th>
+      <th>blank_corrected_absorbance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>blank_1</td>
+      <td>blank</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>0.010</td>
+      <td>-0.0005</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>blank_2</td>
+      <td>blank</td>
+      <td>0.0</td>
+      <td>2</td>
+      <td>0.011</td>
+      <td>0.0005</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>std_2_1</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>1</td>
+      <td>0.171</td>
+      <td>0.1605</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>std_2_2</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>2</td>
+      <td>0.169</td>
+      <td>0.1585</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>std_2_3</td>
+      <td>standard</td>
+      <td>2.0</td>
+      <td>3</td>
+      <td>0.172</td>
+      <td>0.1615</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Keeping both columns makes the transformation explicit: <code class="docutils literal notranslate"><span class="pre">absorbance</span></code> is the recorded value, whereas <code class="docutils literal notranslate"><span class="pre">blank_corrected_absorbance</span></code> is derived.</p>
+<p>The same principle applies to unit conversions. If a dataset stores concentration in µmol/L but a later calculation needs mol/L, create a new column rather than silently replacing the original.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;concentration_M&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="cleaning-text-categories">
+<h3>Cleaning text categories<a class="headerlink" href="#cleaning-text-categories" title="Permalink to this heading">#</a></h3>
+<p>Real datasets often contain inconsistent capitalisation or whitespace, such as <code class="docutils literal notranslate"><span class="pre">Standard</span></code>, <code class="docutils literal notranslate"><span class="pre">standard</span> </code> and <code class="docutils literal notranslate"><span class="pre">STANDARD</span></code>. These can be normalised if they truly refer to the same category.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Always inspect the result after an automatic text-cleaning operation. Two labels that look similar may represent genuinely different sample types.</p>
+</section>
+</section>
+<section id="from-dataframe-to-figure">
+<h2>From DataFrame to figure<a class="headerlink" href="#from-dataframe-to-figure" title="Permalink to this heading">#</a></h2>
+<p>Pandas columns can be passed directly to Matplotlib. Here we show every calibration replicate so that the variation remains visible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">standards</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;blank&quot;</span><span class="p">,</span> <span class="s2">&quot;standard&quot;</span><span class="p">])]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">standards</span><span class="p">[</span><span class="s2">&quot;concentration_uM&quot;</span><span class="p">],</span> <span class="n">standards</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Concentration (µmol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Absorbance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/eb36e04a783735624d8a05da69330399863ac237cb87defb9853099b06021e95.png" src="../../_images/eb36e04a783735624d8a05da69330399863ac237cb87defb9853099b06021e95.png" />
+</div>
+</div>
+<p>If we plotted only the group means, the figure would be tidier, but we would lose direct information about replicate-to-replicate variation. Whether to show raw observations, summaries or both depends on the purpose of the figure.</p>
+</section>
+<section id="a-reproducible-workflow">
+<h2>A reproducible workflow<a class="headerlink" href="#a-reproducible-workflow" title="Permalink to this heading">#</a></h2>
+<p>The complete processing sequence can be written as ordinary code rather than manual spreadsheet edits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1"># 1. Read and preserve raw data</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/uvvis_raw.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Inspect</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_data</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="c1"># 3. Make a working copy</span>
+<span class="n">clean_data</span> <span class="o">=</span> <span class="n">raw_data</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># 4. Apply a documented decision: remove failed absorbance measurement</span>
+<span class="n">clean_data</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">])</span>
+
+<span class="c1"># 5. Add derived values rather than overwriting raw measurements</span>
+<span class="n">blank_mean</span> <span class="o">=</span> <span class="n">clean_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;sample_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;blank&quot;</span><span class="p">,</span> <span class="s2">&quot;absorbance&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;blank_corrected_absorbance&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">clean_data</span><span class="p">[</span><span class="s2">&quot;absorbance&quot;</span><span class="p">]</span> <span class="o">-</span> <span class="n">blank_mean</span>
+
+<span class="c1"># 6. Save processed data without overwriting the raw file</span>
+<span class="n">clean_data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;data/uvvis_processed.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.DataFrame&#39;&gt;
+RangeIndex: 20 entries, 0 to 19
+Data columns (total 5 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   sample_id         20 non-null     str    
+ 1   sample_type       20 non-null     str    
+ 2   concentration_uM  17 non-null     float64
+ 3   replicate         20 non-null     int64  
+ 4   absorbance        19 non-null     float64
+dtypes: float64(2), int64(1), str(2)
+memory usage: 932.0 bytes
+None
+sample_id           0
+sample_type         0
+concentration_uM    3
+replicate           0
+absorbance          1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The code documents <strong>what</strong> was done. A complete scientific analysis must also explain <strong>why</strong> each decision was justified by the experimental context.</p>
+<div class="admonition-a-useful-principle admonition">
+<p class="admonition-title">A useful principle</p>
+<p>Data cleaning should make the dataset more faithful to the experiment, not merely make the later statistical result look nicer.</p>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2.1</p>
+<p>Open <code class="docutils literal notranslate"><span class="pre">data/uvvis_raw.csv</span></code> as plain text. Identify the column names, delimiter, missing values and the columns in which units are encoded.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2.2</p>
+<p>Read <code class="docutils literal notranslate"><span class="pre">data/uvvis_raw.csv</span></code> with Pandas. Use <code class="docutils literal notranslate"><span class="pre">head</span></code>, <code class="docutils literal notranslate"><span class="pre">shape</span></code>, <code class="docutils literal notranslate"><span class="pre">columns</span></code>, <code class="docutils literal notranslate"><span class="pre">dtypes</span></code> and <code class="docutils literal notranslate"><span class="pre">info</span></code> to write a short description of the dataset.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2.3</p>
+<p>Count missing values. Explain why the missing concentrations for the unknown sample and the missing absorbance for <code class="docutils literal notranslate"><span class="pre">std_6_3</span></code> have different scientific meanings.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2.4</p>
+<p>Create <code class="docutils literal notranslate"><span class="pre">clean_data</span></code> as a copy of the raw data. Remove only rows that lack absorbance. Verify that the unknown samples are still present.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2.5</p>
+<p>Filter the calibration standards and group them by concentration. Calculate <code class="docutils literal notranslate"><span class="pre">count</span></code>, <code class="docutils literal notranslate"><span class="pre">mean</span></code> and <code class="docutils literal notranslate"><span class="pre">std</span></code> for absorbance. Which concentration has fewer valid replicates than the others, and why?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2.6</p>
+<p>Calculate the mean blank absorbance and add a new column containing blank-corrected absorbance. Explain why it is preferable to keep the uncorrected measurements as a separate column.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2.7</p>
+<p>The file <code class="docutils literal notranslate"><span class="pre">data/reaction_kinetics.csv</span></code> contains time and absorbance. Read it, inspect the data types, sort by time and add a column <code class="docutils literal notranslate"><span class="pre">relative_absorbance</span></code> in which each absorbance is divided by the initial value. Plot the result.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2.8 — cleaning decisions</p>
+<p>Imagine that one calibration replicate is much higher than the other two but is not missing. List at least four things you should investigate before deciding whether to exclude it. Which of those questions require chemical or experimental information that Pandas cannot supply?</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/data_handling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="visualising_chemical_data.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visualising chemical data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="basic_statistics_for_chemistry.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Descriptive statistics: measurements, variation and uncertainty</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-files">Data files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-data-with-pandas">Reading data with Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspecting-the-dataset">Inspecting the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preserve-the-raw-data">Preserve the raw data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#duplicates">Duplicates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#filtering-data">Filtering data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting-data">Sorting data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grouping-and-summarising-data">Grouping and summarising data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-columns">Creating new columns</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cleaning-text-categories">Cleaning text categories</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-dataframe-to-figure">From DataFrame to figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-reproducible-workflow">A reproducible workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

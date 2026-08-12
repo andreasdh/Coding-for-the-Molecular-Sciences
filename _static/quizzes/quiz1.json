@@ -1,0 +1,135 @@
+[
+  {
+    "question": "What is the output from the following code?",
+    "code": "a = \"1\"\nb = \"2\"\nprint(a + b)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "1", "correct": false, "feedback": "Incorrect. The variables contain strings, and strings are concatenated when they are added."},
+      {"answer": "2", "correct": false, "feedback": "Incorrect. The variables contain strings, and strings are concatenated when they are added."},
+      {"answer": "3", "correct": false, "feedback": "Incorrect. These are strings rather than numbers. Notice the quotation marks."},
+      {"answer": "12", "correct": true, "feedback": "Correct. The variables contain strings, and strings are concatenated when they are added."},
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. Two strings can be concatenated with `+`."}
+    ]
+  },
+  {
+    "question": "What happens when you run the following code?",
+    "code": "print = \"Hello\"",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "\"Hello\" is printed.", "correct": false, "feedback": "Incorrect. The correct syntax for printing is `print(\"Hello\")`."},
+      {"answer": "An error message is printed.", "correct": false, "feedback": "Incorrect. Python allows you to overwrite the name `print`. But after doing so, `print` no longer refers to the built-in function until the Python session is restarted or the name is restored."},
+      {"answer": "The program crashes.", "correct": false, "feedback": "Incorrect. The line is valid Python."},
+      {"answer": "Nothing visible happens.", "correct": true, "feedback": "Correct. Nothing visible happens, but the name `print` now refers to a string instead of the built-in print function."}
+    ]
+  },
+  {
+    "question": "What is the output?",
+    "code": "print(3 > 4)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. This is valid syntax."},
+      {"answer": "True", "correct": false, "feedback": "Incorrect. 3 is not greater than 4."},
+      {"answer": "False", "correct": true, "feedback": "Correct. 3 is not greater than 4, so the Boolean value `False` is printed. Notice the capital F."},
+      {"answer": "Nothing happens.", "correct": false, "feedback": "Incorrect. The comparison produces a Boolean value that is printed."}
+    ]
+  },
+  {
+    "question": "What is the output if you enter 1 and 2 in the console when the program runs?",
+    "code": "a = input(\"number 1: \")\nb = input(\"number 2: \")\nb = float(b)\nprint(a + b)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "3", "correct": false, "feedback": "Incorrect. `a` is still a string while `b` has been converted to a float. They cannot be added."},
+      {"answer": "12", "correct": false, "feedback": "Incorrect. That would be the result if both variables were strings, but `b` has been converted to a float."},
+      {"answer": "1", "correct": false, "feedback": "Incorrect. Both variables occur in the addition."},
+      {"answer": "An error message", "correct": true, "feedback": "Correct. `a` is a string and `b` is a float, and these two types cannot be added with `+`."}
+    ]
+  },
+  {
+    "question": "What is the output from the following program?",
+    "code": "a = 5.0\nb = 3.0\nc = a + b\na = 3.0\nd = 2.0\ne = a + c * d\nprint(e)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "18.0", "correct": false, "feedback": "Incorrect. Pay attention to the order of operations and to the values stored in the variables when each line is executed."},
+      {"answer": "15.0", "correct": false, "feedback": "Incorrect. Pay attention to the order of operations and to the values stored in the variables when each line is executed."},
+      {"answer": "22.0", "correct": false, "feedback": "Incorrect. `c` was calculated before `a` was assigned a new value, so `c` remains 8.0."},
+      {"answer": "19.0", "correct": true, "feedback": "Correct. `c` is 8.0, and `3.0 + 8.0 * 2.0 = 19.0`."}
+    ]
+  },
+  {
+    "question": "What are the values of the variables after this code runs?",
+    "code": "a = 10\nb = 20\na = b",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "a = 20, b = 20", "correct": true, "feedback": "Correct. On the third line, `a` is assigned the value stored in `b`."},
+      {"answer": "a = 20, b = 10", "correct": false, "feedback": "Incorrect. `a` receives the value of `b`, but not the other way around; the values are not swapped."},
+      {"answer": "a = 10, b = 10", "correct": false, "feedback": "Incorrect. It is `a` that changes, not `b`."},
+      {"answer": "a = 10, b = 20", "correct": false, "feedback": "Incorrect. The third line changes `a`."}
+    ]
+  },
+  {
+    "question": "Which code snippets print 20% of the value of a variable `x`?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "print(20 % x)", "correct": false, "feedback": "Incorrect. `%` is the modulus operator, not a percentage sign. This expression returns the remainder when 20 is divided by x."},
+      {"answer": "print(20% * x)", "correct": false, "feedback": "Incorrect. This is invalid Python syntax."},
+      {"answer": "print(1.20 * x)", "correct": false, "feedback": "Incorrect. This gives 120% of the value."},
+      {"answer": "print(x - 0.8 * x)", "correct": true, "feedback": "Correct. Subtracting 80% leaves 20%."},
+      {"answer": "print(0.2 * x)", "correct": true, "feedback": "Correct."}
+    ]
+  },
+  {
+    "question": "What data type does the printed value have?",
+    "code": "print(6 / 3)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "int — the result is 2", "correct": false, "feedback": "Incorrect. Ordinary division with `/` always returns a float in Python 3, even when the division is exact."},
+      {"answer": "float — the result is 2.0", "correct": true, "feedback": "Correct. `/` returns a float even when the division is exact."},
+      {"answer": "str — the result is \"2\"", "correct": false, "feedback": "Incorrect. Neither operand is a string."},
+      {"answer": "It depends on whether the division is exact.", "correct": false, "feedback": "Incorrect. `/` returns a float regardless."}
+    ]
+  },
+  {
+    "question": "What is the output from the following code?",
+    "code": "print(7 // 2, 7 % 2)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "3 1", "correct": true, "feedback": "Correct. `//` performs floor division, and `%` gives the remainder."},
+      {"answer": "3.5 1", "correct": false, "feedback": "Incorrect. `//` gives the floor of the division; `/` would give 3.5."},
+      {"answer": "1 3", "correct": false, "feedback": "Incorrect. The order is reversed: `//` is evaluated first and `%` second."},
+      {"answer": "3 0.5", "correct": false, "feedback": "Incorrect. `%` gives the remainder, not the fractional part of the quotient."}
+    ]
+  },
+  {
+    "question": "What is the output from this program?",
+    "code": "print(2 ** 3 ** 2)",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 512, "correct": true, "feedback": "Correct. Exponentiation is right-associative: `3 ** 2 = 9` is evaluated first, followed by `2 ** 9`."},
+      {"type": "value", "value": 64, "correct": false, "feedback": "Incorrect. That is the result of `(2 ** 3) ** 2`. Exponentiation is evaluated from the right."},
+      {"type": "default", "feedback": "Incorrect. Evaluate the exponent on the right first."}
+    ]
+  },
+  {
+    "question": "You have weighed out 5.00 g sodium chloride (M = 58.44 g/mol). What does the program print? Give the answer to three decimal places.",
+    "code": "m = 5.00\nM = 58.44\nn = m / M\nprint(round(n, 3))",
+    "type": "numeric",
+    "precision": 3,
+    "answers": [
+      {"type": "value", "value": 0.086, "correct": true, "feedback": "Correct. The amount of substance is `m/M`, approximately 0.086 mol."},
+      {"type": "range", "range": [11.6, 11.8], "correct": false, "feedback": "Incorrect. You divided `M` by `m`. Amount of substance is mass divided by molar mass."},
+      {"type": "default", "feedback": "Incorrect. Calculate `m/M` and round to three decimal places."}
+    ]
+  },
+  {
+    "question": "Which of the following are valid Python variable names?",
+    "type": "many_choice",
+    "answers": [
+      {"answer": "molar_mass", "correct": true, "feedback": "Correct. Letters and underscores are allowed."},
+      {"answer": "2mol", "correct": false, "feedback": "Incorrect. A variable name cannot begin with a number."},
+      {"answer": "pH", "correct": true, "feedback": "Correct. Upper- and lower-case letters are both allowed, but `pH` and `ph` are different variables."},
+      {"answer": "delta H", "correct": false, "feedback": "Incorrect. Spaces are not allowed in variable names. Use `delta_H`."},
+      {"answer": "print", "correct": true, "feedback": "Technically valid, but a poor choice because it overwrites the built-in print function."}
+    ]
+  }
+]

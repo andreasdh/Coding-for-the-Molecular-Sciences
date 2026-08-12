@@ -1,0 +1,1011 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Differential equations and rate laws &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/numerical_methods/differential_equations';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Numerical integration" href="numerical_integration.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="equations.html">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/numerical_methods/differential_equations.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Differential equations and rate laws</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-differential-equation">What is a differential equation?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-an-initial-value">Why do we need an initial value?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-derivative-to-euler-s-method">From the derivative to Euler’s method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-reaction-with-euler">First-order reaction with Euler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-large-should-the-time-step-be">How large should the time step be?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself">Try it yourself</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-rate-laws">Coupled rate laws</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-chemical-check-mass-balance">A chemical check: mass balance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reversible-reaction-and-dynamic-equilibrium">Reversible reaction and dynamic equilibrium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-methods-rk4">Higher-order methods: RK4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-ivp-ready-made-ode-solvers"><code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>: ready-made ODE solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-equations-with-solve-ivp">Coupled equations with <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiff-systems">Stiff systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-should-we-validate-a-numerical-model">How should we validate a numerical model?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-summary">Short summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="differential-equations-and-rate-laws">
+<h1>Differential equations and rate laws<a class="headerlink" href="#differential-equations-and-rate-laws" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this chapter, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>explain how a differential equation describes change in a dynamic system</p></li>
+<li><p>derive and implement the Forward Euler method</p></li>
+<li><p>model simple and coupled chemical rate laws</p></li>
+<li><p>investigate how the time step affects numerical error and stability</p></li>
+<li><p>use <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> to solve initial-value problems</p></li>
+<li><p>validate a simulation using analytical solutions, mass balance and chemical plausibility</p></li>
+</ol>
+</div>
+<section id="motivation">
+<h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this heading">#</a></h2>
+<p>Experiments are central to chemistry, but simulations have become an important supplement. A simulation can help us investigate how a chemical system evolves when we change a parameter, test a model against experimental data, or study systems that are difficult to follow directly.</p>
+<p>Often, we do not know a ready-made expression for the evolution, but we do know the <strong>change</strong>. A classic example is a rate law. For a first-order reaction</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{A\rightarrow products}\]</div>
+<p>we have</p>
+<div class="math notranslate nohighlight">
+\[\frac{d[A]}{dt}=-k[A].\]</div>
+<p>The equation tells us how the concentration changes right now. Our task is to use this information to find the complete evolution, <span class="math notranslate nohighlight">\([A](t)\)</span>.</p>
+</section>
+<section id="what-is-a-differential-equation">
+<h2>What is a differential equation?<a class="headerlink" href="#what-is-a-differential-equation" title="Permalink to this heading">#</a></h2>
+<p>A differential equation is an equation containing an unknown function and one or more derivatives of that function. You may encounter many forms:</p>
+<div class="math notranslate nohighlight">
+\[y'=y\]</div>
+<div class="math notranslate nohighlight">
+\[y'=t-y\]</div>
+<div class="math notranslate nohighlight">
+\[u'(t)=u(t)\]</div>
+<p>or, more generally,</p>
+<div class="math notranslate nohighlight">
+\[y'(t)=\frac{dy}{dt}=f(t,y).\]</div>
+<p>What they have in common is that the left-hand side describes the <strong>change</strong>, while the right-hand side tells us what the change depends on.</p>
+<p>When we solve an ordinary algebraic equation, we search for a number. When we solve a differential equation, we search for a <strong>function</strong> or, numerically, a sequence of function values.</p>
+<section id="why-do-we-need-an-initial-value">
+<h3>Why do we need an initial value?<a class="headerlink" href="#why-do-we-need-an-initial-value" title="Permalink to this heading">#</a></h3>
+<p>Consider the very simple differential equation</p>
+<div class="math notranslate nohighlight">
+\[y'=1.\]</div>
+<p>Integrating gives</p>
+<div class="math notranslate nohighlight">
+\[y=t+C.\]</div>
+<p>There are therefore infinitely many solutions – one for each value of the constant <span class="math notranslate nohighlight">\(C\)</span>. If we also know that</p>
+<div class="math notranslate nohighlight">
+\[y(0)=2,\]</div>
+<p>then <span class="math notranslate nohighlight">\(C=2\)</span>, and we obtain one particular solution. Such information is called an <strong>initial condition</strong>.</p>
+<p>In chemistry, an initial condition may for example be the starting concentration <span class="math notranslate nohighlight">\([A](0)\)</span>.</p>
+</section>
+</section>
+<section id="from-the-derivative-to-euler-s-method">
+<h2>From the derivative to Euler’s method<a class="headerlink" href="#from-the-derivative-to-euler-s-method" title="Permalink to this heading">#</a></h2>
+<p>From numerical differentiation, we know the forward difference:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dy}{dt}\approx\frac{y(t+\Delta t)-y(t)}{\Delta t}.\]</div>
+<p>We now use it in a slightly different way. We know <span class="math notranslate nohighlight">\(y(t)\)</span> and the expression for the derivative <span class="math notranslate nohighlight">\(dy/dt\)</span>, and we want to find the <strong>next value</strong>, <span class="math notranslate nohighlight">\(y(t+\Delta t)\)</span>.</p>
+<p>First, multiply by <span class="math notranslate nohighlight">\(\Delta t\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\frac{dy}{dt}\Delta t\approx y(t+\Delta t)-y(t).\]</div>
+<p>Then move <span class="math notranslate nohighlight">\(y(t)\)</span> to the other side:</p>
+<div class="math notranslate nohighlight">
+\[y(t+\Delta t)\approx y(t)+\frac{dy}{dt}\Delta t.\]</div>
+<p>If we write the differential equation as <span class="math notranslate nohighlight">\(dy/dt=f(t,y)\)</span> and use indices, we obtain</p>
+<div class="math notranslate nohighlight">
+\[y_{n+1}=y_n+f(t_n,y_n)\Delta t.\]</div>
+<p>This is <strong>Forward Euler</strong>. Notice the connection to the previous numerical ideas: we have turned a continuous differential equation into a <strong>difference equation</strong> that the computer can repeat step by step.</p>
+</section>
+<section id="first-order-reaction-with-euler">
+<h2>First-order reaction with Euler<a class="headerlink" href="#first-order-reaction-with-euler" title="Permalink to this heading">#</a></h2>
+<p>We use</p>
+<div class="math notranslate nohighlight">
+\[\frac{d[A]}{dt}=-k[A].\]</div>
+<p>Before writing a general Euler function, we spell out the algorithm directly. This makes the connection between the rate law and the code as clear as possible.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">k</span> <span class="o">=</span> <span class="mf">0.03</span>
+<span class="n">A0</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">t_end</span> <span class="o">=</span> <span class="mi">150</span>
+
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span> <span class="o">+</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">))</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">A0</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">rate_of_change</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">rate_of_change</span><span class="o">*</span><span class="n">dt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;[A] (mol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The loop follows Euler’s formula directly: calculate the rate of change from the current concentration, multiply by the time step, and use that change to obtain the next concentration.</p>
+<p>Once this update rule is clear, we can write a general Euler function. The function receives the differential equation itself as the function <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">first_order</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">A</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">euler</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">t_start</span><span class="p">,</span> <span class="n">t_end</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t_start</span><span class="p">,</span> <span class="n">t_end</span> <span class="o">+</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">))</span>
+    <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
+
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">time</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">y</span><span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="p">])</span><span class="o">*</span><span class="n">dt</span>
+
+    <span class="k">return</span> <span class="n">time</span><span class="p">,</span> <span class="n">y</span>
+
+<span class="n">time</span><span class="p">,</span> <span class="n">A_euler</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">first_order</span><span class="p">,</span> <span class="n">A0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">A_analytical</span> <span class="o">=</span> <span class="n">A0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">time</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">A_euler</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Euler&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">A_analytical</span><span class="p">,</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Analytical&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;[A] (mol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Largest absolute error:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">A_euler</span> <span class="o">-</span> <span class="n">A_analytical</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-large-should-the-time-step-be">
+<h2>How large should the time step be?<a class="headerlink" href="#how-large-should-the-time-step-be" title="Permalink to this heading">#</a></h2>
+<p>Euler assumes that the slope we have <strong>now</strong> is a good approximation throughout the next time step. If the time step is large and the system changes rapidly, that assumption becomes poor.</p>
+<p>We should therefore not investigate only one value of <span class="math notranslate nohighlight">\(\Delta t\)</span>. An important numerical check is:</p>
+<blockquote>
+<div><p>Does the solution change substantially if we reduce the time step?</p>
+</div></blockquote>
+<p>Forward Euler is a <strong>first-order method</strong>, meaning that its global error decreases approximately in proportion to <span class="math notranslate nohighlight">\(\Delta t\)</span> for a sufficiently smooth problem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">dt_test</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]:</span>
+    <span class="n">t_test</span><span class="p">,</span> <span class="n">A_test</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">first_order</span><span class="p">,</span> <span class="n">A0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="n">dt_test</span><span class="p">)</span>
+    <span class="n">A_exact</span> <span class="o">=</span> <span class="n">A0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">t_test</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">A_test</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">A_exact</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;dt = </span><span class="si">{</span><span class="n">dt_test</span><span class="si">:</span><span class="s2">4.1f</span><span class="si">}</span><span class="s2"> s   final error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.3e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="try-it-yourself">
+<h3>Try it yourself<a class="headerlink" href="#try-it-yourself" title="Permalink to this heading">#</a></h3>
+<p>Change the rate constant and time step and investigate when Euler gives a good approximation.</p>
+<iframe src="../../basthon/?from=examples/differential_equation_euler_reaction.py" width="100%" height="640" frameborder="0" title="Try it yourself: Euler and reaction kinetics" loading="lazy" allowfullscreen></iframe>
+</section>
+</section>
+<section id="coupled-rate-laws">
+<h2>Coupled rate laws<a class="headerlink" href="#coupled-rate-laws" title="Permalink to this heading">#</a></h2>
+<p>Many chemical systems contain several concentrations that evolve at the same time. For the irreversible reaction</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{A+B\rightarrow C}\]</div>
+<p>with rate</p>
+<div class="math notranslate nohighlight">
+\[r=k[A][B],\]</div>
+<p>we obtain</p>
+<div class="math notranslate nohighlight">
+\[\frac{d[A]}{dt}=-k[A][B],\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{d[B]}{dt}=-k[A][B],\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{d[C]}{dt}=k[A][B].\]</div>
+<p>The three equations are <strong>coupled</strong> because the same reaction rate depends on both <span class="math notranslate nohighlight">\([A]\)</span> and <span class="math notranslate nohighlight">\([B]\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">A0</span> <span class="o">=</span> <span class="mf">1.00</span>
+<span class="n">B0</span> <span class="o">=</span> <span class="mf">0.60</span>
+<span class="n">C0</span> <span class="o">=</span> <span class="mf">0.00</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">t_end</span> <span class="o">=</span> <span class="mi">80</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_end</span> <span class="o">+</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">C_prod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">C_prod</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">A0</span><span class="p">,</span> <span class="n">B0</span><span class="p">,</span> <span class="n">C0</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">k</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">rate</span><span class="o">*</span><span class="n">dt</span>
+    <span class="n">B</span><span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">rate</span><span class="o">*</span><span class="n">dt</span>
+    <span class="n">C_prod</span><span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">C_prod</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">rate</span><span class="o">*</span><span class="n">dt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;[A]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;[B]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">C_prod</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;[C]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Concentration (mol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="a-chemical-check-mass-balance">
+<h3>A chemical check: mass balance<a class="headerlink" href="#a-chemical-check-mass-balance" title="Permalink to this heading">#</a></h3>
+<p>A numerical curve can look smooth and still be wrong. Stoichiometry gives us independent checks. For <span class="math notranslate nohighlight">\(\mathrm{A+B\rightarrow C}\)</span>, every mole of C formed consumes one mole of A and one mole of B. Therefore, the model predicts that</p>
+<div class="math notranslate nohighlight">
+\[[A]+[C]=[A]_0+[C]_0\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[[B]+[C]=[B]_0+[C]_0\]</div>
+<p>should remain constant. These conservation relationships are powerful diagnostics for both the equations and the code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">balance_A</span> <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">C_prod</span>
+<span class="n">balance_B</span> <span class="o">=</span> <span class="n">B</span> <span class="o">+</span> <span class="n">C_prod</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Largest deviation in the A balance:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">balance_A</span> <span class="o">-</span> <span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Largest deviation in the B balance:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">balance_B</span> <span class="o">-</span> <span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="reversible-reaction-and-dynamic-equilibrium">
+<h2>Reversible reaction and dynamic equilibrium<a class="headerlink" href="#reversible-reaction-and-dynamic-equilibrium" title="Permalink to this heading">#</a></h2>
+<p>For</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{A\rightleftharpoons B}\]</div>
+<p>we can write</p>
+<div class="math notranslate nohighlight">
+\[\frac{d[A]}{dt}=-k_f[A]+k_b[B],\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{d[B]}{dt}=k_f[A]-k_b[B].\]</div>
+<p>When the system reaches dynamic equilibrium, the net change becomes zero even though the forward and backward reactions are still represented in the model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">k_f</span> <span class="o">=</span> <span class="mf">0.40</span>
+<span class="n">k_b</span> <span class="o">=</span> <span class="mf">0.10</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.02</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span> <span class="o">+</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">net_rate</span> <span class="o">=</span> <span class="n">k_f</span><span class="o">*</span><span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">k_b</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">net_rate</span><span class="o">*</span><span class="n">dt</span>
+    <span class="n">B</span><span class="p">[</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">B</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">net_rate</span><span class="o">*</span><span class="n">dt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;[A]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;[B]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Concentration&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A + B at the end:&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;B/A at the end:&quot;</span><span class="p">,</span> <span class="n">B</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">A</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>At equilibrium, the net rate is zero,</p>
+<div class="math notranslate nohighlight">
+\[k_f[A]=k_b[B],\]</div>
+<p>so the model predicts</p>
+<div class="math notranslate nohighlight">
+\[\frac{[B]}{[A]}=\frac{k_f}{k_b}.\]</div>
+<p>The numerical result should approach this ratio. This gives another chemically meaningful check of the simulation.</p>
+</section>
+<section id="higher-order-methods-rk4">
+<h2>Higher-order methods: RK4<a class="headerlink" href="#higher-order-methods-rk4" title="Permalink to this heading">#</a></h2>
+<p>Forward Euler is a first-order method. <strong>Order</strong> describes how the numerical error decreases when the step size is reduced; it does not simply count how many times the function is evaluated.</p>
+<p>The classical Runge–Kutta method RK4 uses four intermediate slopes in each step and has a global error that decreases approximately as <span class="math notranslate nohighlight">\(\Delta t^4\)</span> when the assumptions are satisfied. It is therefore much more accurate than Euler for many smooth problems.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">rk4_step</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">k1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">k2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="n">k3</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dt</span><span class="o">*</span><span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k3</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span><span class="o">/</span><span class="mi">6</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dy_dt</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mf">0.15</span><span class="o">*</span><span class="n">y</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">rk4_step</span><span class="p">(</span><span class="n">dy_dt</span><span class="p">,</span> <span class="n">t0</span> <span class="o">+</span> <span class="n">n</span><span class="o">*</span><span class="n">dt</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RK4 after 10 time units:&quot;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Analytical:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="o">*</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solve-ivp-ready-made-ode-solvers">
+<h2><code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>: ready-made ODE solvers<a class="headerlink" href="#solve-ivp-ready-made-ode-solvers" title="Permalink to this heading">#</a></h2>
+<p>In practical work, we normally use tested ODE solvers. <code class="docutils literal notranslate"><span class="pre">scipy.integrate.solve_ivp</span></code> solves initial-value problems and can adapt the time step automatically to keep the error below selected tolerances.</p>
+<p>The default method is <code class="docutils literal notranslate"><span class="pre">RK45</span></code>, an adaptive Runge–Kutta method that uses an embedded pair of fifth and fourth order. The fifth-order formula is used for the step itself, while the difference between the two orders is used to estimate the error and control the step length.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">first_order_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="mf">0.15</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">201</span><span class="p">)</span>
+
+<span class="n">solution</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">first_order_rhs</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+    <span class="p">[</span><span class="mf">1.0</span><span class="p">],</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+    <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span>
+    <span class="n">atol</span><span class="o">=</span><span class="mf">1e-10</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solution</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">solution</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;solve_ivp&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="o">*</span><span class="n">t_eval</span><span class="p">),</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Analytical&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;[A]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success:&quot;</span><span class="p">,</span> <span class="n">solution</span><span class="o">.</span><span class="n">success</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Message:&quot;</span><span class="p">,</span> <span class="n">solution</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Function evaluations:&quot;</span><span class="p">,</span> <span class="n">solution</span><span class="o">.</span><span class="n">nfev</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="coupled-equations-with-solve-ivp">
+<h3>Coupled equations with <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code><a class="headerlink" href="#coupled-equations-with-solve-ivp" title="Permalink to this heading">#</a></h3>
+<p>For a system of coupled equations, the function passed to <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> returns one derivative for each state variable. The order of these derivatives must match the order of the concentrations in the state vector.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">coupled_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mf">0.05</span>
+    <span class="n">rate</span> <span class="o">=</span> <span class="n">k</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">B</span>
+    <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="n">rate</span><span class="p">,</span> <span class="o">-</span><span class="n">rate</span><span class="p">,</span> <span class="n">rate</span><span class="p">]</span>
+
+<span class="n">solution</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
+    <span class="n">coupled_rhs</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">),</span>
+    <span class="p">[</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">0.60</span><span class="p">,</span> <span class="mf">0.00</span><span class="p">],</span>
+    <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">401</span><span class="p">),</span>
+    <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span>
+    <span class="n">atol</span><span class="o">=</span><span class="mf">1e-10</span>
+<span class="p">)</span>
+
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C_prod</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">y</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solution</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;[A]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solution</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;[B]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">solution</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">C_prod</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;[C]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Concentration (mol/L)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Largest deviation in A + C:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">A</span> <span class="o">+</span> <span class="n">C_prod</span> <span class="o">-</span> <span class="mf">1.00</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Largest deviation in B + C:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">B</span> <span class="o">+</span> <span class="n">C_prod</span> <span class="o">-</span> <span class="mf">0.60</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="stiff-systems">
+<h2>Stiff systems<a class="headerlink" href="#stiff-systems" title="Permalink to this heading">#</a></h2>
+<p>Chemical kinetic models can contain processes with very different time scales. A very fast reaction may force an explicit solver to take tiny time steps even after the fast transient is essentially over. Such a problem may be <strong>stiff</strong>.</p>
+<p>Consider consecutive first-order reactions</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{A\xrightarrow{k_1}B\xrightarrow{k_2}C}\]</div>
+<p>with <span class="math notranslate nohighlight">\(k_1=100\)</span> and <span class="math notranslate nohighlight">\(k_2=0.02\)</span>. The first process is thousands of times faster than the second. <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> provides methods designed for stiff problems, including <code class="docutils literal notranslate"><span class="pre">BDF</span></code> and <code class="docutils literal notranslate"><span class="pre">Radau</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">stiff_rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="mf">100.0</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="mf">0.02</span>
+    <span class="k">return</span> <span class="p">[</span><span class="o">-</span><span class="n">k1</span><span class="o">*</span><span class="n">A</span><span class="p">,</span> <span class="n">k1</span><span class="o">*</span><span class="n">A</span> <span class="o">-</span> <span class="n">k2</span><span class="o">*</span><span class="n">B</span><span class="p">,</span> <span class="n">k2</span><span class="o">*</span><span class="n">B</span><span class="p">]</span>
+
+<span class="n">rk45</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">stiff_rhs</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;RK45&quot;</span><span class="p">,</span>
+                 <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="n">bdf</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">stiff_rhs</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;BDF&quot;</span><span class="p">,</span>
+                <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-7</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RK45 function evaluations:&quot;</span><span class="p">,</span> <span class="n">rk45</span><span class="o">.</span><span class="n">nfev</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;BDF function evaluations:&quot;</span><span class="p">,</span> <span class="n">bdf</span><span class="o">.</span><span class="n">nfev</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RK45 success:&quot;</span><span class="p">,</span> <span class="n">rk45</span><span class="o">.</span><span class="n">success</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;BDF success:&quot;</span><span class="p">,</span> <span class="n">bdf</span><span class="o">.</span><span class="n">success</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The number of function evaluations is not a universal measure of speed, but a large difference can reveal that an explicit method is struggling with a stiff problem. The appropriate method depends on the model and the required accuracy.</p>
+</section>
+<section id="how-should-we-validate-a-numerical-model">
+<h2>How should we validate a numerical model?<a class="headerlink" href="#how-should-we-validate-a-numerical-model" title="Permalink to this heading">#</a></h2>
+<p>A successful solver call does not guarantee that the chemistry is correct. Numerical modelling should combine mathematical and chemical checks.</p>
+<div class="important admonition">
+<p class="admonition-title">Validation checklist</p>
+<ol class="arabic simple">
+<li><p>Have I formulated the correct rate laws and stoichiometric signs?</p></li>
+<li><p>Are the units consistent?</p></li>
+<li><p>Does the solution change substantially if I tighten the tolerance or reduce the time step?</p></li>
+<li><p>Are amount of substance or other quantities conserved when the model says they should be?</p></li>
+<li><p>Do limiting cases agree with chemical intuition?</p></li>
+</ol>
+</div>
+</section>
+<section id="short-summary">
+<h2>Short summary<a class="headerlink" href="#short-summary" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>A differential equation describes the relationship between the state of a system and its change.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f'(t)\)</span> and <span class="math notranslate nohighlight">\(df/dt\)</span> are two notations for the derivative.</p></li>
+<li><p>Euler creates a discrete difference equation from a continuous rate of change.</p></li>
+<li><p>Coupled rate laws must be updated consistently with the stoichiometry.</p></li>
+<li><p>RK4 is a fourth-order method; “order” describes error scaling, not merely the number of function evaluations.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> is the natural tool for practical ODE problems.</p></li>
+<li><p>Stiff systems may require methods such as BDF or Radau.</p></li>
+<li><p>Numerical results should be checked using chemical conservation laws and convergence.</p></li>
+</ul>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 1 – Euler and an analytical solution</p>
+<p>Solve <span class="math notranslate nohighlight">\(d[A]/dt=-0.20[A]\)</span> with <span class="math notranslate nohighlight">\([A](0)=1.50\)</span> mol/L using Euler. Compare with the analytical solution after 5, 10 and 20 time units.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2 – time step</p>
+<p>Repeat Exercise 1 with <span class="math notranslate nohighlight">\(\Delta t=2.0\)</span>, 1.0, 0.5, 0.1 and 0.01. Plot the error at <span class="math notranslate nohighlight">\(t=20\)</span> as a function of <span class="math notranslate nohighlight">\(\Delta t\)</span>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3 – coupled reaction</p>
+<p>Simulate <span class="math notranslate nohighlight">\(\mathrm{A+B\rightarrow C}\)</span> with <span class="math notranslate nohighlight">\(k=0.05\)</span>, <span class="math notranslate nohighlight">\([A]_0=1.00\)</span> M and <span class="math notranslate nohighlight">\([B]_0=0.60\)</span> M. Check that <span class="math notranslate nohighlight">\([A]+[C]\)</span> and <span class="math notranslate nohighlight">\([B]+[C]\)</span> remain constant.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4 – reversible reaction</p>
+<p>For <span class="math notranslate nohighlight">\(\mathrm{A\rightleftharpoons B}\)</span>, use <span class="math notranslate nohighlight">\(k_f=0.40\)</span> and <span class="math notranslate nohighlight">\(k_b=0.10\)</span>. Start with only A. Simulate until the system is close to equilibrium, and compare the numerical ratio <span class="math notranslate nohighlight">\([B]/[A]\)</span> with <span class="math notranslate nohighlight">\(k_f/k_b\)</span>.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5 – Euler versus RK4</p>
+<p>Use the same relatively large time step to solve a first-order reaction with Euler and RK4. Compare both with the analytical solution.</p>
+</div>
+<p>```{admonition} Exercise 6 – <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>
+:class: tip
+Solve the first-order reaction with <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>. Inspect the fields <code class="docutils literal notranslate"><span class="pre">success</span></code>, <code class="docutils literal notranslate"><span class="pre">message</span></code>, and the number of function evaluations <code class="docutils literal notranslate"><span class="pre">nfev</span></code>. What do they tell you?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+```{admonition} Exercise 7 – consecutive reactions
+:class: tip
+Model $\mathrm{A\rightarrow B\rightarrow C}$ with two different rate constants. Find the time at which $[B]$ is largest. Explain chemically why the intermediate first increases and then decreases.
+</pre></div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 8 – stiff system</p>
+<p>Use the model with <span class="math notranslate nohighlight">\(k_1=100\)</span> and <span class="math notranslate nohighlight">\(k_2=0.02\)</span>. Solve it with <code class="docutils literal notranslate"><span class="pre">RK45</span></code> and <code class="docutils literal notranslate"><span class="pre">BDF</span></code> using the same tolerances. Compare <code class="docutils literal notranslate"><span class="pre">nfev</span></code> and comment on the difference.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/numerical_methods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="numerical_integration.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Numerical integration</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-differential-equation">What is a differential equation?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-an-initial-value">Why do we need an initial value?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-the-derivative-to-euler-s-method">From the derivative to Euler’s method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-order-reaction-with-euler">First-order reaction with Euler</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-large-should-the-time-step-be">How large should the time step be?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-it-yourself">Try it yourself</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-rate-laws">Coupled rate laws</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-chemical-check-mass-balance">A chemical check: mass balance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reversible-reaction-and-dynamic-equilibrium">Reversible reaction and dynamic equilibrium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-methods-rk4">Higher-order methods: RK4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solve-ivp-ready-made-ode-solvers"><code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code>: ready-made ODE solvers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coupled-equations-with-solve-ivp">Coupled equations with <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stiff-systems">Stiff systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-should-we-validate-a-numerical-model">How should we validate a numerical model?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#short-summary">Short summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

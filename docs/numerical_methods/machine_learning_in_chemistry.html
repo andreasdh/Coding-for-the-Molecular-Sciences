@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Machine learning in chemistry &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/numerical_methods/machine_learning_in_chemistry';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/chemical_libraries.html">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_handling/calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="equations.html">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/numerical_methods/machine_learning_in_chemistry.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Machine learning in chemistry</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-classifying-flame-emission-measurements">Case: classifying flame-emission measurements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-explore-the-data">Step 1: Explore the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-choose-features-and-target">Step 2: Choose features and target</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-split-into-training-and-test-sets">Step 3: Split into training and test sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-establish-a-baseline">Step 4: Establish a baseline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-train-a-decision-tree">Step 5: Train a decision tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-evaluate-the-model">Step 6: Evaluate the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-has-the-model-learned">What has the model learned?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting">Overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-leakage-in-chemical-workflows">Data leakage in chemical workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-this-example">Limitations of this example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-general-machine-learning-workflow-for-chemistry">A general machine-learning workflow for chemistry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-in-chemistry">
+<h1>Machine learning in chemistry<a class="headerlink" href="#machine-learning-in-chemistry" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this topic, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>explain the difference between rule-based programming and machine learning</p></li>
+<li><p>identify observations, features and the target variable in a chemical dataset</p></li>
+<li><p>split data into training and test sets</p></li>
+<li><p>train and use a simple classification model</p></li>
+<li><p>evaluate the model using test data, accuracy and a confusion matrix</p></li>
+<li><p>explain overfitting, data leakage and important limitations of a model</p></li>
+</ol>
+</div>
+<p>In ordinary programs, we specify the rules that the computer should follow. In machine learning, we instead provide examples and allow an algorithm to learn patterns that can be applied to new data.</p>
+<div class="admonition-machine-learning admonition">
+<p class="admonition-title">Machine learning</p>
+<p>Machine learning refers to methods in which an algorithm learns patterns from examples and uses those patterns to make predictions for new observations.</p>
+</div>
+<p>Machine learning can be used in chemistry to classify spectra, predict properties from molecular descriptors, detect unusual process measurements, interpret images and chromatograms, and model relationships involving many variables.</p>
+<p>A machine-learning model is not the same thing as a generative AI system such as ChatGPT. The model in this chapter learns a narrowly defined relationship in a small tabular dataset. A language model is trained on very large collections of data and generates sequences such as text. Both depend on data and statistical patterns, but their tasks, architectures and failure modes are very different.</p>
+<div class="admonition-why-is-this-chapter-marked-with-an-asterisk admonition">
+<p class="admonition-title">Why is this chapter marked with an asterisk?</p>
+<p>Machine learning builds on data handling, statistics and model evaluation. The purpose here is not to learn many algorithms, but to understand a basic workflow and learn to ask critical questions about a model.</p>
+</div>
+<section id="case-classifying-flame-emission-measurements">
+<h2>Case: classifying flame-emission measurements<a class="headerlink" href="#case-classifying-flame-emission-measurements" title="Permalink to this heading">#</a></h2>
+<p>Sodium, lithium and potassium ions have strong characteristic emission lines in different spectral regions. We use a small <strong>synthetic teaching dataset</strong> containing signal intensities near 589, 671 and 766 nm. The task is to classify each observation as <code class="docutils literal notranslate"><span class="pre">Na</span></code>, <code class="docutils literal notranslate"><span class="pre">Li</span></code> or <code class="docutils literal notranslate"><span class="pre">K</span></code>.</p>
+<p>The dataset is deliberately simplified. It does not represent a fully validated analytical instrument; it mimics a situation in which different ions produce strong signals in different spectral regions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;data/flame_emission.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;ion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  sample_id  emission_589_nm  emission_671_nm  emission_766_nm ion
+0     Na_01            91.37            14.86             9.71  Na
+1     Na_02            89.16             8.68            14.60  Na
+2     Na_03            85.72            16.30             9.55  Na
+3     Na_04            85.25            13.61            14.07  Na
+4     Na_05            88.06             9.16            10.32  Na
+(60, 5)
+ion
+Na    20
+Li    20
+K     20
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Each row is one sample measurement.</p>
+<div class="admonition-features-and-target-variable admonition">
+<p class="admonition-title">Features and target variable</p>
+<p><strong>Features</strong> are the variables the model is allowed to use as information. The <strong>target variable</strong> is the value or class that the model is trained to predict. Here, the emission intensities are features and <code class="docutils literal notranslate"><span class="pre">ion</span></code> is the target.</p>
+</div>
+</section>
+<section id="step-1-explore-the-data">
+<h2>Step 1: Explore the data<a class="headerlink" href="#step-1-explore-the-data" title="Permalink to this heading">#</a></h2>
+<p>Before fitting a model, inspect the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;ion&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 60 entries, 0 to 59
+Data columns (total 5 columns):
+ #   Column           Non-Null Count  Dtype  
+---  ------           --------------  -----  
+ 0   sample_id        60 non-null     object 
+ 1   emission_589_nm  60 non-null     float64
+ 2   emission_671_nm  60 non-null     float64
+ 3   emission_766_nm  60 non-null     float64
+ 4   ion              60 non-null     object 
+dtypes: float64(3), object(2)
+memory usage: 2.5+ KB
+sample_id          0
+emission_589_nm    0
+emission_671_nm    0
+emission_766_nm    0
+ion                0
+dtype: int64
+     emission_589_nm  emission_671_nm  emission_766_nm
+ion                                                   
+K            12.0645          14.0945           90.064
+Li           14.0645          86.0945           11.064
+Na           88.0645          13.0945           12.064
+</pre></div>
+</div>
+</div>
+</div>
+<p>Useful questions include:</p>
+<ul class="simple">
+<li><p>Are there missing values?</p></li>
+<li><p>Are the classes represented by similar numbers of observations?</p></li>
+<li><p>Are units and measurement conditions comparable?</p></li>
+<li><p>Is any proposed feature derived directly from the target?</p></li>
+<li><p>Are the observations genuinely independent?</p></li>
+</ul>
+<p>We can also visualise two features before using a model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">for</span> <span class="n">ion</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;ion&quot;</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;emission_589_nm&quot;</span><span class="p">],</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;emission_671_nm&quot;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">ion</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Emission intensity at 589 nm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Emission intensity at 671 nm&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Ion&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d30cbd3ca55171d9a28d193156e43dc0a5598d7995a9756c19c00ee1f157ad19.png" src="../../_images/d30cbd3ca55171d9a28d193156e43dc0a5598d7995a9756c19c00ee1f157ad19.png" />
+</div>
+</div>
+<p>The classes are already well separated in this simplified dataset. That is useful pedagogically: we can understand what the model is learning. It also illustrates a broader principle — if a problem is simple and chemically interpretable, we do not gain anything merely by choosing a more complicated algorithm.</p>
+</section>
+<section id="step-2-choose-features-and-target">
+<h2>Step 2: Choose features and target<a class="headerlink" href="#step-2-choose-features-and-target" title="Permalink to this heading">#</a></h2>
+<p>We use the three emission intensities as features and the ion identity as the target.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span>
+    <span class="s2">&quot;emission_589_nm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;emission_671_nm&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;emission_766_nm&quot;</span><span class="p">,</span>
+<span class="p">]]</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;ion&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We deliberately do <strong>not</strong> use <code class="docutils literal notranslate"><span class="pre">sample_id</span></code> as a feature. The ID identifies a row but has no intended chemical relationship to the ion. Worse, the IDs in this dataset contain strings such as <code class="docutils literal notranslate"><span class="pre">Na_01</span></code> and <code class="docutils literal notranslate"><span class="pre">Li_01</span></code>; if encoded numerically, they could reveal the correct answer directly.</p>
+<div class="admonition-data-leakage admonition">
+<p class="admonition-title">Data leakage</p>
+<p>Data leakage occurs when information that would not legitimately be available when predicting a new observation enters the model-training process. Leakage can make model performance look unrealistically good.</p>
+</div>
+</section>
+<section id="step-3-split-into-training-and-test-sets">
+<h2>Step 3: Split into training and test sets<a class="headerlink" href="#step-3-split-into-training-and-test-sets" title="Permalink to this heading">#</a></h2>
+<p>We need to evaluate the model on observations that were not used to fit it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">features</span><span class="p">,</span>
+    <span class="n">labels</span><span class="p">,</span>
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_size=0.30</span></code> places 30% of the observations in the test set.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">random_state=42</span></code> makes this particular random split reproducible.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stratify=labels</span></code> preserves approximately the same class proportions in the training and test sets.</p></li>
+</ul>
+<div class="admonition-training-and-test-data admonition">
+<p class="admonition-title">Training and test data</p>
+<p>The training set is used to learn the model parameters. The test set is held back and used for a more independent evaluation of performance on unseen observations.</p>
+</div>
+<p>If we repeatedly alter a model because it performs poorly on the same test set, the test set begins to influence model development. In a larger project, model selection is therefore usually separated from the final evaluation using validation data or cross-validation.</p>
+</section>
+<section id="step-4-establish-a-baseline">
+<h2>Step 4: Establish a baseline<a class="headerlink" href="#step-4-establish-a-baseline" title="Permalink to this heading">#</a></h2>
+<p>Before celebrating a model score, ask what a trivial strategy would achieve. One baseline is always predicting the most common class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="n">most_common_class</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">baseline_predictions</span> <span class="o">=</span> <span class="p">[</span><span class="n">most_common_class</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="n">baseline_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">baseline_predictions</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Baseline accuracy: </span><span class="si">{</span><span class="n">baseline_accuracy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Baseline accuracy: 0.333
+</pre></div>
+</div>
+</div>
+</div>
+<p>For a balanced three-class dataset, this baseline will usually be close to one third. A model that cannot outperform an appropriate simple baseline is not useful merely because it has been labelled machine learning.</p>
+</section>
+<section id="step-5-train-a-decision-tree">
+<h2>Step 5: Train a decision tree<a class="headerlink" href="#step-5-train-a-decision-tree" title="Permalink to this heading">#</a></h2>
+<p>A decision tree classifies observations using a sequence of threshold conditions. It is a good teaching model because the learned rules can be visualised.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>DecisionTreeClassifier(max_depth=3, random_state=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">DecisionTreeClassifier</label><div class="sk-toggleable__content"><pre>DecisionTreeClassifier(max_depth=3, random_state=42)</pre></div></div></div></div></div></div></div>
+</div>
+<p>During training, the algorithm chooses thresholds that separate the training classes. <code class="docutils literal notranslate"><span class="pre">max_depth=3</span></code> restricts the complexity of the tree. This is useful because an unrestricted tree can continue splitting until it models details that are specific to the training set.</p>
+</section>
+<section id="step-6-evaluate-the-model">
+<h2>Step 6: Evaluate the model<a class="headerlink" href="#step-6-evaluate-the-model" title="Permalink to this heading">#</a></h2>
+<p>Now we predict the held-out test observations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test accuracy: </span><span class="si">{</span><span class="n">accuracy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Test accuracy: 1.000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Accuracy is the fraction of test observations classified correctly. It is easy to understand, but can be misleading for highly imbalanced classes. A model that always predicts a dominant class may then have high accuracy while being useless for the rare class.</p>
+<p>A <strong>confusion matrix</strong> shows which classes are confused with one another.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConfusionMatrixDisplay</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">ConfusionMatrixDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Flame-emission classification&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/af1abde6e5c00653053df9ca74d1f11b835f5d53198feab309160eab094c686a.png" src="../../_images/af1abde6e5c00653053df9ca74d1f11b835f5d53198feab309160eab094c686a.png" />
+</div>
+</div>
+<p>Rows represent the true classes and columns the predicted classes. Correct classifications lie on the diagonal.</p>
+<p>You can run the full workflow and visualise the tree in the browser editor below.</p>
+<iframe src="../../basthon/?from=examples/machine_learning_flame_emission.py" width="100%" height="820" frameborder="0" title="Interactive Python editor for classifying flame-emission data" loading="lazy" allowfullscreen></iframe></section>
+<section id="what-has-the-model-learned">
+<h2>What has the model learned?<a class="headerlink" href="#what-has-the-model-learned" title="Permalink to this heading">#</a></h2>
+<p>We can visualise the decision tree.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.tree</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_tree</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plot_tree</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="n">class_names</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span>
+    <span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0c8a56849be4d43855b561d46f2c042888f94cf9bda8d9f271b20f49b0af82ce.png" src="../../_images/0c8a56849be4d43855b561d46f2c042888f94cf9bda8d9f271b20f49b0af82ce.png" />
+</div>
+</div>
+<p>The tree uses numerical thresholds on the emission intensities. We should compare these rules with the chemistry. If a sodium sample is distinguished by strong signal near 589 nm, that is chemically interpretable.</p>
+<p>Interpretability does not automatically prove causality or validity, but it provides an opportunity to detect implausible behaviour. A model that classified ions using an accidental sample-number pattern instead of spectral information might still score well while being chemically meaningless.</p>
+</section>
+<section id="overfitting">
+<h2>Overfitting<a class="headerlink" href="#overfitting" title="Permalink to this heading">#</a></h2>
+<div class="admonition-overfitting admonition">
+<p class="admonition-title">Overfitting</p>
+<p>A model is overfit when it learns details or noise specific to the training data rather than patterns that generalise to new data.</p>
+</div>
+<p>One warning sign is a large gap between training and test performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">training_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+<span class="n">test_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">predictions</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Training accuracy: </span><span class="si">{</span><span class="n">training_accuracy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Test accuracy:     </span><span class="si">{</span><span class="n">test_accuracy</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training accuracy: 1.000
+Test accuracy:     1.000
+</pre></div>
+</div>
+</div>
+</div>
+<p>Because this teaching dataset is deliberately easy, both scores may be very high. In real chemical data, performance differences are often larger. Restricting model complexity, collecting more representative data and using validation procedures can help, but no statistical technique can compensate for a dataset that does not represent the intended application.</p>
+</section>
+<section id="data-leakage-in-chemical-workflows">
+<h2>Data leakage in chemical workflows<a class="headerlink" href="#data-leakage-in-chemical-workflows" title="Permalink to this heading">#</a></h2>
+<p>Leakage can be subtle. Examples include:</p>
+<ul class="simple">
+<li><p>including a sample identifier that encodes the class;</p></li>
+<li><p>calculating a preprocessing transformation using the full dataset before splitting into training and test sets;</p></li>
+<li><p>having replicate spectra from the same physical sample in both training and test sets when the intended use is prediction for entirely new samples;</p></li>
+<li><p>including a feature measured after the outcome is already known;</p></li>
+<li><p>selecting variables by looking at performance on the final test set.</p></li>
+</ul>
+<p>The third example is especially important in chemistry. If ten spectra from one sample are nearly identical, randomly splitting spectra can make the test set look independent even though almost the same physical sample appears in training. The correct unit for splitting should reflect the <strong>scientific unit that needs to generalise</strong>.</p>
+</section>
+<section id="limitations-of-this-example">
+<h2>Limitations of this example<a class="headerlink" href="#limitations-of-this-example" title="Permalink to this heading">#</a></h2>
+<p>Our small synthetic dataset is useful for learning the workflow, but not for claiming that we have built a deployable flame-test classifier. Important limitations include:</p>
+<ul class="simple">
+<li><p>the signals are synthetic and deliberately well separated;</p></li>
+<li><p>there are only 60 observations;</p></li>
+<li><p>measurement conditions do not vary realistically;</p></li>
+<li><p>mixtures and interfering species are absent;</p></li>
+<li><p>instrument drift and calibration transfer are absent;</p></li>
+<li><p>the test data come from the same synthetic data-generating process as the training data.</p></li>
+</ul>
+<p>A model intended for real analytical use would need representative experimental data, an appropriate validation design, documented performance metrics and testing under conditions that resemble its intended use.</p>
+</section>
+<section id="a-general-machine-learning-workflow-for-chemistry">
+<h2>A general machine-learning workflow for chemistry<a class="headerlink" href="#a-general-machine-learning-workflow-for-chemistry" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Define the scientific prediction task.</strong> What is one observation, and what should generalise?</p></li>
+<li><p><strong>Inspect and understand the data.</strong> Units, missing values, measurement design, class balance.</p></li>
+<li><p><strong>Separate features from the target.</strong> Exclude identifiers and leaked information.</p></li>
+<li><p><strong>Reserve independent data for evaluation.</strong> Split at the scientifically appropriate level.</p></li>
+<li><p><strong>Establish a simple baseline.</strong></p></li>
+<li><p><strong>Fit a model no more complicated than necessary.</strong></p></li>
+<li><p><strong>Evaluate on unseen data with suitable metrics.</strong></p></li>
+<li><p><strong>Inspect errors and compare model behaviour with chemistry.</strong></p></li>
+<li><p><strong>Document limitations and domain of applicability.</strong></p></li>
+</ol>
+<p>Machine learning can reveal useful patterns, but a numerical score does not replace chemical understanding or experimental validation.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.1 — rules versus learning</p>
+<p>Write a simple rule-based classifier that predicts <code class="docutils literal notranslate"><span class="pre">Na</span></code>, <code class="docutils literal notranslate"><span class="pre">Li</span></code> or <code class="docutils literal notranslate"><span class="pre">K</span></code> from whichever of the three emission intensities is largest. Compare its test accuracy with the decision tree. What does this tell you about whether machine learning is necessary for this simplified dataset?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.2 — identify the variables</p>
+<p>Read <code class="docutils literal notranslate"><span class="pre">data/flame_emission.csv</span></code>. Identify the observations, features, target variable and columns that should not be used for training.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.3 — train/test split</p>
+<p>Repeat <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> with several <code class="docutils literal notranslate"><span class="pre">random_state</span></code> values. How much does test accuracy vary? Why is performance from one small test split uncertain?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.4 — baseline</p>
+<p>Calculate the accuracy of always predicting the most common training class. Explain why every predictive model should be compared with an appropriate baseline.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.5 — model complexity</p>
+<p>Train decision trees with <code class="docutils literal notranslate"><span class="pre">max_depth</span></code> equal to 1, 2, 3 and <code class="docutils literal notranslate"><span class="pre">None</span></code>. Compare training and test accuracy. Which tree would you choose, and why?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.6 — confusion matrix</p>
+<p>Inspect the confusion matrix. If errors occur, which ions are confused? Relate those errors to the emission intensities in the corresponding observations.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.7 — leakage</p>
+<p>Explain why <code class="docutils literal notranslate"><span class="pre">sample_id</span></code> would be a dangerous feature in this dataset. Construct another hypothetical example of leakage from a chemical experiment.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.8 — realistic validation</p>
+<p>Imagine that each physical solution is measured ten times. Should the ten replicate spectra be randomly split between training and test data if the intended application is classification of entirely new solutions? Propose a better split and explain why.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5.9 — domain of applicability</p>
+<p>The model has only seen pure Na, Li and K samples. What might happen if it receives a mixture, a spectrum dominated by calcium, or a measurement recorded on a different instrument? Explain why a classifier generally still returns a class even when none of its known classes is appropriate.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/numerical_methods"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-classifying-flame-emission-measurements">Case: classifying flame-emission measurements</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-explore-the-data">Step 1: Explore the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-choose-features-and-target">Step 2: Choose features and target</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-split-into-training-and-test-sets">Step 3: Split into training and test sets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-establish-a-baseline">Step 4: Establish a baseline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-5-train-a-decision-tree">Step 5: Train a decision tree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-6-evaluate-the-model">Step 6: Evaluate the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-has-the-model-learned">What has the model learned?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overfitting">Overfitting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-leakage-in-chemical-workflows">Data leakage in chemical workflows</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-of-this-example">Limitations of this example</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-general-machine-learning-workflow-for-chemistry">A general machine-learning workflow for chemistry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

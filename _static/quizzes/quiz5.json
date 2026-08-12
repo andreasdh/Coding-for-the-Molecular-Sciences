@@ -1,0 +1,135 @@
+[
+  {
+    "question": "What is the output when this program runs?",
+    "code": "def add(a, b):\n    a + b\n\nprint(add(1, 2))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "None", "correct": true, "feedback": "Correct. The function calculates the sum but does not return it. A function without `return` automatically returns `None`."},
+      {"answer": "Nothing", "correct": false, "feedback": "Almost. The function returns no useful value, but `print` still displays `None`."},
+      {"answer": "3", "correct": false, "feedback": "Incorrect. The keyword `return` is missing, so the sum never leaves the function."},
+      {"answer": "1", "correct": false, "feedback": "Incorrect. Neither argument is returned."},
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. This is valid Python; the function simply does not return the calculated value."}
+    ]
+  },
+  {
+    "question": "What is the output when this program runs?",
+    "code": "def add(a, b):\n    return a + b\n\nprint(add([1, 2, 3], [2, 1, 2]))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Nothing", "correct": false, "feedback": "Incorrect. The function returns a value that is printed."},
+      {"answer": "[2, 3, 4]", "correct": false, "feedback": "Incorrect. Python lists are not added element by element; `+` concatenates them."},
+      {"answer": "[1, 2, 3, 2, 1, 2]", "correct": true, "feedback": "Correct. `+` concatenates lists."},
+      {"answer": "11", "correct": false, "feedback": "Incorrect. The values inside the lists are not summed."},
+      {"answer": "An error message", "correct": false, "feedback": "Incorrect. Two lists can be concatenated with `+`."}
+    ]
+  },
+  {
+    "question": "What is the output when this program runs?",
+    "code": "def f(x):\n    return x + 1\n\ndef g(y):\n    return y**2\n\nx = 2\nprint(g(f(g(x))))",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 25, "correct": true, "feedback": "Correct. Work from the inside out: `g(2) = 4`, then `f(4) = 5`, then `g(5) = 25`."},
+      {"type": "value", "value": 9, "correct": false, "feedback": "Incorrect. The innermost function call is evaluated first."},
+      {"type": "default", "feedback": "Incorrect. Evaluate the nested function calls from the inside out."}
+    ]
+  },
+  {
+    "question": "What should replace the blank in the function definition?",
+    "code": "def display(________):\n    print(x)\n\nnumber = 42\ndisplay(number)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "number", "correct": false, "feedback": "Incorrect. The function body refers to `x`, so `x` should be the parameter name."},
+      {"answer": "Nothing", "correct": false, "feedback": "Incorrect. `x` needs to be defined, for example as a parameter."},
+      {"answer": "42", "correct": false, "feedback": "Incorrect. Parameters must be variable names, not literal values."},
+      {"answer": "x", "correct": true, "feedback": "Correct. The parameter `x` receives the value of `number` when the function is called."}
+    ]
+  },
+  {
+    "question": "What is the output when this program runs?",
+    "code": "def func():\n    value = 6\n\nvalue = 5\nfunc()\nprint(value)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "5 6", "correct": false, "feedback": "Incorrect. There is only one print statement."},
+      {"answer": "5", "correct": true, "feedback": "Correct. The value 6 is assigned to a local variable inside the function and does not affect the global `value`."},
+      {"answer": "6", "correct": false, "feedback": "Incorrect. The variable inside the function is local."},
+      {"answer": "6 5", "correct": false, "feedback": "Incorrect. There is only one print statement."}
+    ]
+  },
+  {
+    "question": "What should replace the blanks so that the output is 6?",
+    "code": "def multiply(_____, _____):\n    product = a * b\n    _____ product\n\nprint(multiply(2, 3))",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "2, 3, print", "correct": false, "feedback": "Incorrect. Parameters must be variable names, and the function must return a value because the result is printed outside."},
+      {"answer": "a, b, print", "correct": false, "feedback": "Incorrect. Printing inside the function would make the outer `print` display `None` as well."},
+      {"answer": "a, b, return", "correct": true, "feedback": "Correct. The parameter names match those used in the body, and the product is returned."},
+      {"answer": "2, 3, return", "correct": false, "feedback": "Incorrect. Parameters must be variable names."}
+    ]
+  },
+  {
+    "question": "What is the output from the following program?",
+    "code": "a = 3\nb = 5\n\ndef product(a, b):\n    return a * b\n\ns = product(a, a)\na = 5\n\nprint(a + s)",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 14, "correct": true, "feedback": "Correct. `s` is calculated while `a` is 3, so `s = 9`; afterwards `a` becomes 5."},
+      {"type": "value", "value": 12, "correct": false, "feedback": "Incorrect. `s` is `product(a, a)`, not `product(a, b)`."},
+      {"type": "value", "value": 34, "correct": false, "feedback": "Incorrect. `s` is calculated before `a` receives its new value."},
+      {"type": "default", "feedback": "Incorrect. Pay attention to when `s` is calculated and the value of `a` at that point."}
+    ]
+  },
+  {
+    "question": "What is the difference between `return` and `print` inside a function?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "`return` sends a value back so it can be used in further calculations, whereas `print` only displays something.", "correct": true, "feedback": "Correct. A function that only prints does not provide a calculated value for the rest of the program to use."},
+      {"answer": "They do the same thing; `return` is just newer syntax.", "correct": false, "feedback": "Incorrect. They have fundamentally different roles."},
+      {"answer": "`return` displays more decimal places than `print`.", "correct": false, "feedback": "Incorrect. Formatting is unrelated to the distinction."},
+      {"answer": "`print` ends the function, while `return` continues to the next line.", "correct": false, "feedback": "Incorrect. `return` ends execution of the function immediately."}
+    ]
+  },
+  {
+    "question": "The function calculates the energy required to heat water. What is printed?",
+    "code": "def energy(mass, delta_T, heat_capacity=4.18):\n    return mass * heat_capacity * delta_T\n\nprint(energy(100, 10))",
+    "type": "numeric",
+    "precision": 0,
+    "answers": [
+      {"type": "value", "value": 4180, "correct": true, "feedback": "Correct. `heat_capacity` uses its default value of 4.18 when no third argument is provided."},
+      {"type": "value", "value": 1000, "correct": false, "feedback": "Incorrect. The default value of `heat_capacity` is used."},
+      {"type": "default", "feedback": "Incorrect. Which value does the default parameter receive when it is omitted from the call?"}
+    ]
+  },
+  {
+    "question": "What is printed?",
+    "code": "def analyse(mass):\n    return mass * 2, mass / 2\n\na, b = analyse(10)\nprint(b)",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "5.0", "correct": true, "feedback": "Correct. The function returns two values, and `b` receives the second one."},
+      {"answer": "20", "correct": false, "feedback": "Incorrect. `a` receives the first value and `b` the second."},
+      {"answer": "(20, 5.0)", "correct": false, "feedback": "Incorrect. The returned values are unpacked into two variables."},
+      {"answer": "An error, because a function can return only one value", "correct": false, "feedback": "Incorrect. A function can return several comma-separated values."}
+    ]
+  },
+  {
+    "question": "What happens when this program runs?",
+    "code": "print(kelvin(25))\n\ndef kelvin(temperature_celsius):\n    return temperature_celsius + 273.15",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "An error occurs because the function has not yet been defined when it is called.", "correct": true, "feedback": "Correct. Python executes the program from top to bottom; the `def` statement must have run before the function name can be used."},
+      {"answer": "298.15 is printed.", "correct": false, "feedback": "Incorrect. The definition comes after the call, so Python does not know the name yet."},
+      {"answer": "None is printed.", "correct": false, "feedback": "Incorrect. Python raises a `NameError`."},
+      {"answer": "Nothing happens.", "correct": false, "feedback": "Incorrect. The program stops with an error."}
+    ]
+  },
+  {
+    "question": "You are writing a function that calculates molar mass from a list of atomic-mass contributions. What is the most useful design?",
+    "type": "multiple_choice",
+    "answers": [
+      {"answer": "Take the list as a parameter and return the sum.", "correct": true, "feedback": "Correct. The function can then be reused with any suitable list, and its result can be used in further calculations."},
+      {"answer": "Take the list as a parameter and print the sum.", "correct": false, "feedback": "Incorrect. You can see the answer, but the calling code does not receive a numerical value."},
+      {"answer": "Read the list from a global variable and return the sum.", "correct": false, "feedback": "Incorrect. This unnecessarily ties the function to one particular global variable."},
+      {"answer": "Take the list and store the sum in a global variable without `return`.", "correct": false, "feedback": "Incorrect. This makes the function's effects harder to follow and reuse."}
+    ]
+  }
+]

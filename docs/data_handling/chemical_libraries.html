@@ -1,0 +1,1177 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Chemical libraries &#8212; Coding for the Molecular Sciences</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/chemistryquiz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script async="async" kind="hypothesis" src="https://hypothes.is/embed.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/ngl_static.js"></script>
+    <script src="../../_static/chemistryquiz.js"></script>
+    <script src="../../_static/turtle_basthon.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/data_handling/chemical_libraries';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Molecular visualisation" href="molecular_visualisation.html" />
+    <link rel="prev" title="Quiz 6: Data collections" href="../fundamental_programming/quiz6.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Coding for the Molecular Sciences</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction: Programming as a Tool in Chemistry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/vscode.html">Using an Editor: Visual Studio Code</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamental programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/variables.html">Variables and data types</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz1.html">Quiz 1: Variables and arithmetic</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/lists.html">Lists</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz2.html">Quiz 2: Lists</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/conditionals.html">Conditionals</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz3.html">Quiz 3: Conditionals</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/loops.html">Loops</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz4.html">Quiz 4: Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/functions.html">Functions</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz5.html">Quiz 5: Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../fundamental_programming/data_collections.html">Data collections</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../fundamental_programming/quiz6.html">Quiz 6: Data collections</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data handling and visualisation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chemical libraries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="molecular_visualisation.html">Molecular visualisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualising_chemical_data.html">Visualising chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reading_and_cleaning_chemical_data.html">Reading and cleaning chemical data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic_statistics_for_chemistry.html">Descriptive statistics: measurements, variation and uncertainty</a></li>
+<li class="toctree-l1"><a class="reference internal" href="calibration_and_statistical_inference.html">Calibration and statistical inference</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical methods and modelling</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/equations.html">Equations and root finding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_differentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/numerical_integration.html">Numerical integration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../numerical_methods/differential_equations.html">Differential equations and rate laws</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/data_handling/chemical_libraries.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chemical libraries</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-that-provide-access-to-data">Libraries that provide access to data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeleev">Mendeleev</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#several-elements-with-lists">Several elements with lists</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trends-across-a-period">Trends across a period</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pubchempy">PubChemPy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-for-structure-and-representation">Libraries for structure and representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rdkit-and-smiles">RDKit and SMILES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#several-molecules">Several molecules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-structure-to-molecular-properties">From structure to molecular properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-lipinski-s-rule-of-five">Exercise: Lipinski’s rule of five</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smarts-and-functional-groups">SMARTS and functional groups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-2d-to-3d">From 2D to 3D</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculations-we-can-program-ourselves">Calculations we can program ourselves</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-equations-with-a-linear-system-optional-material">Balancing equations with a linear system — optional material</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-a-library">Evaluating a library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chemical-libraries">
+<h1>Chemical libraries<a class="headerlink" href="#chemical-libraries" title="Permalink to this heading">#</a></h1>
+<div class="admonition-learning-outcomes admonition">
+<p class="admonition-title">Learning outcomes</p>
+<p>After working through this topic, you should be able to:</p>
+<ol class="arabic simple">
+<li><p>retrieve and explore elemental data with <code class="docutils literal notranslate"><span class="pre">mendeleev</span></code></p></li>
+<li><p>retrieve compound data from PubChem with <code class="docutils literal notranslate"><span class="pre">pubchempy</span></code></p></li>
+<li><p>represent molecules from SMILES and calculate molecular properties with RDKit</p></li>
+<li><p>balance a chemical equation by solving a linear system</p></li>
+<li><p>decide when a library is useful and when it is more instructive to write the code yourself</p></li>
+</ol>
+</div>
+<p>Python has a large ecosystem of libraries, including several developed specifically for chemistry. In this chapter we will use libraries that give access to chemical data, molecular structures and numerical methods.</p>
+<p>A useful way to judge a library is to ask what it contributes to our program. Libraries are particularly valuable when they provide:</p>
+<ol class="arabic simple">
+<li><p><strong>Data:</strong> curated values such as ionisation energies and atomic radii.</p></li>
+<li><p><strong>Algorithms and visualisation:</strong> functionality that would be lengthy or difficult to implement ourselves.</p></li>
+<li><p><strong>Standardisation:</strong> file formats and conventions that allow data to move between different programs.</p></li>
+</ol>
+<p>For simple chemical calculations, however, writing the function ourselves can be more instructive. It keeps the relationship between the chemistry and the code visible and makes the calculation easy to adapt.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Part</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Examples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Chemical data</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mendeleev</span></code>, <code class="docutils literal notranslate"><span class="pre">pubchempy</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Structure and representation</p></td>
+<td><p>RDKit</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Calculations we can program ourselves</p></td>
+<td><p>stoichiometry and balancing</p></td>
+</tr>
+</tbody>
+</table>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">#</a></h2>
+<p>Run the cell below once before using the examples. The exclamation mark sends the command to the <code class="docutils literal notranslate"><span class="pre">pip</span></code> package manager rather than treating it as ordinary Python code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>mendeleev<span class="w"> </span>pubchempy<span class="w"> </span>rdkit<span class="w"> </span>sympy
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="libraries-that-provide-access-to-data">
+<h2>Libraries that provide access to data<a class="headerlink" href="#libraries-that-provide-access-to-data" title="Permalink to this heading">#</a></h2>
+<section id="mendeleev">
+<h3>Mendeleev<a class="headerlink" href="#mendeleev" title="Permalink to this heading">#</a></h3>
+<p>The periodic table can be treated as a large dataset. Properties such as electronegativity, ionisation energy and atomic radius come from measurements and models; they are not quantities that we can reproduce with a few lines of elementary Python. The <code class="docutils literal notranslate"><span class="pre">mendeleev</span></code> library gives us convenient access to such elemental data.</p>
+<p>The function <code class="docutils literal notranslate"><span class="pre">element</span></code> creates an object representing an element. The objects share the same kinds of attributes, but the values differ from element to element.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">mendeleev</span><span class="w"> </span><span class="kn">import</span> <span class="n">element</span>
+
+<span class="n">sulfur</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>          <span class="c1"># Alternatively: element(16)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sulfur</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sulfur</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sulfur</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sulfur</span><span class="o">.</span><span class="n">atomic_weight</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sulfur</span><span class="o">.</span><span class="n">block</span><span class="p">,</span> <span class="n">sulfur</span><span class="o">.</span><span class="n">period</span><span class="p">,</span> <span class="n">sulfur</span><span class="o">.</span><span class="n">group_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sulfur
+S
+16
+32.06
+p 3 16
+</pre></div>
+</div>
+</div>
+</div>
+<p>Electronegativity is obtained with a <em>method call</em> rather than as a simple attribute because electronegativity can be defined using several different scales. We therefore need to specify which scale we want.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pauling: &quot;</span><span class="p">,</span> <span class="n">sulfur</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;pauling&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Allen:   &quot;</span><span class="p">,</span> <span class="n">sulfur</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;allen&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mulliken:&quot;</span><span class="p">,</span> <span class="n">sulfur</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;mulliken&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Pauling:  2.58
+Allen:    15.31
+Mulliken: 6.218557015
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Check your understanding: Why are the numbers so different?</p>
+<p>The three scales give very different numerical values for sulfur. Look up how the scales are defined. Which units are used? Why can the values not be compared directly?</p>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested answer</p>
+<p>The Pauling scale is dimensionless and is based on bond energies. The Allen and Mulliken scales are based on energy quantities and are commonly expressed in electronvolts. The numerical values therefore do not share a common scale. Meaningful comparisons concern, for example, the ordering of elements on each scale or relative differences after normalisation.</p>
+<p>This illustrates a general rule: a numerical value from a library must always be interpreted together with its definition and unit.</p>
+</div>
+<section id="several-elements-with-lists">
+<h4>Several elements with lists<a class="headerlink" href="#several-elements-with-lists" title="Permalink to this heading">#</a></h4>
+<p>We do not need to turn the whole periodic table into a table in order to inspect a simple trend. Instead, we can keep the element symbols in a list and retrieve one element at a time. This builds directly on lists and loops from the earlier chapters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Elements in period 2</span>
+<span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Li&quot;</span><span class="p">,</span> <span class="s2">&quot;Be&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="s2">&quot;Ne&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">:</span>
+    <span class="n">element_data</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">element_data</span><span class="o">.</span><span class="n">atomic_number</span><span class="p">,</span> <span class="n">element_data</span><span class="o">.</span><span class="n">atomic_weight</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Li 3 6.94
+Be 4 9.0121831
+B 5 10.81
+C 6 12.011
+N 7 14.007
+O 8 15.999
+F 9 18.998403163
+Ne 10 20.1797
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="missing-values">
+<h4>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this heading">#</a></h4>
+<p>A scientific database does not necessarily contain a value for every property of every element. Missing values are often represented by <code class="docutils literal notranslate"><span class="pre">None</span></code>. We should therefore check a value before using it in a calculation or plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">symbols_without_value</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">atomic_number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">119</span><span class="p">):</span>
+    <span class="n">element_data</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="n">atomic_number</span><span class="p">)</span>
+    <span class="n">electronegativity</span> <span class="o">=</span> <span class="n">element_data</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;pauling&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">electronegativity</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">symbols_without_value</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">element_data</span><span class="o">.</span><span class="n">symbol</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Elements without a Pauling electronegativity:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">symbols_without_value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Elements without a Pauling electronegativity:
+[&#39;He&#39;, &#39;Ne&#39;, &#39;Ar&#39;, &#39;Kr&#39;, &#39;Pm&#39;, &#39;Eu&#39;, &#39;Tb&#39;, &#39;Yb&#39;, &#39;Rn&#39;, &#39;Am&#39;, &#39;Cm&#39;, &#39;Bk&#39;, &#39;Cf&#39;, &#39;Es&#39;, &#39;Fm&#39;, &#39;Md&#39;, &#39;No&#39;, &#39;Lr&#39;, &#39;Rf&#39;, &#39;Db&#39;, &#39;Sg&#39;, &#39;Bh&#39;, &#39;Hs&#39;, &#39;Mt&#39;, &#39;Ds&#39;, &#39;Rg&#39;, &#39;Cn&#39;, &#39;Nh&#39;, &#39;Fl&#39;, &#39;Mc&#39;, &#39;Lv&#39;, &#39;Ts&#39;, &#39;Og&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Check your understanding: Which values are missing?</p>
+<ol class="arabic simple">
+<li><p>One group of the periodic table is clearly represented among the missing values. Which group, and what is the chemical explanation?</p></li>
+<li><p>Several of the heaviest elements are also missing values. Why are their chemical properties difficult to determine experimentally?</p></li>
+<li><p>Make two lists, one containing atomic numbers and one containing Pauling electronegativities. Add only elements that actually have a value, and make a scatter plot.</p></li>
+</ol>
+</div>
+<div class="tip dropdown admonition">
+<p class="admonition-title">Suggested answer</p>
+<p>The noble gases are prominent because the Pauling scale is based on bonding and noble gases form comparatively few ordinary bonds. Many of the heaviest elements are produced only in tiny quantities and have short half-lives, which makes measurement difficult. A possible plotting approach is shown below.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">atomic_numbers</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">electronegativities</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">atomic_number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">119</span><span class="p">):</span>
+    <span class="n">element_data</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="n">atomic_number</span><span class="p">)</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">element_data</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;pauling&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">atomic_numbers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">atomic_number</span><span class="p">)</span>
+        <span class="n">electronegativities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">atomic_numbers</span><span class="p">,</span> <span class="n">electronegativities</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Atomic number&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Electronegativity (Pauling)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="trends-across-a-period">
+<h4>Trends across a period<a class="headerlink" href="#trends-across-a-period" title="Permalink to this heading">#</a></h4>
+<p>For period 2 we can use the element symbols directly on the x-axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">symbols</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Li&quot;</span><span class="p">,</span> <span class="s2">&quot;Be&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;N&quot;</span><span class="p">,</span> <span class="s2">&quot;O&quot;</span><span class="p">,</span> <span class="s2">&quot;F&quot;</span><span class="p">]</span>
+<span class="n">electronegativities</span> <span class="o">=</span> <span class="p">[</span><span class="n">element</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span><span class="o">.</span><span class="n">electronegativity</span><span class="p">(</span><span class="s2">&quot;pauling&quot;</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">symbols</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">symbols</span><span class="p">,</span> <span class="n">electronegativities</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Element&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Electronegativity (Pauling)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Electronegativity across period 2&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/a1eb0989aa40de81483e34a4ae76003d0851079d5f796a60a331db6488aa1661.png" src="../../_images/a1eb0989aa40de81483e34a4ae76003d0851079d5f796a60a331db6488aa1661.png" />
+</div>
+</div>
+<p>Mendeleev also provides properties that occur as collections rather than single values. Successive ionisation energies are a good example.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sodium</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="s2">&quot;Na&quot;</span><span class="p">)</span>
+<span class="n">magnesium</span> <span class="o">=</span> <span class="n">element</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ionisation_step</span><span class="p">,</span> <span class="n">energy</span> <span class="ow">in</span> <span class="n">sodium</span><span class="o">.</span><span class="n">ionenergies</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Na&quot;</span><span class="p">,</span> <span class="n">ionisation_step</span><span class="p">,</span> <span class="n">energy</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">ionisation_step</span><span class="p">,</span> <span class="n">energy</span> <span class="ow">in</span> <span class="n">magnesium</span><span class="o">.</span><span class="n">ionenergies</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mg&quot;</span><span class="p">,</span> <span class="n">ionisation_step</span><span class="p">,</span> <span class="n">energy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Na 1 5.13907696
+Na 2 47.28636
+Na 3 71.62
+Na 4 98.936
+Na 5 138.404
+Na 6 172.23
+Na 7 208.504
+Na 8 264.192
+Na 9 299.856
+Na 10 1465.0992
+Na 11 1648.702285
+
+Mg 1 7.646236
+Mg 2 15.035271
+Mg 3 80.1436
+Mg 4 109.2654
+Mg 5 141.33
+Mg 6 186.76
+Mg 7 225.02
+Mg 8 265.924
+Mg 9 327.99
+Mg 10 367.489
+Mg 11 1761.8049
+Mg 12 1962.663889
+</pre></div>
+</div>
+</div>
+</div>
+<p>The large jump after the first ionisation of sodium and after the second ionisation of magnesium reflects the transition from removing valence electrons to removing an electron from a closed inner shell. The database gives us the values; chemistry is still needed to interpret the pattern.</p>
+</section>
+</section>
+<section id="pubchempy">
+<h3>PubChemPy<a class="headerlink" href="#pubchempy" title="Permalink to this heading">#</a></h3>
+<p>PubChem is an open database containing information about chemical compounds. <code class="docutils literal notranslate"><span class="pre">pubchempy</span></code> communicates with PubChem through an API and makes the data available as Python objects. Because this depends on an online service, the code requires an internet connection when it is run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pubchempy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pcp</span>
+
+<span class="n">matches</span> <span class="o">=</span> <span class="n">pcp</span><span class="o">.</span><span class="n">get_compounds</span><span class="p">(</span><span class="s2">&quot;paracetamol&quot;</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<span class="n">paracetamol</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;PubChem CID:      &quot;</span><span class="p">,</span> <span class="n">paracetamol</span><span class="o">.</span><span class="n">cid</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Molecular formula:&quot;</span><span class="p">,</span> <span class="n">paracetamol</span><span class="o">.</span><span class="n">molecular_formula</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Molar mass:       &quot;</span><span class="p">,</span> <span class="n">paracetamol</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;IUPAC name:       &quot;</span><span class="p">,</span> <span class="n">paracetamol</span><span class="o">.</span><span class="n">iupac_name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Canonical SMILES: &quot;</span><span class="p">,</span> <span class="n">paracetamol</span><span class="o">.</span><span class="n">connectivity_smiles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PubChem CID:       1983
+Molecular formula: C8H9NO2
+Molar mass:        151.16
+IUPAC name:        N-(4-hydroxyphenyl)acetamide
+Canonical SMILES:  CC(=O)NC1=CC=C(C=C1)O
+</pre></div>
+</div>
+</div>
+</div>
+<p>A database search can return more than one match, so we should not blindly assume that the first object is always the intended compound. Identifiers such as a PubChem CID or InChIKey are safer than ambiguous everyday names when reproducibility matters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">compound_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;caffeine&quot;</span><span class="p">,</span> <span class="s2">&quot;ibuprofen&quot;</span><span class="p">,</span> <span class="s2">&quot;aspirin&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">compound_names</span><span class="p">:</span>
+    <span class="n">matches</span> <span class="o">=</span> <span class="n">pcp</span><span class="o">.</span><span class="n">get_compounds</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span><span class="p">)</span>
+    <span class="n">compound</span> <span class="o">=</span> <span class="n">matches</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">compound</span><span class="o">.</span><span class="n">molecular_formula</span><span class="p">,</span> <span class="n">compound</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>caffeine C8H10N4O2 194.19
+ibuprofen C13H18O2 206.28
+aspirin C9H8O4 180.16
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="libraries-for-structure-and-representation">
+<h2>Libraries for structure and representation<a class="headerlink" href="#libraries-for-structure-and-representation" title="Permalink to this heading">#</a></h2>
+<section id="rdkit-and-smiles">
+<h3>RDKit and SMILES<a class="headerlink" href="#rdkit-and-smiles" title="Permalink to this heading">#</a></h3>
+<p>RDKit is a cheminformatics library for representing and analysing molecular structures. A convenient text representation of a small molecule is <strong>SMILES</strong> (<em>Simplified Molecular Input Line Entry System</em>). For example, ethanol can be written as <code class="docutils literal notranslate"><span class="pre">CCO</span></code>.</p>
+<p>A SMILES string is a representation, not the molecule itself. Different valid SMILES strings can describe the same molecular graph, and a plain SMILES string does not by itself specify all aspects of a three-dimensional structure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+
+<span class="n">smiles</span> <span class="o">=</span> <span class="s2">&quot;CCO&quot;</span>
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolToImage</span><span class="p">(</span><span class="n">molecule</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/844aa5a5172b0d893393e9c0aed583406b9fa382d29f1d3d07ee62a7d4d64b91.png" src="../../_images/844aa5a5172b0d893393e9c0aed583406b9fa382d29f1d3d07ee62a7d4d64b91.png" />
+</div>
+</div>
+<p>If the SMILES string is invalid, <code class="docutils literal notranslate"><span class="pre">Chem.MolFromSmiles</span></code> normally returns <code class="docutils literal notranslate"><span class="pre">None</span></code>. It is good practice to check this before continuing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smiles</span> <span class="o">=</span> <span class="s2">&quot;this-is-not-smiles&quot;</span>
+<span class="n">molecule</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">molecule</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid SMILES&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Invalid SMILES
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[08:00:52] SMILES Parse Error: syntax error while parsing: this-is-not-smiles
+[08:00:52] SMILES Parse Error: check for mistakes around position 1:
+[08:00:52] this-is-not-smiles
+[08:00:52] ^
+[08:00:52] SMILES Parse Error: Failed parsing SMILES &#39;this-is-not-smiles&#39; for input: &#39;this-is-not-smiles&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="several-molecules">
+<h3>Several molecules<a class="headerlink" href="#several-molecules" title="Permalink to this heading">#</a></h3>
+<p>A dictionary is useful when we want to keep a compound name and its SMILES representation together.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Chem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Draw</span>
+
+<span class="n">smiles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;caffeine&quot;</span><span class="p">:</span> <span class="s2">&quot;Cn1c(=O)c2c(ncn2C)n(C)c1=O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;paracetamol&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)NC1=CC=C(C=C1)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aspirin&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(=O)OC1=CC=CC=C1C(=O)O&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ibuprofen&quot;</span><span class="p">:</span> <span class="s2">&quot;CC(C)CC1=CC=C(C=C1)C(C)C(=O)O&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">smiles</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">molecules</span> <span class="o">=</span> <span class="p">[</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="n">name</span><span class="p">])</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">]</span>
+
+<span class="n">Draw</span><span class="o">.</span><span class="n">MolsToGridImage</span><span class="p">(</span><span class="n">molecules</span><span class="p">,</span> <span class="n">molsPerRow</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">legends</span><span class="o">=</span><span class="n">names</span><span class="p">,</span> <span class="n">subImgSize</span><span class="o">=</span><span class="p">(</span><span class="mi">300</span><span class="p">,</span> <span class="mi">220</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/d422083f1a758e3a272b997bf9e347711c680a213ff8a39cc2b71b06e2d34208.png" src="../../_images/d422083f1a758e3a272b997bf9e347711c680a213ff8a39cc2b71b06e2d34208.png" />
+</div>
+</div>
+</section>
+<section id="from-structure-to-molecular-properties">
+<h3>From structure to molecular properties<a class="headerlink" href="#from-structure-to-molecular-properties" title="Permalink to this heading">#</a></h3>
+<p>Once RDKit has constructed a molecular graph, it can calculate many descriptors from that representation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">Descriptors</span><span class="p">,</span> <span class="n">Lipinski</span>
+
+<span class="n">caffeine</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="s2">&quot;caffeine&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Molar mass:       &quot;</span><span class="p">,</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">caffeine</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LogP:             &quot;</span><span class="p">,</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">caffeine</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;H-bond donors:    &quot;</span><span class="p">,</span> <span class="n">Lipinski</span><span class="o">.</span><span class="n">NumHDonors</span><span class="p">(</span><span class="n">caffeine</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;H-bond acceptors: &quot;</span><span class="p">,</span> <span class="n">Lipinski</span><span class="o">.</span><span class="n">NumHAcceptors</span><span class="p">(</span><span class="n">caffeine</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Molar mass:        194.194
+LogP:              -1.0293
+H-bond donors:     0
+H-bond acceptors:  3
+</pre></div>
+</div>
+</div>
+</div>
+<p>These are <em>computed descriptors</em>. They are not experimental measurements retrieved from a database, and their meaning depends on the definition and algorithm used. That distinction becomes important when descriptors are used in modelling.</p>
+<section id="exercise-lipinski-s-rule-of-five">
+<h4>Exercise: Lipinski’s rule of five<a class="headerlink" href="#exercise-lipinski-s-rule-of-five" title="Permalink to this heading">#</a></h4>
+<p>A commonly used heuristic in medicinal chemistry considers four simple molecular properties: molar mass below 500 g/mol, LogP below 5, at most 5 hydrogen-bond donors and at most 10 hydrogen-bond acceptors. The rule is not a law of chemistry and does not decide whether a molecule is a useful drug; it is a screening heuristic.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">lipinski_violations</span><span class="p">(</span><span class="n">smiles_string</span><span class="p">):</span>
+    <span class="n">molecule</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles_string</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">molecule</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Invalid SMILES&quot;</span><span class="p">)</span>
+
+    <span class="n">violations</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolWt</span><span class="p">(</span><span class="n">molecule</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">:</span>
+        <span class="n">violations</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">Descriptors</span><span class="o">.</span><span class="n">MolLogP</span><span class="p">(</span><span class="n">molecule</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">violations</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">Lipinski</span><span class="o">.</span><span class="n">NumHDonors</span><span class="p">(</span><span class="n">molecule</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
+        <span class="n">violations</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">Lipinski</span><span class="o">.</span><span class="n">NumHAcceptors</span><span class="p">(</span><span class="n">molecule</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">violations</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">violations</span>
+
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">smiles_string</span> <span class="ow">in</span> <span class="n">smiles</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">20</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">lipinski_violations</span><span class="p">(</span><span class="n">smiles_string</span><span class="p">)</span><span class="si">}</span><span class="s2"> violations&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>caffeine             0 violations
+paracetamol          0 violations
+aspirin              0 violations
+ibuprofen            0 violations
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="smarts-and-functional-groups">
+<h3>SMARTS and functional groups<a class="headerlink" href="#smarts-and-functional-groups" title="Permalink to this heading">#</a></h3>
+<p>SMARTS is a pattern language related to SMILES. Instead of describing one particular molecule, a SMARTS pattern can describe a structural motif that we want to find.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">patterns</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;carboxylic acid&quot;</span><span class="p">:</span> <span class="s2">&quot;C(=O)[OH]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;ester&quot;</span><span class="p">:</span> <span class="s2">&quot;C(=O)O[#6]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;amide&quot;</span><span class="p">:</span> <span class="s2">&quot;C(=O)N&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;alcohol/phenol&quot;</span><span class="p">:</span> <span class="s2">&quot;[OX2H]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;aromatic ring&quot;</span><span class="p">:</span> <span class="s2">&quot;a1aaaaa1&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">aspirin</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="n">smiles</span><span class="p">[</span><span class="s2">&quot;aspirin&quot;</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">group</span><span class="p">,</span> <span class="n">smarts</span> <span class="ow">in</span> <span class="n">patterns</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmarts</span><span class="p">(</span><span class="n">smarts</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">aspirin</span><span class="o">.</span><span class="n">GetSubstructMatches</span><span class="p">(</span><span class="n">pattern</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">group</span><span class="si">:</span><span class="s2">18</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carboxylic acid   : 1
+ester             : 1
+amide             : 0
+alcohol/phenol    : 1
+aromatic ring     : 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>A SMARTS match is only as chemically meaningful as the pattern we define. A very broad pattern may count motifs that we did not intend, whereas a very restrictive one may miss legitimate variants.</p>
+</section>
+<section id="from-2d-to-3d">
+<h3>From 2D to 3D<a class="headerlink" href="#from-2d-to-3d" title="Permalink to this heading">#</a></h3>
+<p>RDKit can generate a possible three-dimensional conformer from a molecular graph. This is useful for visualisation, but the generated conformer should not automatically be interpreted as the unique or experimentally dominant structure in solution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">rdkit.Chem</span><span class="w"> </span><span class="kn">import</span> <span class="n">AllChem</span>
+
+<span class="n">ethanol</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">AddHs</span><span class="p">(</span><span class="n">Chem</span><span class="o">.</span><span class="n">MolFromSmiles</span><span class="p">(</span><span class="s2">&quot;CCO&quot;</span><span class="p">))</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">EmbedMolecule</span><span class="p">(</span><span class="n">ethanol</span><span class="p">,</span> <span class="n">randomSeed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">AllChem</span><span class="o">.</span><span class="n">MMFFOptimizeMolecule</span><span class="p">(</span><span class="n">ethanol</span><span class="p">)</span>
+
+<span class="n">mol_block</span> <span class="o">=</span> <span class="n">Chem</span><span class="o">.</span><span class="n">MolToMolBlock</span><span class="p">(</span><span class="n">ethanol</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mol_block</span><span class="p">[:</span><span class="mi">500</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     RDKit          3D
+
+  9  8  0  0  0  0  0  0  0  0999 V2000
+   -0.8883    0.1670   -0.0273 C   0  0  0  0  0  0  0  0  0  0  0  0
+    0.4658   -0.5116   -0.0368 C   0  0  0  0  0  0  0  0  0  0  0  0
+    1.4311    0.3229    0.5867 O   0  0  0  0  0  0  0  0  0  0  0  0
+   -0.8487    1.1175   -0.5695 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.6471   -0.4704   -0.4896 H   0  0  0  0  0  0  0  0  0  0  0  0
+   -1.1964    0.3978    0.9977 H   0  0  0  0  0  0  0  0  0  0  0  0
+    0.7920   -0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="calculations-we-can-program-ourselves">
+<h2>Calculations we can program ourselves<a class="headerlink" href="#calculations-we-can-program-ourselves" title="Permalink to this heading">#</a></h2>
+<p>Not every chemical calculation needs a specialised library. Simple stoichiometric relations are often clearer when written directly as functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AVOGADRO_CONSTANT</span> <span class="o">=</span> <span class="mf">6.02214076e23</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">amount_of_substance</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return amount of substance in mol from mass in g and molar mass in g/mol.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">mass</span> <span class="o">/</span> <span class="n">molar_mass</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mass</span><span class="p">(</span><span class="n">amount_mol</span><span class="p">,</span> <span class="n">molar_mass</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return mass in g from amount in mol and molar mass in g/mol.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">amount_mol</span> <span class="o">*</span> <span class="n">molar_mass</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">concentration</span><span class="p">(</span><span class="n">amount_mol</span><span class="p">,</span> <span class="n">volume_L</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return concentration in mol/L.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">amount_mol</span> <span class="o">/</span> <span class="n">volume_L</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dilute</span><span class="p">(</span><span class="n">concentration_initial</span><span class="p">,</span> <span class="n">volume_initial</span><span class="p">,</span> <span class="n">volume_final</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return final concentration from c1*V1 = c2*V2.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">concentration_initial</span> <span class="o">*</span> <span class="n">volume_initial</span> <span class="o">/</span> <span class="n">volume_final</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">number_of_molecules</span><span class="p">(</span><span class="n">amount_mol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return number of entities from amount of substance in mol.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">amount_mol</span> <span class="o">*</span> <span class="n">AVOGADRO_CONSTANT</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The advantage of these functions is transparency: the equations are immediately recognisable and we can adapt them to the problem. A third-party library would add little value here unless it also handled units, uncertainty propagation or a larger chemical workflow.</p>
+<section id="balancing-equations-with-a-linear-system-optional-material">
+<h3>Balancing equations with a linear system — optional material<a class="headerlink" href="#balancing-equations-with-a-linear-system-optional-material" title="Permalink to this heading">#</a></h3>
+<p>Balancing a reaction can be formulated as a null-space problem. Each row of a matrix represents conservation of one element and each column represents a chemical species. The stoichiometric coefficients form a vector <span class="math notranslate nohighlight">\(x\)</span> satisfying</p>
+<div class="math notranslate nohighlight">
+\[Ax=0.\]</div>
+<p>For example, for combustion of ethane,</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{C_2H_6 + O_2 \rightarrow CO_2 + H_2O},\]</div>
+<p>we can let reactant columns have positive element counts and product columns negative counts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sympy</span><span class="w"> </span><span class="kn">import</span> <span class="n">Matrix</span>
+
+<span class="c1"># Columns: C2H6, O2, CO2, H2O</span>
+<span class="c1"># Rows: C, H, O</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">Matrix</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>  <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span>  <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+<span class="p">])</span>
+
+<span class="n">solution</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">nullspace</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">coefficients</span> <span class="o">=</span> <span class="n">solution</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Matrix([[2/3], [7/3], [4/3], [2]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>The resulting coefficient ratio is <span class="math notranslate nohighlight">\(2:7:4:6\)</span>, giving</p>
+<div class="math notranslate nohighlight">
+\[2\,\mathrm{C_2H_6}+7\,\mathrm{O_2}\rightarrow4\,\mathrm{CO_2}+6\,\mathrm{H_2O}.\]</div>
+<p>The chemistry appears here as conservation constraints, while SymPy supplies a general linear-algebra algorithm. This is a good example of a library doing a mathematically generic job inside a chemical problem.</p>
+</section>
+</section>
+<section id="evaluating-a-library">
+<h2>Evaluating a library<a class="headerlink" href="#evaluating-a-library" title="Permalink to this heading">#</a></h2>
+<p>Before building a workflow around a scientific library, ask:</p>
+<ul class="simple">
+<li><p><strong>What is the source of the data or algorithm?</strong></p></li>
+<li><p><strong>What does the returned quantity mean, including units and conventions?</strong></p></li>
+<li><p><strong>How does the library represent missing or invalid data?</strong></p></li>
+<li><p><strong>Is the package maintained and documented?</strong></p></li>
+<li><p><strong>Can the calculation be reproduced later?</strong> Record package versions when that matters.</p></li>
+<li><p><strong>Would a short transparent function be better for this particular task?</strong></p></li>
+</ul>
+<p>Libraries save us from reinventing mature tools, but they do not remove the need for chemical judgement.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this heading">#</a></h2>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 1 — periodic trends</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">mendeleev</span></code> to compare the Pauling electronegativity and first ionisation energy across period 3. Make two plots and explain the broad chemical trends and any exceptions. Check explicitly for missing values before plotting.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 2 — PubChem and identifiers</p>
+<p>Retrieve caffeine, aspirin and ibuprofen from PubChem. Report CID, molecular formula, molar mass and canonical SMILES. Explain why an identifier is preferable to a common name in a reproducible workflow.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 3 — molecular descriptors</p>
+<p>Use RDKit to calculate molar mass, LogP, H-bond donors and H-bond acceptors for at least four molecules. Which of these are directly encoded by the molecular graph, and which depend on a computational definition or model?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 4 — SMARTS</p>
+<p>Choose a functional group and construct or look up a SMARTS pattern for it. Test the pattern on several molecules and inspect both matches and non-matches. Discuss one way in which your pattern could give a chemically misleading result.</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 5 — stoichiometric functions</p>
+<p>Write a function <code class="docutils literal notranslate"><span class="pre">mass_percent(element_mass,</span> <span class="pre">sample_mass)</span></code> that returns a mass percentage. Add a check that prevents a zero or negative sample mass. Why is this simple function easier to audit than an opaque specialised package call?</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Exercise 6 — balancing</p>
+<p>Use the matrix approach to balance <span class="math notranslate nohighlight">\(\mathrm{Fe + O_2 \rightarrow Fe_2O_3}\)</span>. Then explain what information you had to supply to the matrix before the computer could solve the problem.</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/data_handling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../fundamental_programming/quiz6.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quiz 6: Data collections</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="molecular_visualisation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Molecular visualisation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-that-provide-access-to-data">Libraries that provide access to data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mendeleev">Mendeleev</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#several-elements-with-lists">Several elements with lists</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#missing-values">Missing values</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#trends-across-a-period">Trends across a period</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pubchempy">PubChemPy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries-for-structure-and-representation">Libraries for structure and representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rdkit-and-smiles">RDKit and SMILES</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#several-molecules">Several molecules</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-structure-to-molecular-properties">From structure to molecular properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-lipinski-s-rule-of-five">Exercise: Lipinski’s rule of five</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smarts-and-functional-groups">SMARTS and functional groups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-2d-to-3d">From 2D to 3D</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calculations-we-can-program-ourselves">Calculations we can program ourselves</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#balancing-equations-with-a-linear-system-optional-material">Balancing equations with a linear system — optional material</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-a-library">Evaluating a library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Andreas Haraldsrud
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026 Andreas Haraldsrud. Educational content is licensed under CC BY-NC-SA 4.0. Source code and code examples are licensed under the MIT License..
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
